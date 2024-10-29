@@ -1,0 +1,94 @@
+/* 공통 컨테이너 스타일 */
+.business-client-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.business-client-container h2, .business-client-container h3 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 버튼을 한 줄에 배치하는 컨테이너 스타일 */
+.business-client-container .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 20px;
+}
+
+.business-client-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* 목록 스타일 */
+.business-client-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.business-client-list li {
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.business-client-list li h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.business-client-list li p {
+    margin: 10px 0;
+}
+
+/* JSON 출력 스타일 */
+.business-client-list pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* 폼 스타일 */
+.business-client-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin-top: 20px;
+}
+
+.business-client-container input,
+.business-client-container textarea {
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.business-client-container textarea {
+    height: 100px;
+    resize: none;
+}
+
+.business-client-container label {
+    display: flex;
+    align-items: center;
+}
+
+.form-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}

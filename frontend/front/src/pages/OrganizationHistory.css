@@ -1,0 +1,112 @@
+.introduction-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: 100vh; /* 페이지 전체 높이 */
+  box-sizing: border-box; /* 패딩을 포함하여 높이 계산 */
+}
+
+
+.org-history-banner-image-container {
+  position: relative; /* 텍스트를 이미지 위에 겹치기 위해 부모 컨테이너에 relative 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px; /* 높이를 200px로 설정하여 이미지 크기 고정 */
+  object-fit: cover; /* 이미지 비율을 유지하면서 컨테이너를 채움 */
+  z-index: 999; /* 다른 요소들 위에 있도록 설정 */
+}
+
+.org-history-title_comp_name{
+  text-align: center; /* 조직도를 가운데로 이동 */
+  padding-top: 170px;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.org-history-image {
+  position: relative;
+  width: 80%; /* 이미지 너비를 50%로 축소 (필요에 따라 조정 가능) */
+  height: auto; /* 이미지의 높이를 비율에 맞게 자동 조정 */
+  border-radius: 15px;
+  object-fit: cover; /* 이미지 비율을 유지하면서 컨테이너를 채움 */
+  z-index: 999; /* 다른 요소들 위에 있도록 설정 */
+  margin: 20px auto 5px auto; /* 상단 마진 20px, 좌우 마진 auto로 가운데 정렬, 하단 마진 5px */
+  display: block; /* 블록 요소로 설정하여 마진이 적용되도록 함 */
+  padding-top: 30px;
+}
+
+.org-history-title_comp_name{
+  text-align: center;
+  padding-top: 170px;
+  font-weight: bold;
+  font-size: 35px;
+  color: #ffffff;
+}
+
+
+.org-history-container{
+  position: relative;
+  width: 50%;
+  left: 25%;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.org-history-table-header {
+  background-color: #4e61ff; /* 원하는 파란색으로 변경 가능 */
+}
+/* OrganizationHistory.css */
+
+/*.table-row-gradient {*/
+/*  background: linear-gradient(900deg, rgba(255,255,255,0.1), rgba(255,255,255,1));*/
+/*  transition: background 0.5s ease-in-out;*/
+/*}*/
+
+/*.table-row-gradient:hover {*/
+/*  background: linear-gradient(900deg, rgba(255,255,255,0.3), rgba(255,255,255,1));*/
+/*}*/
+
+
+/* Timeline container */
+.org-history-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 50px;
+  padding: 100px;
+}
+
+/* Each item in the timeline */
+.timeline-item {
+  display: flex;
+  position: relative;
+  padding: 20px 0;
+}
+
+/* Year on the left */
+.history-year {
+  position: relative;
+  left: -60px;
+  font-size: 20px;
+  color: #4e61ff; /* Blue color */
+  font-weight: bold;
+}
+
+
+/* Event details (Date and title) */
+.history-description {
+  padding-left: 20px;
+}
+
+.history-content {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  font-weight: normal;
+}

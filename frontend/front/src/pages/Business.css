@@ -1,0 +1,49 @@
+.together-title-wrap {
+  /* 제목 섹션 스타일 */
+}
+
+.list-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list-box {
+  flex: 1 0 auto;
+  width: 40%;
+  margin: 2%;
+  box-sizing: border-box;
+}
+
+.list-thumb img {
+  width: 100%;
+  height: auto;
+}
+
+.list-cont {
+  padding: 10px;
+}
+
+.list-title {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.list-desc {
+  color: #555;
+}
+
+.list-category {
+  background-color: #eee;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.page-navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-navigation button {
+  margin: 0 5px;
+}
