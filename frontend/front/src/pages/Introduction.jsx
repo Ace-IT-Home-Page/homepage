@@ -1,27 +1,28 @@
 // Introduction.jsx
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { getCompanyVisionValues } from '../api/AdminAPI'; // AdminAPI에서 함수 가져오기
 import './Introduction.css';
 
 const Introduction = () => {
-  const [visionData, setVisionData] = useState(null);
+  const [visionData, setVisionData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getCompanyVisionValues = async () => {
+    const fetchVisionData = async () => {
       try {
-        const res = await axios.get('/companyVisionValues');
-        console.log('Response List:', res);
-        setVisionData(res.data);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
+        const response = await getCompanyVisionValues();
+        console.log('Response List:', response);
+        setVisionData(response.data.company_vision_values || []);
+      } catch (err) {
+        console.error('Error fetching company vision values:', err);
+        setError(err.message || '데이터를 가져오는 중 오류가 발생했습니다.');
+      } finally {
         setLoading(false);
       }
     };
 
-    getCompanyVisionValues();
+    fetchVisionData();
   }, []);
 
   if (loading) {
@@ -35,13 +36,17 @@ const Introduction = () => {
   return (
     <div className="introduction-container">
       <div className="introduction-image-container">
-        <img src="/AdobeStock_vision.jpeg" alt="회사 이미지" className="introduction-company-image" />
+        <img
+          src="/AdobeStock_vision.jpeg"
+          alt="회사 이미지"
+          className="introduction-company-image"
+        />
       </div>
       <div className="text-container">
         <h2>ACE IT VISION</h2>
         <p className="subheading">새로운 기술, 고객과의 소통을 통한 새로운 패러다임을 제시</p>
         <ul>
-          {visionData.company_vision_values
+          {visionData
             .filter((item) => item.vv_id >= 2)
             .map((item) => (
               <li key={item.vv_id}>
@@ -49,7 +54,9 @@ const Introduction = () => {
                   {item.vv_name}
                   {item.vv_content ? `: ${item.vv_content}` : ''}
                 </span>
-                {item.vv_details && <p>{Object.values(item.vv_details).join(', ')}</p>}
+                {item.vv_details && (
+                  <p>{Object.values(item.vv_details).join(', ')}</p>
+                )}
               </li>
             ))}
         </ul>
@@ -59,3 +66,5 @@ const Introduction = () => {
 };
 
 export default Introduction;
+
+
