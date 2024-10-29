@@ -1,0 +1,105 @@
+/* Home.css */
+
+.header-navbar-container {
+  position: fixed; /* 화면 상단에 고정 */
+  width: 100%; /* 전체 너비 */
+  z-index: 100; /* 섹션 위에 오도록 높은 z-index 값 설정 */
+}
+.section {
+  height: 100vh; /* 전체 화면 높이 */
+  overflow: hidden;
+}
+
+.scroll-down-arrow {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 24px;
+}
+/* MenuToggle 관련 CSS 코드 */
+
+/* 메뉴 토글 버튼 스타일 */
+.menu-toggle {
+  position: fixed; /* 화면 고정 */
+  top: 10px; /* 상단에서 20px 떨어지도록 설정 (원하는 위치로 조정 가능) */
+  right: 10px; /* 오른쪽에서 20px 떨어지도록 설정 */
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 30%; /* 동그랗게 설정 */
+  background-color: #4e61ff; /* 반투명 배경색 */
+  border: 2px solid #fff; /* 흰색 테두리 */
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+  padding-right: 3.5px;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.menu-toggle path {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: all 0.3s ease;
+}
+
+.menu-open .menu-toggle path.middle {
+  opacity: 0;
+}
+
+/* 기존 스타일 유지 */
+
+/* 스크롤 다운 화살표 스타일 */
+.scroll-down-arrow {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  font-size: 2rem; /* 화살표 아이콘 크기 */
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  /* Header 스타일 */
+  .header-navbar-container {
+    font-size: 1.5rem; /* 헤더 폰트 크기 */
+    padding: 10px; /* 모바일 간격 조정 */
+  }
+
+  /* 스크롤 다운 화살표 */
+  .scroll-down-arrow {
+    font-size: 1.5rem; /* 모바일에서 크기 축소 */
+    bottom: 15px; /* 간격 조정 */
+  }
+
+  /* Footer 스타일 */
+  .footer {
+    font-size: 0.9rem; /* 모바일 푸터 폰트 크기 조정 */
+    padding: 15px;
+  }
+
+  /* Introduction 섹션 스타일 */
+  .introduction {
+    padding: 20px;
+    font-size: 1rem; /* 모바일 폰트 크기 축소 */
+  }
+
+  /* 모바일에서 배너 이미지 크기 조정 */
+  .banner-image-container {
+    height: 150px; /* 배너 이미지 높이 축소 */
+  }
+
+  /* 섹션 스타일 */
+  .section {
+    height: auto; /* 모바일에서 섹션 높이를 자동으로 */
+    min-height: 100vh; /* 최소 높이 설정 */
+    overflow: hidden;
+  }
+}
+

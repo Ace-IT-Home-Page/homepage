@@ -1,0 +1,49 @@
+.head {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    transition: top 0.3s ease; /* 스크롤 시 헤더가 부드럽게 나타나고 사라지도록 */
+}
+
+.head.visible {
+    top: 0;
+}
+
+.head.hidden {
+    top: -65px; /* 헤더 높이만큼 위로 숨김 */
+}
+
+.head-image {
+    width: 200px;
+    height: auto;
+}
+
+/* 모바일 화면에서 적용할 스타일 */
+@media (max-width: 768px) {
+    .head {
+        padding: 0 20px;
+        top: 0 !important; /* 모바일에서 항상 상단 고정 */
+    }
+
+    .head-image {
+        width: 150px;
+    }
+
+    /* NavbarComp가 오른쪽 끝에 고정되도록 설정 */
+    .head .NavbarComp {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+body {
+    padding-top: 70px;
+}

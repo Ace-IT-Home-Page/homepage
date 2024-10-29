@@ -1,0 +1,213 @@
+/* src/components/Header.css */
+
+.banner-container {
+  position: relative;
+  text-align: center;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100vh; /* 화면 높이에 맞춤 */
+  object-fit: cover; /* 이미지 비율 유지 */
+}
+
+.hero-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 22%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: bold;
+  width: 100%;
+  padding: 0 15px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 가독성을 위한 그림자 */
+}
+
+.hero-text-overlay h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-text-overlay .lead {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.hero-text-overlay form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .hero-text-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text-overlay .lead {
+    font-size: 1.2rem;
+  }
+
+
+}
+
+
+/* 카드 컨테이너 설정 */
+.card-container {
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  gap: 15px; /* 카드 간 간격 */
+  margin-top: 40px;
+  /*padding-left: 0px; !* 왼쪽에서 너무 붙지 않도록 패딩 추가 *!*/
+  position: relative; /* 컨테이너 내에서 상대적 위치 */
+  z-index: 0; /* 카드 컨테이너의 z-index를 0으로 설정 */
+}
+
+.card {
+  max-width: 250px; /* 카드 너비 설정 */
+  margin-bottom: 50px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card img {
+  height: 130px;
+  display: block;
+  overflow: hidden;
+}
+
+.card-title {
+  font-weight: 550;
+  font-size: 1.50em;
+}
+
+
+/* Header.css */
+
+/* 이전 및 다음 버튼을 카드 옆으로 배치 */
+.carousel-control-prev, .carousel-control-next {
+  width: 30px; /* 클릭 영역을 좀 더 키움 */
+  height: 30px;
+  top: 50%; /* 세로 중앙 정렬 */
+  transform: translateY(-20%); /* 가로 이동 대신 세로 중앙으로 이동 */
+  position: absolute;
+  z-index: 1; /* 버튼을 최상위 레이어로 */
+}
+
+/* 버튼 클릭 영역을 정확히 아이콘 크기로 맞춤 */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.2); /* 버튼 배경을 살짝 어둡게 */
+  border-radius: 20%; /* 둥글게 만듦 */
+  padding: 6px;
+}
+
+/* 버튼에 호버 시 색상 변경 */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  background-color: #4e61ff; /* 호버 시 파란색으로 변경 */
+}
+
+/* 이전 및 다음 버튼 위치 조정 */
+.carousel-control-prev {
+  left: 32%; /* 카드의 바로 왼쪽에 위치 */
+}
+
+.carousel-control-next {
+  right: 32%; /* 카드의 바로 오른쪽에 위치 */
+}
+
+/* 인디케이터 스타일 */
+.carousel-indicators {
+  bottom: -30px; /* 인디케이터를 카드 아래로 이동 */
+}
+
+.carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5); /* 인디케이터 기본 색상 */
+}
+
+.carousel-indicators .active {
+  background-color: #4e61ff; /* 활성화된 인디케이터의 색상 */
+}
+
+
+/* 스크롤 다운 아이콘 스타일 */
+.scroll-down-arrow {
+  position: absolute;
+  bottom: 20px; /* 화면 하단에서의 거리 */
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.scroll-down-arrow i {
+  font-size: 2rem; /* 아이콘 크기 */  .hero-text-overlay form {
+    width: 100%;
+  }
+  color: #fff; /* 아이콘 색상 */
+  animation: bounce 2s infinite; /* 애니메이션 효과 */
+}
+/* 아이콘에 애니메이션 추가 */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translate(-50%, 0);
+  }
+  40% {
+    transform: translate(-50%, -10px);
+  }
+  60% {
+    transform: translate(-50%, -5px);
+  }
+}
+
+
+
+
+
+/* 반응형 카드 배치 */
+@media (max-width: 768px) {
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%; /* 카드 컨테이너 너비를 80%로 줄임 */
+    margin: 20px auto;
+  }
+
+  .card {
+    flex: 0 0 auto;
+    left: 30px;
+    width: 100px; /* 카드 너비를 더 작게 설정 */
+  }
+
+  .card-text,
+  .card-footer {
+    display: none;
+  }
+  .card:last-child {
+    margin-right: 0;
+  }
+
+  .card img {
+    width: 100%;
+    height: 50px; /* 이미지 높이 감소 */
+  }
+
+  .card-title {
+    font-size: 0.6em; /* Adjust font size if needed */
+  }
+
+  .card-body {
+    padding: 7px; /* Adjust padding if needed */
+  }
+
+  .btn {
+    font-size: 0.7em; /* 버튼 폰트 크기 감소 */
+    padding: 3px 6px; /* 버튼 패딩 감소 */
+  }
+}
