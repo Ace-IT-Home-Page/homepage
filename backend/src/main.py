@@ -18,13 +18,12 @@ app.add_middleware(
 # 정적 파일 제공 경로 설정
 app.mount("/logos", StaticFiles(directory="logos"), name="logos")
 
-app.include_router(information.router)
-app.include_router(history.router)
-app.include_router(business_client.router)
-app.include_router(company_vision_values.router)
-app.include_router(business_area.router)
-app.include_router(inquiry.router)
+app.include_router(information.router, prefix="/api")
+app.include_router(history.router, prefix="/api")
+app.include_router(business_client.router, prefix="/api")
+app.include_router(company_vision_values.router, prefix="/api")
+app.include_router(business_area.router, prefix="/api")
+app.include_router(inquiry.router, prefix="/api")
 
-@app.get("/")
 def checking():
     return {"connect" : "success"}
