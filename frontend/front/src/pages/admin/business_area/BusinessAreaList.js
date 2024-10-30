@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { getBusinessAreas, deleteBusinessArea } from '../../../api/AdminAPI';
-import { useNavigate } from 'react-router-dom';
-import './BusinessArea.css'; // CSS 파일 추가
+import { useNavigate, useLocation } from 'react-router-dom';
+import './BusinessArea.css';
 
 const BusinessAreaList = () => {
     const [businessAreas, setBusinessAreas] = useState([]);
+    const location = useLocation();
+    const [selectedArea, setSelectedArea] = useState(location.state?.selectedArea || null); // 전달된 이름으로 초기화
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,27 +18,79 @@ const BusinessAreaList = () => {
     const handleDelete = (id) => {
         if (window.confirm('정말 삭제하시겠습니까?')) {
             deleteBusinessArea(id)
-                .then(() => setBusinessAreas((prev) => prev.filter((area) => area.area_id !== id)))
+                .then(() => {
+                    setBusinessAreas((prev) => prev.filter((area) => area.area_id !== id));
+                    setSelectedArea(null);
+                })
                 .catch((error) => console.error('사업 영역 삭제 중 오류 발생:', error));
         }
     };
 
+    const renderDetails = (details) => {
+        if (!details) return <div></div>;
+
+        return Object.entries(details).map(([key, value], index) => (
+            <div className="details-row" key={index}>
+                <span className="detail-key">{key}</span>
+                <span className="detail-value">{value}</span>
+            </div>
+        ));
+    };
+
+    const filteredAreas = selectedArea
+        ? businessAreas.filter(area => area.area_name === selectedArea)
+        : businessAreas;
+
+    const uniqueAreaNames = [...new Set(businessAreas.map(area => area.area_name))];
+
     return (
         <div className="business-area-container">
-            <h2>Business Area List</h2>
+            <h2>사업 영역</h2>
             <div className="button-container">
                 <button onClick={() => navigate('/addBusinessArea')}>사업 영역 추가</button>
                 <button onClick={() => navigate('/admin')}>관리자 페이지로 돌아가기</button>
             </div>
+
+            <div className="area-buttons">
+                <button
+                    className={`area-button ${selectedArea === null ? 'active' : ''}`}
+                    onClick={() => setSelectedArea(null)}
+                >
+                    전체 보기
+                </button>
+                {uniqueAreaNames.map(name => (
+                    <button
+                        key={name}
+                        className={`area-button ${selectedArea === name ? 'active' : ''}`}
+                        onClick={() => setSelectedArea(name)}
+                    >
+                        {name}
+                    </button>
+                ))}
+            </div>
+
             <ul className="business-area-list">
-                {businessAreas.map((area) => (
+                {filteredAreas.map((area) => (
                     <li key={area.area_id}>
                         <h5>{area.area_name}</h5>
-                        <p>{area.area_content}</p>
-                        <pre>{JSON.stringify(area.area_type, null, 2)}</pre>
-                        <pre>{JSON.stringify(area.area_details, null, 2)}</pre>
-                        <button onClick={() => navigate(`/editBusinessArea/${area.area_id}`)}>수정</button>
-                        <button onClick={() => handleDelete(area.area_id)}>삭제</button>
+                        {area.area_content && (
+                            <div className="business-description-row">
+                                <h6 className="business-description-title">사업 설명</h6>
+                                <p className="business-description-content">{area.area_content}</p>
+                            </div>
+                        )}
+                        <div className="details-section">
+                            <h6>사업 유형</h6>
+                            {renderDetails(area.area_type)}
+                        </div>
+                        <div className="details-section">
+                            <h6>세부 사항</h6>
+                            {renderDetails(area.area_details)}
+                        </div>
+                        <div className="button-group">
+                            <button onClick={() => navigate(`/editBusinessArea/${area.area_id}`)}>수정</button>
+                            <button onClick={() => handleDelete(area.area_id)}>삭제</button>
+                        </div>
                     </li>
                 ))}
             </ul>

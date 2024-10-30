@@ -1,3 +1,4 @@
+/* Head.css */
 .head {
     position: fixed;
     top: 0;
@@ -47,3 +48,32 @@
 body {
     padding-top: 70px;
 }
+
+/* 로그아웃 버튼 */
+.head-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-logout-container {
+    display: flex;
+    align-items: center;
+}
+
+.logout-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    border-radius: 7px;
+    margin-right: 20px; /* NavbarComp 왼쪽에 위치하도록 설정 */
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+

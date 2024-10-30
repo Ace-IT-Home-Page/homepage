@@ -43,7 +43,7 @@ const AddBusinessClient = () => {
 
     return (
         <form onSubmit={handleSubmit} className="business-client-container">
-            <h2>Add Business Client</h2>
+            <h2>주요 고객사 등록</h2>
             <input
                 type="text"
                 placeholder="클라이언트 이름"

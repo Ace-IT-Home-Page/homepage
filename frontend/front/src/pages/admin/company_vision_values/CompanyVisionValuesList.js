@@ -21,9 +21,21 @@ const CompanyVisionValuesList = () => {
         }
     };
 
+    const renderDetails = (details) => {
+        if (!details) return <div></div>; // details가 undefined나 null일 때 처리
+
+        return Object.entries(details).map(([key, value], index) => (
+            <div className="details-row" key={index}>
+                <span className="detail-key">{key}</span>
+                <span className="detail-value">{value}</span>
+            </div>
+        ));
+    };
+
+
     return (
         <div className="vision-values-container">
-            <h2>Company Vision Value List</h2>
+            <h2>회사 비전 및 가치 목록</h2>
             <div className="button-container">
                 <button onClick={() => navigate('/addCompanyVisionValue')}>추가 등록</button>
                 <button onClick={() => navigate('/admin')}>관리자 페이지로 돌아가기</button>
@@ -32,9 +44,9 @@ const CompanyVisionValuesList = () => {
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Content</th>
-                    <th>Details</th>
+                    <th>항목</th>
+                    <th>내용</th>
+                    <th>상세 내용</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -44,9 +56,7 @@ const CompanyVisionValuesList = () => {
                         <td>{visionValue.vv_id}</td>
                         <td>{visionValue.vv_name}</td>
                         <td>{visionValue.vv_content}</td>
-                        <td>
-                            <pre>{JSON.stringify(visionValue.vv_details, null, 2)}</pre> {/* JSON을 보기 쉽게 출력 */}
-                        </td>
+                        <td>{renderDetails(visionValue.vv_details)}</td>
                         <td>
                             <button onClick={() => navigate(`/editCompanyVisionValue/${visionValue.vv_id}`)}>수정</button>
                             <button onClick={() => handleDelete(visionValue.vv_id)}>삭제</button>

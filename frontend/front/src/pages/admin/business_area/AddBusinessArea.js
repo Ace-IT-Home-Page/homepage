@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createBusinessArea } from '../../../api/AdminAPI';
 import { useNavigate } from 'react-router-dom';
-import './BusinessArea.css'; // CSS 파일 추가
+import './BusinessArea.css';
 
 const AddBusinessArea = () => {
     const [name, setName] = useState('');
@@ -10,17 +10,14 @@ const AddBusinessArea = () => {
     const [details, setDetails] = useState([{ key: '', value: '' }]);
     const navigate = useNavigate();
 
-    // key-value 쌍 추가
     const handleAddDetail = (setter) => {
         setter((prev) => [...prev, { key: '', value: '' }]);
     };
 
-    // key-value 쌍 삭제
     const handleRemoveDetail = (setter, index) => {
         setter((prev) => prev.filter((_, i) => i !== index));
     };
 
-    // key-value 입력값 변경 핸들러
     const handleDetailChange = (setter, index, field, value) => {
         setter((prev) => {
             const newDetails = [...prev];
@@ -53,14 +50,14 @@ const AddBusinessArea = () => {
         })
             .then(() => {
                 alert('사업 영역이 성공적으로 추가되었습니다.');
-                navigate('/businessAreaList');
+                navigate('/businessAreaList', { state: { selectedArea: name } });
             })
             .catch((error) => console.error('사업 영역 추가 중 오류 발생:', error));
     };
 
     return (
         <form onSubmit={handleSubmit} className="business-area-container">
-            <h2>Add Business Area</h2>
+            <h2>사업 영역 추가</h2>
             <input
                 type="text"
                 placeholder="사업 영역 이름"
@@ -74,49 +71,57 @@ const AddBusinessArea = () => {
                 onChange={(e) => setContent(e.target.value)}
             />
 
-            <h3>사업 유형</h3>
-            {areaType.map((item, index) => (
-                <div key={index} className="details-row">
-                    <input
-                        type="text"
-                        placeholder="Key"
-                        value={item.key}
-                        onChange={(e) => handleDetailChange(setAreaType, index, 'key', e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Value"
-                        value={item.value}
-                        onChange={(e) => handleDetailChange(setAreaType, index, 'value', e.target.value)}
-                    />
-                    {areaType.length > 1 && (
-                        <button type="button" onClick={() => handleRemoveDetail(setAreaType, index)}>삭제</button>
-                    )}
+            <div className="details-container">
+                <h5>사업 유형</h5>
+                <div className="details-inputs">
+                    {areaType.map((item, index) => (
+                        <div key={index} className="details-row-horizontal">
+                            <input
+                                type="text"
+                                placeholder="Key"
+                                value={item.key}
+                                onChange={(e) => handleDetailChange(setAreaType, index, 'key', e.target.value)}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Value"
+                                value={item.value}
+                                onChange={(e) => handleDetailChange(setAreaType, index, 'value', e.target.value)}
+                            />
+                            {areaType.length > 1 && (
+                                <button type="button" onClick={() => handleRemoveDetail(setAreaType, index)}>삭제</button>
+                            )}
+                        </div>
+                    ))}
+                    <button type="button" onClick={() => handleAddDetail(setAreaType)} className="add-detail-button">유형 추가</button>
                 </div>
-            ))}
-            <button type="button" onClick={() => handleAddDetail(setAreaType)}>사업 유형 추가</button>
+            </div>
 
-            <h3>사업 세부 사항</h3>
-            {details.map((item, index) => (
-                <div key={index} className="details-row">
-                    <input
-                        type="text"
-                        placeholder="Key"
-                        value={item.key}
-                        onChange={(e) => handleDetailChange(setDetails, index, 'key', e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Value"
-                        value={item.value}
-                        onChange={(e) => handleDetailChange(setDetails, index, 'value', e.target.value)}
-                    />
-                    {details.length > 1 && (
-                        <button type="button" onClick={() => handleRemoveDetail(setDetails, index)}>삭제</button>
-                    )}
+            <div className="details-container">
+                <h5>세부 사항</h5>
+                <div className="details-inputs">
+                    {details.map((item, index) => (
+                        <div key={index} className="details-row-horizontal">
+                            <input
+                                type="text"
+                                placeholder="Key"
+                                value={item.key}
+                                onChange={(e) => handleDetailChange(setDetails, index, 'key', e.target.value)}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Value"
+                                value={item.value}
+                                onChange={(e) => handleDetailChange(setDetails, index, 'value', e.target.value)}
+                            />
+                            {details.length > 1 && (
+                                <button type="button" onClick={() => handleRemoveDetail(setDetails, index)}>삭제</button>
+                            )}
+                        </div>
+                    ))}
+                    <button type="button" onClick={() => handleAddDetail(setDetails)} className="add-detail-button">세부 사항 추가</button>
                 </div>
-            ))}
-            <button type="button" onClick={() => handleAddDetail(setDetails)}>세부 사항 추가</button>
+            </div>
 
             <div className="form-button-container">
                 <button type="submit">등록</button>

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Head.css';
-import NavbarComp from "./layouts/Navigation/NavbarComp"; // 로고 이미지 경로
+import NavbarComp from "./layouts/Navigation/NavbarComp";
 
-const Head = () => {
+const Head = ({ isLoggedIn, setIsLoggedIn }) => {
     const [isVisible, setIsVisible] = useState(true);
-    const [isScrolling, setIsScrolling] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         let prevScrollPos = window.pageYOffset;
@@ -13,9 +14,9 @@ const Head = () => {
             const currentScrollPos = window.pageYOffset;
             const scrollingDown = currentScrollPos > prevScrollPos;
 
-            if (window.innerWidth > 768) { // PC 화면에서는 스크롤에 따라 헤더가 나타나거나 사라지게
-                setIsVisible(!scrollingDown || currentScrollPos < 10); // 상단 근처에서는 항상 보이도록 설정
-            } else { // 모바일 화면에서는 항상 헤더가 고정됨
+            if (window.innerWidth > 768) {
+                setIsVisible(!scrollingDown || currentScrollPos < 10);
+            } else {
                 setIsVisible(true);
             }
 
@@ -27,12 +28,25 @@ const Head = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        setIsLoggedIn(false);
+        navigate("/login");
+    };
+
     return (
         <header className={`head ${isVisible ? 'visible' : 'hidden'}`}>
             <div className="head-container">
                 <img src="/aceit_logo.png" alt="Ace IT Logo" className="head-image" />
+                <div className="nav-logout-container">
+                    {isLoggedIn && (
+                        <button onClick={handleLogout} className="logout-button">
+                            로그아웃
+                        </button>
+                    )}
+                    <NavbarComp isVisible={isVisible} />
+                </div>
             </div>
-            <NavbarComp isVisible={isVisible}/> {/* isVisible을 NavbarComp에 전달 */}
         </header>
     );
 };
