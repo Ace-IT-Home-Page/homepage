@@ -1,7 +1,6 @@
 from datetime import date
 from typing import Optional, Dict
 
-from fastapi import UploadFile
 from pydantic import BaseModel, EmailStr
 
 
@@ -14,13 +13,6 @@ class CreateHistoryRequest(BaseModel):
     history_section_code: int
     history_date: date
     history_content: str
-
-
-# 이미지 업로드는 잠시 보류!!
-# class CreateBusinessClientRequest(BaseModel):
-#     client_name: str
-#     client_logo: Optional[UploadFile] = None
-#     # client_logo_name: str
 
 
 class CreateCompanyVisionValuesRequest(BaseModel):
@@ -36,7 +28,6 @@ class CreateBusinessAreaRequest(BaseModel):
     area_details: Optional[Dict] = None
 
 
-# 받은 데이터 특정 이메일로 발송 필요!
 class CreateInquiryRequest(BaseModel):
     inquiry_writer: str # 문의 작성자
     inquiry_writer_email: Optional[str] = None # 문의 작성자 이메일 주소

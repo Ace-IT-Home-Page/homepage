@@ -40,7 +40,6 @@ class UpdateHistorySchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# 이미지 업로드는 잠시 보류!!
 class BusinessClientSchema(BaseModel):
     client_id: int
     client_name: str
