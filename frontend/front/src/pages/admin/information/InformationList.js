@@ -23,7 +23,7 @@ const InformationList = () => {
 
     return (
         <div className="information-container">
-            <h2>Information List</h2>
+            <h2>회사 소개 목록</h2>
             <div className="button-container">
                 <button onClick={() => navigate('/addInformation')}>정보 추가</button>
                 <button onClick={() => navigate('/admin')}>관리자 페이지로 돌아가기</button>
@@ -32,8 +32,8 @@ const InformationList = () => {
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Content</th>
+                    <th>항목</th>
+                    <th>내용</th>
                     <th>Actions</th>
                 </tr>
                 </thead>

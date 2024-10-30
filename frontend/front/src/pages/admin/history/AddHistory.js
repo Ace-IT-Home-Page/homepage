@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createHistory } from '../../../api/AdminAPI';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './History.css'; // 공통 스타일 파일 추가
+import './History.css';
 
 const AddHistory = () => {
     const navigate = useNavigate();
@@ -25,14 +25,14 @@ const AddHistory = () => {
         createHistory({ history_section_code: parseInt(sectionCode), history_date: date, history_content: content })
             .then(() => {
                 alert('히스토리가 성공적으로 추가되었습니다.');
-                navigate('/historyList');
+                navigate(`/historyList?sectionCode=${sectionCode}`);
             })
             .catch((error) => console.error('히스토리 추가 중 오류 발생:', error));
     };
 
     return (
         <div className="history-container">
-            <h2>Add History</h2>
+            <h2>{sectionText} 추가</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -53,7 +53,9 @@ const AddHistory = () => {
                 />
                 <div className="form-button-container">
                     <button type="submit">추가</button>
-                    <button type="button" onClick={() => navigate('/historyList')}>목록으로 돌아가기</button>
+                    <button type="button" onClick={() => navigate(`/historyList?sectionCode=${sectionCode}`)}>
+                        목록으로 돌아가기
+                    </button>
                 </div>
             </form>
         </div>
