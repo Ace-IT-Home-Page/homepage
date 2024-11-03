@@ -47,17 +47,6 @@
 }
 
 
-.org-history-container{
-  position: relative;
-  width: 50%;
-  left: 25%;
-  height: auto;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-
 .org-history-table-header {
   background-color: #4e61aa; /* 원하는 파란색으로 변경 가능 */
 }
@@ -84,8 +73,14 @@
 
 /* Each item in the timeline */
 .timeline-item {
-  display: flex;
   position: relative;
+  width: 50%;
+  left: 25%;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
   padding: 20px 0;
 }
 

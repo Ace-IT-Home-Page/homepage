@@ -72,7 +72,7 @@ export default class OrganizationHistory extends Component {
 
   renderTable(title, data) {
     return (
-      <div className="org-history-container">
+      <div className="org-history-container" style={{ width: '100%' }}>
         <motion.table
           className="table table-striped table-hover"
           initial="hidden"
@@ -82,7 +82,7 @@ export default class OrganizationHistory extends Component {
           <thead>
           <tr>
             <th scope="col" className="org-history-title_comp_name"
-                style={{direction: "inherit", backgroundColor: "#4e61aa", color: "white"}}>{title}</th>
+                style={{direction: "inherit", backgroundColor: "#4e61aa", color: "white", fontSize: '1.5rem'}}>{title}</th>
           </tr>
           </thead>
           <tbody>
@@ -93,7 +93,7 @@ export default class OrganizationHistory extends Component {
                 variants={rowVariants}
                 className="table-row-gradient"
               >
-                <td>{item.history_content}</td>
+                <td style={{ fontSize: '1.1rem' }}>{item.history_content}</td>
               </motion.tr>
             ))
           ) : (
@@ -132,28 +132,13 @@ export default class OrganizationHistory extends Component {
     const companyHistory = historyList.filter(history => history.history_section_code === 1);
     const developmentHistory = historyList.filter(history => history.history_section_code === 2);
 
+    // 개발본부 이력을 두 개의 테이블로 나누기
+    const half = Math.ceil(developmentHistory.length / 2);
+    const developmentHistoryFirstHalf = developmentHistory.slice(0, half);
+    const developmentHistorySecondHalf = developmentHistory.slice(half);
+
     return (
       <div>
-        {/* 배너 섹션 */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          {/* banner deduplication
-          <div>
-            <motion.div variants={pageAnimate_1}>
-              <img
-                src="/AdobeStock_banner_2-1.png"
-                alt="배너 이미지"
-                className="org-history-banner-image-container img-fluid"
-              />
-              <div className="banner-text-about">조직도 & 연혁</div>
-            </motion.div>
-          </div>
-          */}
-        </motion.div>
-
         {/* 조직도 섹션 */}
         <div className="container my-5">
           <motion.div
@@ -182,21 +167,31 @@ export default class OrganizationHistory extends Component {
             <div className="title_comp_name">ACE IT 연혁</div>
             {companyHistory.map((item, index) => (
               <div className="timeline-item" key={index}>
-                {/* Use history_date to display the year */}
+                {/* history_date를 사용하여 연도 표시 */}
                 <span className="history-year">{item.history_date.substring(0, 4)}</span>
                 <div className={`timeline-line ${index === companyHistory.length - 1 ? 'last' : ''}`}></div>
                 <div className="history-description">
                   <p>
-                  <span className="history-content">
-                    <strong>{item.history_content}</strong>
-                  </span>
+                    <span className="history-content">
+                      <strong>{item.history_content}</strong>
+                    </span>
                   </p>
                 </div>
               </div>
-
             ))}
           </div>
-          {this.renderTable("개발본부 이력", developmentHistory)}
+
+          {/* 개발본부 이력을 두 개의 테이블로 가로로 나란히 렌더링 */}
+          <div className="container">
+            <div className="row">
+              <div className="col-12 col-md-6 d-flex justify-content-center">
+                {this.renderTable("개발본부 이력", developmentHistoryFirstHalf)}
+              </div>
+              <div className="col-12 col-md-6 d-flex justify-content-center">
+                {this.renderTable("개발본부 이력", developmentHistorySecondHalf)}
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     );
