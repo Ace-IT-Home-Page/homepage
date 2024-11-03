@@ -2,7 +2,7 @@
   position: relative;
   bottom: 0;
   width: 100%;
-  background-color: #4A6AEC;
+  background-color: #4e61aa;
   /* 기타 스타일 */
   z-index: 900;
 }
@@ -12,7 +12,7 @@
 }
 
 .footer-top {
-  background-color: #4A6AEC;
+  background-color: #4e61aa;
 }
 
 
@@ -84,7 +84,7 @@
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
-  color: #4A6AEC;
+  color: #4e61aa;
   background-color: #ffffff;
   text-decoration: none;
   border-radius: 30px;
@@ -106,12 +106,12 @@
 
 .btn._fade_link {
   background-color: #fff;
-  color: #4A6AEC;
+  color: #4e61aa;
 
 }
 
 .btn._fade_link:hover {
-  background-color: #4A6AEC;
+  background-color: #4e61aa;
   color: #fff;
 }
 

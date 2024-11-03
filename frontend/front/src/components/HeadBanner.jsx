@@ -44,24 +44,22 @@ const HeadBanner = () => {
   };
 
   return (
-    <div>
       <motion.div
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        <div>
+        <div className="head-banner-container">
           <motion.div variants={pageAnimate_1}>
             <img
               src="/AdobeStock_banner_2-1.png"
               alt="배너 이미지"
-              className="banner-image-container"
+              className="head-banner-image-container"
             />
-            <div className="banner-text-about">{getBannerText()}</div>
+            <div className="head-banner-text-about">{getBannerText()}</div>
           </motion.div>
         </div>
       </motion.div>
-    </div>
   );
 };
 

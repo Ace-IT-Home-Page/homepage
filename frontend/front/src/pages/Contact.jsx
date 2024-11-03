@@ -86,7 +86,6 @@ export default class Contact extends Component {
   render() {
     return (
       <div>
-        <NavbarComp/>
         <motion.div
           initial="hidden"
           animate="visible"
