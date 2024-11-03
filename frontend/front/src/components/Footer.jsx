@@ -51,84 +51,35 @@ const Footer = () => {
   }
 
   return (
-      <footer className="footer page-footer" style={{backgroundColor: '#4A6AEC'}}>
-        <div className="footer-container-1" style={{backgroundColor: '#8b99a3'}}>
-          <div className="button_wrap">
-            {/* 대표번호 버튼 */}
-            <div className="inline-blocked">
-              <a className="btn btn-default" href="tel:1544-0714" style={{borderRadius: '30px'}}>
-              <span style={{marginRight: '10px'}}>
-                <i aria-hidden="true" className="fa fa-phone"></i>
-              </span>
-                대표번호 : 1544-0714
-              </a>
-            </div>
-
-            {/* 온라인 문의 버튼 */}
-            <div className="inline-blocked">
-              <a
-                  className="btn btn-default"
-                  target="_blank"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSeZz8_Z66eyGC-yk3a81DLSPSDbDIn5VJ9qPW8pPJXl0FXLVQ/viewform?usp=sf_link/"
-                  style={{borderRadius: '30px'}}
-              >
-              <span style={{marginRight: '10px'}}>
-                <i aria-hidden="true" className="fa fa-file-text"></i>
-              </span>
-                Google 설문지 문의
-              </a>
-            </div>
-
-            {/* 소셜 미디어 아이콘 */}
-            <div className="social-icons">
-              {/* Instagram */}
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                <i className="fab fa-instagram"></i>
-              </a>
-              {/* Naver Blog */}
-              <a href="https://blog.naver.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                <i className="fab fa-facebook"></i>
-              </a>
-              {/* YouTube */}
-              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                <i className="fab fa-youtube"></i>
-              </a>
-              {/* X(Twitter) */}
-              <a href="https://www.x.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                <i className="fab fa-x-twitter"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-top">
-          <div className="footer-container-1">
-            <div className="row py-4 d-flex align-items-center justify-content-between">
-              {/* Dynamically populate company information */}
-              <h5 className="company-name" style={{color: '#fff'}}>
-                {getContentByName("회사명")}
-              </h5>
-              <p style={{color: '#fff'}}>
-                사업자번호: {getContentByName("사업자번호") || '미등록'} | 대표이사: {getContentByName("대표이사")}<br/>
-                주소: {getContentByName("주소")}<br/>
-                대표전화: {getContentByName("기본 연락처")} | FAX: {getContentByName("FAX 번호")}<br/>
-                이메일: {getContentByName("이메일") || '미등록'} | 홈페이지: <a href={`http://${getContentByName("홈페이지")}`}
-                                                                   style={{color: '#fff'}}>{getContentByName("홈페이지")}</a><br/>
-                운영 시간: {getContentByName("운영 시간")}
-              </p>
-            </div>
-          </div>
-        </div>
-
+    <footer className="footer page-footer" style={{backgroundColor: '#4e61aa'}}>
+      <div className="footer-top">
         <div className="footer-container-1">
-          <p style={{color: '#fff', fontSize: '13px'}}>
-            Copyright © {new Date().getFullYear()} {getContentByName("회사명")} ALL RIGHTS RESERVED
-            <button onClick={handleNavigateToAdminPage}>
-              관리자 페이지
-            </button>
-          </p>
+          <div className="row py-4 d-flex align-items-center justify-content-between">
+            {/* Dynamically populate company information */}
+            <h5 className="company-name" style={{color: '#fff'}}>
+              {getContentByName("회사명")}
+            </h5>
+            <p style={{color: '#fff'}}>
+              사업자번호: {getContentByName("사업자번호") || '미등록'} | 대표이사: {getContentByName("대표이사")}<br/>
+              주소: {getContentByName("주소")}<br/>
+              대표전화: {getContentByName("기본 연락처")} | FAX: {getContentByName("FAX 번호")}<br/>
+              이메일: {getContentByName("이메일") || '미등록'} | 홈페이지: <a href={`http://${getContentByName("홈페이지")}`}
+                                                                 style={{color: '#fff'}}>{getContentByName("홈페이지")}</a><br/>
+              운영 시간: {getContentByName("운영 시간")}
+            </p>
+          </div>
         </div>
-      </footer>
+      </div>
+
+      <div className="footer-container-1">
+        <p style={{color: '#fff', fontSize: '13px'}}>
+          Copyright © {new Date().getFullYear()} {getContentByName("회사명")} ALL RIGHTS RESERVED
+          <button onClick={handleNavigateToAdminPage}>
+            관리자 페이지
+          </button>
+        </p>
+      </div>
+    </footer>
   );
 };
 

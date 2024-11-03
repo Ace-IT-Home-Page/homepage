@@ -82,7 +82,7 @@ export default class OrganizationHistory extends Component {
           <thead>
           <tr>
             <th scope="col" className="org-history-title_comp_name"
-                style={{direction: "inherit", backgroundColor: "#4e61ff", color: "white"}}>{title}</th>
+                style={{direction: "inherit", backgroundColor: "#4e61aa", color: "white"}}>{title}</th>
           </tr>
           </thead>
           <tbody>

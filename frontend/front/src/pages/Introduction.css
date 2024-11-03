@@ -60,8 +60,8 @@ ul li {
   font-family: 'Font Awesome 5 Free';
   content: '\f058';
   margin-right: 10px;
-  color: #4e61ff;
-  font-size: 2rem;
+  color: #4e61aa;
+  font-size: 1.4rem;
   font-weight: 900;
 }
 
@@ -87,6 +87,89 @@ ul li {
 }
 
 .vv_text{
-  font-size: 1.6rem;
-  font-weight: bold;
+  font-size: 1.9rem;
+  font: bold 1.4rem "Roboto", sans-serif;
+  font-family: 'Titillium Web', sans-serif; /* 원하는 폰트 적용 */
+}
+
+/* 배경 설정 */
+.a1-container {
+  background-image: url('../../public/city_view1.jpg'); /* 배경 이미지 설정 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+/* M-Center 제목 스타일 */
+.heading-title h2 {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+/* 설명 텍스트 스타일 */
+.white-text.large-text {
+  font-size: 1.25rem;
+  font-weight: normal;
+  margin: 10px 0;
+  color: white;
+  text-align: center;
+}
+
+/* 숫자 및 아이콘 스타일 */
+.counters {
+  display: inline-flex; /* 중앙에 정렬 */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 40px;
+  color: white;
+}
+
+.count-ico img {
+  width: 50px; /* 아이콘 크기 */
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.count_nums {
+  font-size: 6.25rem; /* 숫자 크기 */
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  color: white;
+  margin: 0;
+}
+
+.counters h3 {
+  font-size: 1rem; /* HOUR 및 DAY 텍스트 크기 */
+  font-weight: 400;
+  margin-top: 5px;
+  color: white;
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+  .a1-container {
+    padding: 50px 0;
+  }
+
+  .heading-title h2 {
+    font-size: 2rem;
+  }
+
+  .count_nums {
+    font-size: 4rem;
+  }
+
+  .white-text.large-text {
+    font-size: 1rem;
+  }
 }

@@ -36,10 +36,8 @@ const Router = () => {
     const location = useLocation(); // Get the current location
     return (
         <div className="app-container">
-            {/* Conditionally render HeadBanner if not on home route */}
+            <NavbarComp isVisible/>
             {location.pathname !== '/' && <HeadBanner />}
-            <Head/>
-            {/* <NavbarComp /> */}
             <div className="main-content">
                 <Routes>
                     {/* 일반 페이지 라우트 */}

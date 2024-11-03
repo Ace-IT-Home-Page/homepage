@@ -1,0 +1,27 @@
+/* HeadBanner.css */
+
+.head-banner-container {
+  position: relative; /* 내부 요소들이 배너 영역을 기준으로 위치하도록 설정 */
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.head-banner-image-container {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* 이미지 비율 유지하며 배너 크기에 맞춤 */
+}
+
+/* 텍스트를 이미지 중앙에 위치시키는 스타일 */
+.head-banner-text-about {
+  position: absolute;
+  top: 65%; /* 수직 중앙 정렬 */
+  left: 50%; /* 수평 중앙 정렬 */
+  transform: translate(-50%, -50%); /* 요소의 중심을 기준으로 위치 조정 */
+  color: #ffffff; /* 텍스트 색상 */
+  font-size: 2rem; /* 텍스트 크기 조정 */
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 가독성을 위한 텍스트 그림자 */
+}

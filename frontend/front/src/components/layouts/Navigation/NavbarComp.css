@@ -13,18 +13,6 @@
   height: 30px;
 }
 
-/* NavbarComp.css */
-
-.navbar {
-  position: fixed !important; /* 헤더의 다른 스타일이 덮어쓰지 않도록 설정 */
-  top: 0 !important;
-  right: 0 !important;
-  z-index: 9999 !important;
-  width: 100% !important;
-  background: rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-}
-
 /* 토글 버튼 스타일 */
 .menu-toggle {
   position: fixed;
@@ -49,9 +37,124 @@
   top: 0; /* 헤더와 함께 나타남 */
 }
 
+
+
+/* head-navi 클래스로 스타일 범위를 제한합니다 */
+.head-navi {
+  position: fixed;
+  background: white;
+  width: 100%;
+  z-index: 9;
+
+}
+.head-navi .navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 로고는 왼쪽, 메뉴는 오른쪽 */
+  max-width: 1200px; /* 필요에 따라 조정 */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* navbar-menu를 가로로 배치하고 가운데 정렬 */
+.head-navi .navbar-menu {
+  list-style: none;
+  display: flex; /* 가로 배치 */
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  margin: 0;
+  padding: 0;
+}
+
+/* 각 메뉴 아이템에 여백 추가 */
+.head-navi .navbar-item {
+  margin: 0 15px; /* 좌우 여백 */
+  position: relative;
+}
+
+/* 링크 스타일 */
+.head-navi .navbar-link {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 15px 0; /* 상하 패딩 */
+}
+
+/* 호버 효과 (배경 투명 유지) */
+.head-navi .navbar-link:hover {
+  text-decoration: underline; /* 호버 시 밑줄 표시 */
+}
+
+/* 드롭다운 메뉴 스타일 */
+.head-navi .dropdown-menu-1 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%); /* 부모 메뉴 아래에 가운데 정렬 */
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 드롭다운 아이템 스타일 */
+.head-navi .dropdown-item .dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #000;
+}
+
+/* 드롭다운 아이템 호버 효과 */
+.head-navi .dropdown-item .dropdown-link:hover {
+  background-color: #f0f0f0;
+}
+
+/* 로고 이미지 스타일 */
+.head-navi .navbar-logo {
+  position: absolute;
+  left: 0;
+}
+
+.head-navi .head-image {
+  height: 30px; /* 필요에 따라 조정 */
+}
+/* 기존 드롭다운 메뉴 스타일 유지 */
+.head-navi .dropdown-menu-1 {
+  position: absolute;
+  top: 100%;
+  /* 기타 스타일 */
+}
+
+/* drop-up 클래스 추가 */
+.head-navi .dropdown-menu-1.drop-up {
+  top: auto;
+  bottom: 100%;
+}
+
 /* 모바일 화면에서 고정된 위치 유지 */
 @media (max-width: 768px) {
-  .navbar-comp {
-    top: 0 !important;
+  .head-navi .navbar-container {
+    position: relative;
+  }
+  .head-navi .navbar-logo {
+    position: relative;
+    left: -120px;
+    top: 10px;
+    height: 50px;
+  }
+
+  /* 메뉴 항목 숨기기 */
+  .head-navi .navbar-menu {
+    display: none;
   }
 }

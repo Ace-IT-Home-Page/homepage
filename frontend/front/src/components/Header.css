@@ -1,4 +1,4 @@
-/* src/components/Header.css */
+./* src/components/Header.css */
 
 .banner-container {
   position: relative;
@@ -11,16 +11,28 @@
   object-fit: cover; /* 이미지 비율 유지 */
 }
 
-.hero-text-overlay {
+.banner-container .main-text {
   position: absolute;
+  font-weight: bold;
+  top: 50%; /* 세로 중앙 정렬 */
+  left: 50%; /* 가로 중앙 정렬 */
+  transform: translate(-50%, -50%); /* 요소의 중심으로 이동 */
+  color: white; /* 텍스트 색상 */
+  font-size: clamp(1.5rem, 5vw, 4rem); /* 최소 1.5rem, 최대 4rem */
+  padding: 0 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.hero-text-overlay {
+  text-align: center;
+  position: relative;
   top: 50%;
-  left: 22%;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
+  color: #0b0909;
   font-weight: bold;
   width: 100%;
-  padding: 0 15px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 가독성을 위한 그림자 */
+  padding: 30px;
+
 }
 
 .hero-text-overlay h1 {
@@ -38,7 +50,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1268px) {
   .hero-text-overlay h1 {
     font-size: 2rem;
   }
@@ -55,7 +67,7 @@
 .card-container {
   display: flex;
   justify-content: center; /* 중앙 정렬 */
-  gap: 15px; /* 카드 간 간격 */
+  gap: 20px; /* 카드 간 간격 */
   margin-top: 40px;
   /*padding-left: 0px; !* 왼쪽에서 너무 붙지 않도록 패딩 추가 *!*/
   position: relative; /* 컨테이너 내에서 상대적 위치 */
@@ -107,7 +119,7 @@
 /* 버튼에 호버 시 색상 변경 */
 .carousel-control-prev:hover .carousel-control-prev-icon,
 .carousel-control-next:hover .carousel-control-next-icon {
-  background-color: #4e61ff; /* 호버 시 파란색으로 변경 */
+  background-color: #4e61aa; /* 호버 시 파란색으로 변경 */
 }
 
 /* 이전 및 다음 버튼 위치 조정 */
@@ -132,7 +144,7 @@
 }
 
 .carousel-indicators .active {
-  background-color: #4e61ff; /* 활성화된 인디케이터의 색상 */
+  background-color: #4e61aa; /* 활성화된 인디케이터의 색상 */
 }
 
 
@@ -181,7 +193,6 @@
 
   .card {
     flex: 0 0 auto;
-    left: 30px;
     width: 100px; /* 카드 너비를 더 작게 설정 */
   }
 
