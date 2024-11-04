@@ -105,3 +105,21 @@
     gap: 10px;
     margin-bottom: 20px;
 }
+
+.section-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.section-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.section-buttons .active {
+    background-color: #007bff; /* 활성화된 버튼의 배경색 */
+    color: white;
+}
+

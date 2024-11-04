@@ -1,51 +1,60 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
 import './AdminPage.css';
 
 const AdminPage = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const handleNavigateToInformationList = () => {
-    navigate('/informationList');
-  };
+    // 페이지 로드 시 토큰 확인
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            // 토큰이 없으면 로그인 페이지로 이동
+            navigate('/login');
+        }
+    }, [navigate]);
 
-  const handleNavigateToHistoryList = () => {
-    navigate('/historyList');
-  };
+    const handleNavigateToInformationList = () => {
+        navigate('/informationList');
+    };
 
-  const handleNavigateToBusinessClient = () => {
-    navigate('/businessClientList');
-  };
+    const handleNavigateToHistoryList = () => {
+        navigate('/historyList');
+    };
 
-  const handleNavigateToCompanyVisionValues = () => {
-    navigate('/companyVisionValuesList');
-  };
+    const handleNavigateToBusinessClient = () => {
+        navigate('/businessClientList');
+    };
 
-  const handleNavigateToBusinessArea = () => {
-    navigate('/businessAreaList');
-  };
+    const handleNavigateToCompanyVisionValues = () => {
+        navigate('/companyVisionValuesList');
+    };
 
-  return (
-    <div className="admin-page-container">
-      <h3>관리자 페이지</h3>
-      <button onClick={handleNavigateToInformationList}>
-        information 목록 보기
-      </button>
-      <button onClick={handleNavigateToHistoryList}>
-        history 목록 보기
-      </button>
-      <button onClick={handleNavigateToBusinessClient}>
-        business client 목록 보기
-      </button>
-      <button onClick={handleNavigateToCompanyVisionValues}>
-        company vision values 목록 보기
-      </button>
-      <button onClick={handleNavigateToBusinessArea}>
-        business area 목록 보기
-      </button>
-    </div>
+    const handleNavigateToBusinessArea = () => {
+        navigate('/businessAreaList');
+    };
 
-  );
+    return (
+        <div className="admin-page-container">
+            <h3>관리자 페이지</h3>
+            <button onClick={handleNavigateToInformationList}>
+                회사 소개
+            </button>
+            <button onClick={handleNavigateToCompanyVisionValues}>
+                회사 비전 및 가치
+            </button>
+            <button onClick={handleNavigateToHistoryList}>
+                회사 연혁 및 개발본부 이력
+            </button>
+            <button onClick={handleNavigateToBusinessClient}>
+                주요 고객사
+            </button>
+            <button onClick={handleNavigateToBusinessArea}>
+                사업 영역(BUSINESS)
+            </button>
+        </div>
+
+    );
 };
 
 export default AdminPage;

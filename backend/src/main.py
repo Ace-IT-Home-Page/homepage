@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from api import information, history, business_client, company_vision_values, business_area, inquiry
+from api import information, history, business_client, company_vision_values, business_area, inquiry, login
 
 app = FastAPI()
 
@@ -24,6 +24,7 @@ app.include_router(business_client.router, prefix="/api")
 app.include_router(company_vision_values.router, prefix="/api")
 app.include_router(business_area.router, prefix="/api")
 app.include_router(inquiry.router, prefix="/api")
+app.include_router(login.router, prefix="/api")
 
 def checking():
     return {"connect" : "success"}

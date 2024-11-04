@@ -30,7 +30,7 @@ const EditInformation = () => {
 
     return (
         <div className="information-container">
-            <h2>Edit Information</h2>
+            <h2>회사 소개 수정</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
