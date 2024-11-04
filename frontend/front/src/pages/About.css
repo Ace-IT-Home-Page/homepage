@@ -1,132 +1,124 @@
-/* About.css */
-
-.about-container {
+.about-full-width-background {
+  background-color: #ffffff;
+  padding: 2rem 0;
 }
 
-.banner-image-container {
-  position: relative; /* 텍스트를 이미지 위에 겹치기 위해 부모 컨테이너에 relative 설정 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 200px; /* 높이를 200px로 설정하여 이미지 크기 고정 */
-  object-fit: cover; /* 이미지 비율을 유지하면서 컨테이너를 채움 */
-  z-index: 999; /* 다른 요소들 위에 있도록 설정 */
-}
-
-.banner-text-about {
-  position: absolute; /* 텍스트를 이미지 위에 겹치도록 설정 */
-  color: #14172e; /* 텍스트 색상을 흰색으로 설정 */
-  font-size: 2.0rem;
-  font-weight: bold;
-  top: 100px; /* 세로 위치 */
-  left: 50%; /* 가로 중간 정렬 */
-  transform: translate(-50%, -50%); /* 정확한 가운데 정렬을 위해 변환 */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0); /* 텍스트 그림자로 가독성 향상 */
-}
-
-/* 모바일용 반응형 설정 */
-@media (max-width: 768px) {
-  .banner-image-container {
-    height: 150px; /* 이미지 높이 조정 */
-  }
-
-  .banner-text-about {
-    font-size: 1.5rem; /* 텍스트 크기 조정 */
-    top: 75px; /* 텍스트 위치 조정 */
-  }
-}
-
-.title_comp_name{
+.about-title-comp {
+  color: black;
   text-align: center;
-  padding-top: 170px;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
-  font-size: 35px;
 }
 
-.about-vision-image {
-  max-width: 100%;
-  height: auto; /* 이미지의 높이를 비율에 맞게 자동 조정 */
-  border-radius: 15px;
+.title-comp {
+  color: black;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.about-orangecolor {
+  color: #ea8440;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* 리스트 항목 스타일 */
+.about-process-wrapp {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.about-process-wrapp li {
+  width: 100%;
+  max-width: 300px;
+  background-color: #c8dadc;
+  padding: 1.5rem;
+  margin: 2rem; /* 기존 1rem에서 2rem으로 증가 */
+  position: relative;
+
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.about-process-wrapp li:hover {
+  transform: translateY(-10px);
+}
+
+/* 아이콘 스타일 */
+.about-pro-ico {
+  display: block;
+  margin: 0 auto 1rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
-  width: 100%;
-  object-fit: cover; /* 이미지 비율을 유지하면서 컨테이너를 채움 */
-  z-index: 999; /* 다른 요소들 위에 있도록 설정 */
-  margin-top: 5px; /* 이미지 아래로 이동 */
+  justify-content: center;
 }
 
-.table-container {
-  padding-top: 100px;
-  width: 110%;
-  max-width: 900px;
-  margin: 200px 20px 100px; /* 위, 좌우, 아래 여백 */
+.about-pro-ico img {
+  width: 70px;
+  height: 70px;
 }
 
-.styled-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-  font-size: 1.0rem;
-  background-color: #f9f9f9;
+.about-font-normal {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
+.about-check {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-check::before {
+  content: '\f00c'; /* Font Awesome 체크 마크 코드 */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #007bff;
+  position: absolute;
+  left: 0;
+  font-size: 1rem;
+}
+
+.about-ceo-text-container {
+  padding: 70px 0 30px 0;
+  width: 100%; /* 이미지와 동일한 너비로 설정 */
+  max-width: 800px; /* 너비 제한 */
+  margin: 0 20px 100px; /* 위, 좌우, 아래 여백 */
+
+  }
 .about-ceo-image {
+  margin: 20px 0 30px 0; /* 패딩 대신 마진 사용 */
+  position: relative;
   max-width: 100%;
   height: auto; /* 이미지의 높이를 비율에 맞게 자동 조정 */
-  border-radius: 15px;
+  border-radius: 25px; /* 이미지의 둥글기 유지 */
   width: 100%;
   object-fit: cover;
   z-index: 999;
-  margin-bottom: 100px; /* 텍스트와 이미지 사이의 간격 조정 */
 }
 
-.about-CEO-text-container {
+.about-ceo-text-container li {
+  padding: 10px 0 20px 0;
   width: 100%; /* 이미지와 동일한 너비로 설정 */
-  max-width: 900px; /* 너비 제한 */
-  margin: 0 20px 100px; /* 위, 좌우, 아래 여백 */
   display: flex;
-  flex-direction: column;
-  justify-content: center; /* 수직 가운데 정렬 */
-  align-items: flex-start; /* 가로 방향 왼쪽 정렬 */
-  text-align: left; /* 텍스트를 왼쪽 정렬 */
-}
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 1.5rem; /* Adds spacing between items */
 
-/* 메뉴 토글 버튼 스타일 */
-.menu-toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-}
-
-.menu-toggle path {
-  fill: transparent;
-  stroke: #fff;
-  stroke-width: 3;
-  stroke-linecap: round;
-  transition: all 0.3s ease;
-}
-
-.menu-open .menu-toggle path.middle {
-  opacity: 0;
-}
-
-/* 셀의 기본 스타일 */
-.styled-table th, .styled-table td {
-  padding: 12px;
-  text-align: center;
-}
-
-/* 헤더 스타일 */
-.styled-table th {
-  background-color: #7e89ea; /* 헤더 셀 배경색 */
-  color: #333;
-}
-
-/* 테이블 행 호버 시 배경색 변경 */
-.styled-table tr:hover {
-  background-color: #d4dee1;
 }

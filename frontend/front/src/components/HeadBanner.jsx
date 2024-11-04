@@ -52,7 +52,7 @@ const HeadBanner = () => {
         <div className="head-banner-container">
           <motion.div variants={pageAnimate_1}>
             <img
-              src="/AdobeStock_banner_2-1.png"
+              src="/AdobeStock_banner_3.png"
               alt="배너 이미지"
               className="head-banner-image-container"
             />

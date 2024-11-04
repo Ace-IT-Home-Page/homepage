@@ -67,15 +67,15 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-left: 50px;
-  padding: 100px;
+  padding: 40px;
+  margin: 0 auto; /* 가운데 정렬 */
+  width: 100%; /* 부모 컨테이너의 전체 너비 사용 */
 }
 
 /* Each item in the timeline */
 .timeline-item {
   position: relative;
-  width: 50%;
-  left: 25%;
+  width: 100%;
   height: auto;
   text-align: center;
   justify-content: center;
@@ -96,7 +96,9 @@
 
 /* Event details (Date and title) */
 .history-description {
-  padding-left: 20px;
+  position: relative;
+  text-align: center; /* 중앙 정렬 */
+  padding-left: 0; /* 왼쪽 여백 제거 */
 }
 
 .history-content {
@@ -104,4 +106,13 @@
   color: #333;
   line-height: 1.5;
   font-weight: normal;
+  display: inline-block; /* 중앙 정렬을 위해 인라인 블록 사용 */
+}
+.org-title_comp_name{
+  color: black;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 500;
+  font-weight: bold;
 }
