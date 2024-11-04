@@ -30,7 +30,6 @@ import FMSMonitoring from "../pages/business/FMSMonitoring";
 import InfrastructureSystem from "../pages/business/InfrastructureSystem";
 import Maintenance from "../pages/business/Maintenance";
 import HeadBanner from "../components/HeadBanner";
-import Head from "../components/Head";
 import Login from "../pages/admin/login/Login";
 
 const Router = () => {
@@ -44,11 +43,16 @@ const Router = () => {
         setIsLoggedIn(!!token);
     }, [location]);
 
+    const handleLogout = () => {
+        localStorage.removeItem("token"); // 토큰 삭제
+        setIsLoggedIn(false); // 로그인 상태 false로 설정
+        navigate("/"); // 로그아웃 후 홈으로 이동
+    };
+
     return (
         <div className="app-container">
-            {/* Conditionally render HeadBanner if not on home route */}
+            <NavbarComp isVisible isLoggedIn={isLoggedIn} onLogout={handleLogout} />
             {location.pathname !== '/' && <HeadBanner />}
-            <Head isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> {/* 로그인 상태 전달 */}
             <div className="main-content">
                 <Routes>
                     {/* 일반 페이지 라우트 */}

@@ -158,3 +158,21 @@
     display: none;
   }
 }
+
+/* 로그아웃 버튼 스타일 */
+.logout-button {
+  position: absolute; /* 절대 위치 지정 */
+  right: 80px; /* 오른쪽 끝에 배치 */
+  background-color: #4e61aa; /* 버튼 색상 */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #4e61aa;
+}
