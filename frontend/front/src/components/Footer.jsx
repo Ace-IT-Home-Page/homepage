@@ -51,35 +51,31 @@ const Footer = () => {
   }
 
   return (
-    <footer className="footer page-footer" style={{backgroundColor: '#4e61aa'}}>
-      <div className="footer-top">
-        <div className="footer-container-1">
-          <div className="row py-4 d-flex align-items-center justify-content-between">
-            {/* Dynamically populate company information */}
-            <h5 className="company-name" style={{color: '#fff'}}>
+      <footer className="footer page-footer">
+        <div className="footer-top">
+          <div className="footer-container">
+            <h5 className="company-name">
               {getContentByName("회사명")}
             </h5>
-            <p style={{color: '#fff'}}>
-              사업자번호: {getContentByName("사업자번호") || '미등록'} | 대표이사: {getContentByName("대표이사")}<br/>
-              주소: {getContentByName("주소")}<br/>
-              대표전화: {getContentByName("기본 연락처")} | FAX: {getContentByName("FAX 번호")}<br/>
-              이메일: {getContentByName("이메일") || '미등록'} | 홈페이지: <a href={`http://${getContentByName("홈페이지")}`}
-                                                                 style={{color: '#fff'}}>{getContentByName("홈페이지")}</a><br/>
+            <p className="company-info">
+              사업자번호: {getContentByName("사업자번호") || '미등록'} | 대표이사: {getContentByName("대표이사")}<br />
+              주소: {getContentByName("주소")}<br />
+              대표전화: {getContentByName("기본 연락처")} | FAX: {getContentByName("FAX 번호")}<br />
+              이메일: {getContentByName("이메일") || '미등록'} | 홈페이지: <a href={`http://${getContentByName("홈페이지")}`} style={{ color: '#fff' }}>{getContentByName("홈페이지")}</a><br />
               운영 시간: {getContentByName("운영 시간")}
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="footer-container-1">
-        <p style={{color: '#fff', fontSize: '13px'}}>
-          Copyright © {new Date().getFullYear()} {getContentByName("회사명")} ALL RIGHTS RESERVED
-          <button onClick={handleNavigateToAdminPage}>
-            관리자 페이지
-          </button>
-        </p>
-      </div>
-    </footer>
+        <div className="footer-bottom">
+          <p className="copyright">
+            Copyright © {new Date().getFullYear()} {getContentByName("회사명")} ALL RIGHTS RESERVED
+            <button onClick={handleNavigateToAdminPage} className="admin-button">
+              관리자 페이지
+            </button>
+          </p>
+        </div>
+      </footer>
   );
 };
 

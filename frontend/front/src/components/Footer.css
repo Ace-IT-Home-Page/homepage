@@ -3,156 +3,74 @@
   bottom: 0;
   width: 100%;
   background-color: #4e61aa;
-  /* 기타 스타일 */
   z-index: 900;
-}
-
-.content {
-  padding-bottom: 200px; /* 푸터 높이만큼 설정 */
+  padding: 20px;
 }
 
 .footer-top {
   background-color: #4e61aa;
-}
-
-
-.footer-hr {
-  width: 60px;
-}
-
-.mr-3 {
-  margin-right: 1rem;
-}
-
-.mr-4 {
-  margin-right: 1.5rem;
-}
-
-.mb-0 {
-  margin-bottom: 0;
-}
-.md-8{
-
-}
-
-/* Add any other classes that were previously styled inline */
-/* Footer.css */
-.footer-container-1 {
-  padding-left: 250px;
-  color: #4a93b8;
-  display: flex;
-  justify-content: space-between; /* 왼쪽과 오른쪽을 나눔 */
-}
-
-.footer-left {
-  flex: 1;
-}
-
-.footer-right {
-  display: flex;
-  flex-direction: column; /* 세로로 아이콘을 나열 */
-  justify-content: center;
-  align-items: center;
-}
-
-.social-icon {
   color: #fff;
-  font-size: 24px;
-  margin: 10px 0;
-  transition: color 0.3s;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding: 10px;
-  background-color: #1b2655;
-}
-
-/* 버튼 감싸는 래퍼 */
-.button_wrap {
-  display: flex;
-  justify-content: flex-start;
-  gap: 15px;
+  text-align: left;
   padding: 10px 0;
 }
 
-.inline-blocked {
-  display: inline-block;
+.footer-container {
+  padding-left: 40px; /* 전체 왼쪽 정렬 */
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #4e61aa;
-  background-color: #ffffff;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: background-color 0.3s ease;
+.company-name {
+  font-size: 1.5rem; /* 회사 이름을 크게 표시 */
+  font-weight: bold;
+  margin-bottom: 10px; /* 아래 내용과 간격을 줌 */
 }
 
-.btn .fa {
-  margin-right: 10px;
+.company-info {
+  font-size: 0.9rem;
+  line-height: 1.5; /* 줄 간격 설정 */
+  margin: 0;
 }
 
-.btn:hover {
-  background-color: #636e6e;
-  color: white;
-}
-
-.btn-default {
-  border: none;
-}
-
-.btn._fade_link {
-  background-color: #fff;
-  color: #4e61aa;
-
-}
-
-.btn._fade_link:hover {
+.footer-bottom {
+  text-align: left;
+  padding: 5px 40px;
   background-color: #4e61aa;
   color: #fff;
+  font-size: 0.8rem;
 }
 
-.social-icons {
-  display: flex;
-  gap: 15px;
-  position: relative;
-  left: 160%;
-}
-
-.social-link {
-  color: white;
-  font-size: 24px;
-  transition: color 0.3s;
-}
-
-.social-link:hover {
-  color: #636e6e;
-}
-
-.footer-container-1 p button {
+.admin-button {
   background: none;
   border: none;
   color: inherit;
   font-size: inherit;
   cursor: pointer;
-  padding: 0;
-  margin: 0;
-  margin-left: 10px; /* 오른쪽으로 약간 이동 */
   text-decoration: underline;
+  margin-left: 10px;
 }
 
-.footer-container-1 p button:hover {
+.admin-button:hover {
   text-decoration: none;
 }
 
+/* 모바일 대응 스타일 */
 @media (max-width: 768px) {
-  .footer-container-1 {
+  .footer-container {
     padding-left: 10px;
   }
-  .social-icons {
-    left: 0; /* 소셜 아이콘 위치 조정 */
+
+  .company-name {
+    font-size: 1.2rem;
+  }
+
+  .company-info {
+    font-size: 0.9rem;
+  }
+
+  .footer {
+    padding: 10px;
+  }
+
+  .footer-bottom {
+    padding-left: 10px;
   }
 }
