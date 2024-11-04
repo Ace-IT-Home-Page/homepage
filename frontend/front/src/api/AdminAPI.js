@@ -3,7 +3,7 @@ import axios from 'axios';
 export const API_SERVER_HOST = 'http://localhost:8000'
 
 const informationAPI = axios.create({
-    baseURL: `${API_SERVER_HOST}/information`,
+    baseURL: `${API_SERVER_HOST}/api/information`,
 });
 
 export const getInformation = () => informationAPI.get('');
@@ -14,7 +14,7 @@ export const deleteInformation = (id) => informationAPI.delete(`/${id}`);
 
 
 const historyAPI = axios.create({
-    baseURL: `${API_SERVER_HOST}/history`,
+    baseURL: `${API_SERVER_HOST}/api/history`,
 });
 
 export const getHistory = () => historyAPI.get('');
@@ -26,7 +26,7 @@ export const deleteHistory = (id) => historyAPI.delete(`/${id}`);
 
 
 const clientAPI = axios.create({
-    baseURL: `${API_SERVER_HOST}/businessClient`,
+    baseURL: `${API_SERVER_HOST}/api/businessClient`,
 });
 
 export const getBusinessClients = () => clientAPI.get('');
@@ -41,7 +41,7 @@ export const deleteBusinessClient = (id) => clientAPI.delete(`/${id}`);
 
 
 const vvAPI = axios.create({
-    baseURL: `${API_SERVER_HOST}/companyVisionValues`,
+    baseURL: `${API_SERVER_HOST}/api/companyVisionValues`,
 });
 
 export const getCompanyVisionValues = () => vvAPI.get('');
@@ -52,7 +52,7 @@ export const deleteCompanyVisionValue = (id) => vvAPI.delete(`/${id}`);
 
 
 const areaAPI = axios.create({
-    baseURL: `${API_SERVER_HOST}/businessArea`,
+    baseURL: `${API_SERVER_HOST}/api/businessArea`,
 });
 
 export const getBusinessAreas = () => areaAPI.get('');
@@ -63,8 +63,14 @@ export const deleteBusinessArea = (id) => areaAPI.delete(`/${id}`);
 
 
 const inquiryAPI = axios.create({
-    baseURL: `${API_SERVER_HOST}/inquiry`
+    baseURL: `${API_SERVER_HOST}/api/inquiry`
 });
 
 export const sendInquiry = (data) => inquiryAPI.post('', data);
 
+
+const loginAPI = axios.create({
+    baseURL: `${API_SERVER_HOST}/api/login`
+});
+
+export const token = (data) => loginAPI.post('/token', data);

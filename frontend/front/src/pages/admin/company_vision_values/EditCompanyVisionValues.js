@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { getCompanyVisionValueById, updateCompanyVisionValue } from '../../../api/AdminAPI';
 import { useParams, useNavigate } from 'react-router-dom';
-import './CompanyVisionValues.css'; // CSS 파일 추가
+import './CompanyVisionValues.css';
 
 const EditCompanyVisionValue = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [content, setContent] = useState('');
-    const [details, setDetails] = useState([{ key: '', value: '' }]); // key-value 쌍 리스트로 초기화
+    const [details, setDetails] = useState([{ key: '', value: '' }]);
     const [loading, setLoading] = useState(true);
 
-    // 비전 값을 가져오기
     useEffect(() => {
         getCompanyVisionValueById(id)
             .then((response) => {
                 const visionValue = response.data;
                 setName(visionValue.vv_name);
-                setContent(visionValue.vv_content || ''); // null이면 빈 문자열로 처리
+                setContent(visionValue.vv_content || '');
 
-                // 기존 vv_details JSON 데이터를 key-value 쌍 배열로 변환
                 const detailsArray = visionValue.vv_details
                     ? Object.entries(visionValue.vv_details).map(([key, value]) => ({ key, value }))
                     : [{ key: '', value: '' }];
@@ -33,30 +31,25 @@ const EditCompanyVisionValue = () => {
             });
     }, [id]);
 
-    // key-value 쌍 추가
     const handleAddDetail = () => {
         setDetails([...details, { key: '', value: '' }]);
     };
 
-    // key-value 쌍 삭제
     const handleRemoveDetail = (index) => {
         const newDetails = [...details];
         newDetails.splice(index, 1);
         setDetails(newDetails);
     };
 
-    // key-value 입력값 변경 핸들러
     const handleDetailChange = (index, field, value) => {
         const newDetails = [...details];
         newDetails[index][field] = value;
         setDetails(newDetails);
     };
 
-    // form 제출 핸들러
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // key-value 배열을 다시 JSON 형식으로 변환
         const formattedDetails = details.reduce((acc, detail) => {
             if (detail.key && detail.value) {
                 acc[detail.key] = detail.value;
@@ -77,13 +70,21 @@ const EditCompanyVisionValue = () => {
     };
 
     if (loading) {
-        return <p>Loading...</p>; // 로딩 중일 때 표시
+        return <p>Loading...</p>;
     }
 
     return (
         <div className="vision-values-container">
-            <h2>Edit Company Vision Value</h2>
+            <h2>회사 비전 및 가치 수정</h2>
             <form onSubmit={handleSubmit}>
+
+                <div className="form-button-container">
+                    <button type="submit">수정</button>
+                    <button type="button" onClick={() => navigate('/companyVisionValuesList')}>
+                        목록으로 돌아가기
+                    </button>
+                </div>
+
                 <input
                     type="text"
                     placeholder="비전 이름"
@@ -97,37 +98,36 @@ const EditCompanyVisionValue = () => {
                     onChange={(e) => setContent(e.target.value)}
                 />
 
-                <h5>비전 세부 사항</h5>
-                {details.map((detail, index) => (
-                    <div key={index} className="details-row">
-                        <input
-                            type="text"
-                            placeholder="Key"
-                            value={detail.key}
-                            onChange={(e) => handleDetailChange(index, 'key', e.target.value)}
-                        />
-                        <input
-                            type="text"
-                            placeholder="Value"
-                            value={detail.value}
-                            onChange={(e) => handleDetailChange(index, 'value', e.target.value)}
-                        />
-                        {details.length > 1 && (
-                            <button type="button" onClick={() => handleRemoveDetail(index)}>
-                                삭제
-                            </button>
-                        )}
+                <div className="details-container">
+                    <h5>비전 세부 사항</h5>
+                    <div className="details-inputs">
+                        {details.map((detail, index) => (
+                            <div key={index} className="details-row-horizontal">
+                                <input
+                                    type="text"
+                                    placeholder="Key"
+                                    value={detail.key}
+                                    onChange={(e) => handleDetailChange(index, 'key', e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Value"
+                                    value={detail.value}
+                                    onChange={(e) => handleDetailChange(index, 'value', e.target.value)}
+                                />
+                                {details.length > 1 && (
+                                    <button type="button" onClick={() => handleRemoveDetail(index)}>
+                                        삭제
+                                    </button>
+                                )}
+                            </div>
+                        ))}
+                        <button type="button" onClick={handleAddDetail} className="add-detail-button">
+                            세부 사항 추가
+                        </button>
                     </div>
-                ))}
-
-                <button type="button" onClick={handleAddDetail}>
-                    세부 사항 추가
-                </button>
-
-                <div className="form-button-container">
-                    <button type="submit">수정</button>
-                    <button type="button" onClick={() => navigate('/companyVisionValuesList')}>목록으로 돌아가기</button>
                 </div>
+
             </form>
         </div>
     );

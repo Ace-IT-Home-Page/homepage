@@ -67,7 +67,7 @@ const EditBusinessClient = () => {
 
     return (
         <form onSubmit={handleSubmit} className="business-client-container">
-            <h2>Edit Business Client</h2>
+            <h2>주요 고객사 수정</h2>
             <input
                 type="text"
                 placeholder="클라이언트 이름"

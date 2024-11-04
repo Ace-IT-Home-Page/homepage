@@ -13,7 +13,7 @@ class InformationRepository:
         self.session = session
 
     def get_information(self) -> List[Information]:
-        return list(self.session.scalars(select(Information)))
+        return list(self.session.scalars(select(Information).order_by(Information.information_id)))
 
     def get_information_by_id(self, id: int) -> Information:
         return self.session.scalar(select(Information).where(Information.information_id == id))
@@ -40,7 +40,8 @@ class HistoryRepository:
         self.session = session
 
     def get_history(self) -> List[History]:
-        return list(self.session.scalars(select(History)))
+        return list(self.session.scalars(select(History)
+                                         .order_by(History.history_date, History.history_id)))
 
     def get_history_by_section_code(self, section_code: int) -> List[History]:
         return list(self.session.scalars(
@@ -73,7 +74,7 @@ class BusinessClientRepository:
         self.session = session
 
     def get_business_client(self) -> List[BusinessClient]:
-        return list(self.session.scalars(select(BusinessClient)))
+        return list(self.session.scalars(select(BusinessClient).order_by(BusinessClient.client_id)))
 
     def get_business_client_by_id(self, id: int) -> BusinessClient:
         return self.session.scalar(select(BusinessClient).where(BusinessClient.client_id == id))
@@ -100,7 +101,7 @@ class CompanyVisionValuesRepository:
         self.session = session
 
     def get_company_vision_values(self) -> List[CompanyVisionValues]:
-        return list(self.session.scalars(select(CompanyVisionValues)))
+        return list(self.session.scalars(select(CompanyVisionValues).order_by(CompanyVisionValues.vv_id)))
 
     def get_company_vision_values_by_id(self, id: int) -> CompanyVisionValues:
         return self.session.scalar(select(CompanyVisionValues).where(CompanyVisionValues.vv_id == id))
@@ -127,7 +128,7 @@ class BusinessAreaRepository:
         self.session = session
 
     def get_business_area(self) -> List[BusinessArea]:
-        return list(self.session.scalars(select(BusinessArea)))
+        return list(self.session.scalars(select(BusinessArea).order_by(BusinessArea.area_id)))
 
     def get_business_area_by_id(self, id: int) -> BusinessArea:
         return self.session.scalar(select(BusinessArea).where(BusinessArea.area_id == id))

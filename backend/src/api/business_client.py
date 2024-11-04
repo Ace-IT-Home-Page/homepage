@@ -3,11 +3,11 @@ from pathlib import Path
 from PIL import Image
 from typing import List, Optional
 
-from fastapi import Depends, APIRouter, HTTPException, Body, Form, UploadFile, File
+from fastapi import Depends, APIRouter, HTTPException, Form, UploadFile, File
 
 from database.orm import BusinessClient
 from database.repository import BusinessClientRepository
-from schema.response import BusinessClientListSchema, BusinessClientSchema, UpdateBusinessClientSchema
+from schema.response import BusinessClientListSchema, BusinessClientSchema
 
 router = APIRouter(prefix="/businessClient")
 

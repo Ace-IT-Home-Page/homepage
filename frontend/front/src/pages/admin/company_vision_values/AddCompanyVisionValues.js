@@ -52,8 +52,14 @@ const AddCompanyVisionValue = () => {
 
     return (
         <div className="vision-values-container">
-            <h2>Add Company Vision Value</h2>
+            <h2>회사 비전 및 가치 추가</h2>
             <form onSubmit={handleSubmit}>
+
+                <div className="form-button-container">
+                    <button type="submit">등록</button>
+                    <button type="button" onClick={() => navigate('/companyVisionValuesList')}>목록으로 돌아가기</button>
+                </div>
+
                 <input
                     type="text"
                     placeholder="비전 이름"
@@ -67,37 +73,36 @@ const AddCompanyVisionValue = () => {
                     onChange={(e) => setContent(e.target.value)}
                 />
 
-                <h5>비전 세부 사항</h5>
-                {details.map((detail, index) => (
-                    <div key={index} className="details-row">
-                        <input
-                            type="text"
-                            placeholder="Key"
-                            value={detail.key}
-                            onChange={(e) => handleDetailChange(index, 'key', e.target.value)}
-                        />
-                        <input
-                            type="text"
-                            placeholder="Value"
-                            value={detail.value}
-                            onChange={(e) => handleDetailChange(index, 'value', e.target.value)}
-                        />
-                        {details.length > 1 && (
-                            <button type="button" onClick={() => handleRemoveDetail(index)}>
-                                삭제
-                            </button>
-                        )}
+                <div className="details-container">
+                    <h5>비전 세부 사항</h5>
+                    <div className="details-inputs">
+                        {details.map((detail, index) => (
+                            <div key={index} className="details-row-horizontal">
+                                <input
+                                    type="text"
+                                    placeholder="Key"
+                                    value={detail.key}
+                                    onChange={(e) => handleDetailChange(index, 'key', e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Value"
+                                    value={detail.value}
+                                    onChange={(e) => handleDetailChange(index, 'value', e.target.value)}
+                                />
+                                {details.length > 1 && (
+                                    <button type="button" onClick={() => handleRemoveDetail(index)}>
+                                        삭제
+                                    </button>
+                                )}
+                            </div>
+                        ))}
+                        <button type="button" onClick={handleAddDetail} className="add-detail-button">
+                            세부 사항 추가
+                        </button>
                     </div>
-                ))}
-
-                <button type="button" onClick={handleAddDetail}>
-                    세부 사항 추가
-                </button>
-
-                <div className="form-button-container">
-                    <button type="submit">등록</button>
-                    <button type="button" onClick={() => navigate('/companyVisionValuesList')}>목록으로 돌아가기</button>
                 </div>
+
             </form>
         </div>
     );
