@@ -42,14 +42,15 @@
 
 .process-arrow {
   font-size: 2rem;
-  color: #;
+  color: #0056b3;
   margin: 10px 0;
 }
 .system-develop-container {
   margin: 20px auto;
 }
 
-.title_comp_name {
+.fms-title_comp_name {
+  text-align: center;
   font-size: 2rem;
   font-weight: bold;
 }

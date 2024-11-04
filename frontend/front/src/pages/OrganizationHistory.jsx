@@ -146,7 +146,7 @@ export default class OrganizationHistory extends Component {
             animate={{x: 0, opacity: 1}}
             transition={{duration: 0.5}}
           >
-            <div className="title_comp_name">
+            <div className="org-title_comp_name">
               회사 조직도
             </div>
             <img
@@ -164,18 +164,18 @@ export default class OrganizationHistory extends Component {
           transition={{duration: 0.3}}
         >
           <div className="org-history-container">
-            <div className="title_comp_name">ACE IT 연혁</div>
+            <div className="org-title_comp_name">ACE IT 연혁</div>
             {companyHistory.map((item, index) => (
               <div className="timeline-item" key={index}>
                 {/* history_date를 사용하여 연도 표시 */}
                 <span className="history-year">{item.history_date.substring(0, 4)}</span>
                 <div className={`timeline-line ${index === companyHistory.length - 1 ? 'last' : ''}`}></div>
                 <div className="history-description">
-                  <p>
+                  <span>
                     <span className="history-content">
                       <strong>{item.history_content}</strong>
                     </span>
-                  </p>
+                  </span>
                 </div>
               </div>
             ))}
@@ -184,10 +184,10 @@ export default class OrganizationHistory extends Component {
           {/* 개발본부 이력을 두 개의 테이블로 가로로 나란히 렌더링 */}
           <div className="container">
             <div className="row">
-              <div className="col-12 col-md-6 d-flex justify-content-center">
+              <div className="col-12 col-md-6">
                 {this.renderTable("개발본부 이력", developmentHistoryFirstHalf)}
               </div>
-              <div className="col-12 col-md-6 d-flex justify-content-center">
+              <div className="col-12 col-md-6">
                 {this.renderTable("개발본부 이력", developmentHistorySecondHalf)}
               </div>
             </div>
