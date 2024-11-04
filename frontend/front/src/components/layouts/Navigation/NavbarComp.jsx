@@ -6,7 +6,7 @@ import './NavbarComp.css';
 import { MenuToggle } from '../../MenuToggle';
 import { Menu } from '../../Menu';
 
-const NavbarComp = ({ isVisible }) => {
+const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [aboutMenuTimer, setAboutMenuTimer] = useState(null);
 
@@ -188,6 +188,14 @@ const NavbarComp = ({ isVisible }) => {
               </Link>
             </li>
           </ul>
+
+          {/* 로그아웃 버튼 */}
+          {isLoggedIn && (
+              <button className="logout-button" onClick={onLogout}>
+                LOGOUT
+              </button>
+          )}
+
         </div>
       </nav>
 
