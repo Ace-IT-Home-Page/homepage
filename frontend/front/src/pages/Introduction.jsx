@@ -51,7 +51,7 @@ const Introduction = () => {
             </div>
             <div className="row align-items-center text-center">
               <Counter
-                src="/counters_Hour.png"
+                src="/counters_hour.png"
                 altText="hour"
                 count={24}
                 label="HOUR"
