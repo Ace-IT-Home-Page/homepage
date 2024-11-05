@@ -22,7 +22,6 @@
   background: white;
   width: 100%;
   z-index: 9;
-
 }
 
 .head-navi .navbar-container {
@@ -108,8 +107,9 @@
 }
 
 .head-navi .head-image {
-  height: 30px; /* 필요에 따라 조정 */
+  height: 35px; /* 필요에 따라 조정 */
 }
+
 /* 기존 드롭다운 메뉴 스타일 유지 */
 .head-navi .dropdown-menu-1 {
   position: absolute;
@@ -138,13 +138,17 @@
   .head-navi .navbar-logo {
     position: relative;
     left: -120px;
-    top: 10px;
-    height: 50px;
+    top: 8px;
+    height: 40px;
   }
 
   /* 메뉴 항목 숨기기 */
   .head-navi .navbar-menu {
     display: none;
+  }
+
+  .head-navi .head-image {
+    height: 30px; /* 필요에 따라 조정 */
   }
 
 }
