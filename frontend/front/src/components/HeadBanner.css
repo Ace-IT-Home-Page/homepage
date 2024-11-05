@@ -25,3 +25,16 @@
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 가독성을 위한 텍스트 그림자 */
 }
+
+@media (max-width: 768px) {
+
+  .head-banner-image-container {
+    height: 350px;
+  }
+
+  .head-banner-text-about {
+    font-size: 1.8rem; /* 텍스트 크기 조정 */
+    width: 100%;
+  }
+
+}

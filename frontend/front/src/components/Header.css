@@ -71,7 +71,7 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1150px) {
   .hero-text-overlay {
     width: 85%;
   }
@@ -79,7 +79,7 @@
 
 @media (max-width: 768px) {
   .hero-text-overlay {
-    width: 90%;
+    width: 100%;
   }
 
   .hero-text-overlay h1 {

@@ -9,38 +9,6 @@
   color: #ffffff;
   font-size: 24px;
 }
-/* MenuToggle 관련 CSS 코드 */
-
-/* 메뉴 토글 버튼 스타일 */
-.menu-toggle {
-  position: fixed; /* 화면 고정 */
-  top: 10px; /* 상단에서 20px 떨어지도록 설정 (원하는 위치로 조정 가능) */
-  right: 10px; /* 오른쪽에서 20px 떨어지도록 설정 */
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  border-radius: 30%; /* 동그랗게 설정 */
-  background-color: #4e61aa; /* 반투명 배경색 */
-  border: 2px solid #fff; /* 흰색 테두리 */
-  display: flex;
-  justify-content: center;
-  padding-top: 4px;
-  padding-right: 3.5px;
-  align-items: center;
-  transition: background-color 0.3s ease;
-}
-
-.menu-toggle path {
-  fill: transparent;
-  stroke: #fff;
-  stroke-width: 3;
-  stroke-linecap: round;
-  transition: all 0.3s ease;
-}
-
-.menu-open .menu-toggle path.middle {
-  opacity: 0;
-}
 
 /* 기존 스타일 유지 */
 
