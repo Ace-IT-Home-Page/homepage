@@ -1,69 +1,34 @@
-
-.org-history-banner-image-container {
-  position: relative; /* 텍스트를 이미지 위에 겹치기 위해 부모 컨테이너에 relative 설정 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 200px; /* 높이를 200px로 설정하여 이미지 크기 고정 */
-  object-fit: cover; /* 이미지 비율을 유지하면서 컨테이너를 채움 */
-  z-index: 999; /* 다른 요소들 위에 있도록 설정 */
-}
-
-.org-history-title_comp_name{
-  text-align: center; /* 조직도를 가운데로 이동 */
-  padding-top: 170px;
-  font-weight: bold;
-  font-size: 35px;
-}
-
-.org-history-image {
-  position: relative;
-  width: 80%; /* 이미지 너비를 50%로 축소 (필요에 따라 조정 가능) */
-  height: auto; /* 이미지의 높이를 비율에 맞게 자동 조정 */
-  border-radius: 15px;
-  object-fit: cover; /* 이미지 비율을 유지하면서 컨테이너를 채움 */
-  z-index: 999; /* 다른 요소들 위에 있도록 설정 */
-  margin: 20px auto 5px auto; /* 상단 마진 20px, 좌우 마진 auto로 가운데 정렬, 하단 마진 5px */
-  display: block; /* 블록 요소로 설정하여 마진이 적용되도록 함 */
-  padding-top: 30px;
-}
-
-.org-history-title_comp_name{
-  text-align: center;
-  padding-top: 170px;
-  font-weight: bold;
-  font-size: 35px;
-  color: #ffffff;
-}
-
-
-.org-history-table-header {
-  background-color: #4e61aa; /* 원하는 파란색으로 변경 가능 */
-}
 /* OrganizationHistory.css */
 
-/*.table-row-gradient {*/
-/*  background: linear-gradient(900deg, rgba(255,255,255,0.1), rgba(255,255,255,1));*/
-/*  transition: background 0.5s ease-in-out;*/
-/*}*/
+/* 개발본부 이력 테이블 헤더 */
+.org-history-table-header {
+  background-color: #4e61aa !important;
+  color: white !important;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
 
-/*.table-row-gradient:hover {*/
-/*  background: linear-gradient(900deg, rgba(255,255,255,0.3), rgba(255,255,255,1));*/
-/*}*/
-
-
-/* Timeline container */
+/* 전체 컨테이너 스타일 */
 .org-history-container {
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 40px;
-  margin: 0 auto; /* 가운데 정렬 */
-  width: 100%; /* 부모 컨테이너의 전체 너비 사용 */
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* Each item in the timeline */
+/* 개발본부 이력 테이블의 행 스타일 */
+.org-history-container .table-row-gradient td {
+  font-size: 0.9rem !important;
+  line-height: 1.4;
+  padding: 10px;
+  color: #333;
+}
+
+/* Timeline item */
 .timeline-item {
   position: relative;
   width: 100%;
@@ -75,21 +40,18 @@
   padding: 20px 0;
 }
 
-/* Year on the left */
 .history-year {
   position: relative;
   left: -60px;
   font-size: 20px;
-  color: #4e61aa; /* Blue color */
+  color: #4e61aa;
   font-weight: bold;
 }
 
-
-/* Event details (Date and title) */
 .history-description {
   position: relative;
-  text-align: center; /* 중앙 정렬 */
-  padding-left: 0; /* 왼쪽 여백 제거 */
+  text-align: center;
+  padding-left: 0;
 }
 
 .history-content {
@@ -97,13 +59,61 @@
   color: #333;
   line-height: 1.5;
   font-weight: normal;
-  display: inline-block; /* 중앙 정렬을 위해 인라인 블록 사용 */
+  display: inline-block;
 }
-.org-title_comp_name{
+
+.org-title_comp_name {
   color: black;
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2.2rem;
-  font-weight: 500;
   font-weight: bold;
+}
+
+.org-history-image {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  /* 컨테이너와 제목 크기 조정 */
+  .org-history-container {
+    padding: 20px;
+  }
+
+  .org-title_comp_name {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* 개발본부 이력 테이블의 헤더와 본문 글자 크기 조정 */
+  .org-history-table-header {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+
+  .org-history-container .table-row-gradient td {
+    font-size: 0.8rem !important;
+    padding: 8px;
+  }
+
+  .history-year {
+    font-size: 1rem;
+    left: 0px;
+    padding-right: 15px;
+  }
+
+  .history-content {
+    font-size: 0.9rem;
+  }
+
+  /* 조직도 이미지 크기 조정 */
+  .org-history-image {
+    width: 90%;
+    margin-top: 20px;
+  }
 }
