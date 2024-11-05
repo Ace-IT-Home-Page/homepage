@@ -41,8 +41,7 @@
   background-color: #c8dadc;
   padding: 1.5rem;
   margin: 2rem; /* 기존 1rem에서 2rem으로 증가 */
-  position: relative;
-
+  /*position: relative;*/
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -122,3 +121,51 @@
   gap: 1.5rem; /* Adds spacing between items */
 
 }
+
+/* 모바일 전용 스타일 */
+@media (max-width: 768px) {
+  .about-full-width-background {
+    padding: 1.5rem 0;
+  }
+
+  .about-title-comp {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-orangecolor {
+    font-size: 1rem;
+  }
+
+  .about-process-wrapp li {
+    padding: 1rem;
+    margin: 1rem;
+    max-width: 100%; /* 최대 너비 조정 */
+  }
+
+  .about-font-normal {
+    font-size: 1.1rem;
+  }
+
+  .about-check {
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+  }
+
+  .about-ceo-image {
+    width: 100%;
+    max-width: 100%;
+    margin: 10px 0 20px 0;
+  }
+
+  .about-ceo-text-container {
+    padding: 20px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .about-ceo-text-container li {
+    font-size: 0.9rem;
+  }
+}
+
