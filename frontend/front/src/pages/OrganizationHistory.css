@@ -1,12 +1,3 @@
-.introduction-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  height: 100vh; /* 페이지 전체 높이 */
-  box-sizing: border-box; /* 패딩을 포함하여 높이 계산 */
-}
-
 
 .org-history-banner-image-container {
   position: relative; /* 텍스트를 이미지 위에 겹치기 위해 부모 컨테이너에 relative 설정 */

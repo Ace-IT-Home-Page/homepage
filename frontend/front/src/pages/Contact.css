@@ -29,7 +29,9 @@
 }
 
 .google-map-container{
-  padding-top: 250px;
+  padding-top: 80px;
+  width: 55%;
+  margin: 0 auto; /* 좌우 중앙 정렬 */
 }
 
 .contact-container article {
@@ -92,3 +94,50 @@
 .email-form button:hover {
   background-color: #0056b3;
 }
+
+
+/* 모바일 대응 스타일 */
+@media (max-width: 768px) {
+  .contact-container {
+    width: 90%; /* 모바일에서 화면 너비의 90%로 축소 */
+    padding: 15px; /* 패딩을 줄여서 모바일 화면에 맞춤 */
+  }
+
+  .contact-container dt {
+    font-size: 1.0rem;
+  }
+
+  .contact-container dd {
+    font-size: 0.9rem;
+  }
+
+  .email-form {
+    width: 90%; /* 화면 너비의 90%로 축소 */
+    margin: 40px auto; /* 상하 마진을 줄여 모바일에 맞게 */
+    padding: 15px; /* 패딩을 줄여서 모바일 화면에 맞춤 */
+  }
+
+  .google-map-container {
+    width: 90%; /* 지도의 너비를 화면 너비의 90%로 축소 */
+    padding-top: 40px; /* 위쪽 패딩을 줄임 */
+  }
+
+  .email-form h3 {
+    font-size: 1.2rem;
+  }
+
+  .email-form label {
+    font-size: 1.0rem;
+  }
+
+  .email-form input,
+  .email-form textarea {
+    padding: 8px; /* 입력 필드의 패딩을 줄여 모바일에서 보기 좋게 */
+    font-size: 0.9rem;
+  }
+
+  .banner-text-contact {
+    font-size: 1.5rem; /* 배너 텍스트 크기를 모바일에 맞게 줄임 */
+  }
+}
+

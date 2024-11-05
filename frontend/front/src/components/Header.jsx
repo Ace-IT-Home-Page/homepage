@@ -92,12 +92,12 @@ const Header = () => {
       <div className="banner-container">
         <img src="/AdobeStock_2.jpeg" alt="배너 이미지" className="banner-image"/>
         <p className="main-text">
-          FMS 시설물 모니터링, 전산실 구축 및 전문 솔루션 제공</p>
+          FMS 시설물 모니터링, <br />전산실 구축 및 전문 솔루션 제공</p>
       </div>
 
       <div className="hero-text-overlay">
         <h1 className="display-4">Welcome to ACE IT</h1>
-        <p className="lead">FMS 시설물 모니터링, 전산실 구축 및 전문 솔루션 제공</p>
+        <p className="lead">FMS 시설물 모니터링, <br />전산실 구축 및 전문 솔루션 제공</p>
 
         {/* Centered Cards without Carousel */}
         <div className="card-container d-flex justify-content-center flex-wrap">
