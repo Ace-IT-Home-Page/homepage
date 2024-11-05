@@ -21,7 +21,8 @@
   position: fixed;
   background: white;
   width: 100%;
-  z-index: 9;
+  z-index: 10;
+  height: 70px; /* 기본 높이 설정 */
 }
 
 .head-navi .navbar-container {
@@ -129,6 +130,7 @@
   .head-navi {
     width: 100vw; /* 화면 너비에 맞춤 */
     overflow-x: hidden; /* 가로 스크롤 방지 */
+    height: 60px; /* 모바일 뷰에서 고정 높이 설정 */
   }
 
   .head-navi .navbar-container {

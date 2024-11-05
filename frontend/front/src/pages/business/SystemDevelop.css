@@ -1,36 +1,91 @@
-.system-develop-container {
-  padding: 20px;
+/* Container and title */
+.systemDevelop-container {
+  padding: 3rem 1rem;
 }
 
-.system-develop-table {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 두 열로 배치 */
-  gap: 20px;
+.systemDevelop-title-comp-name {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.system-section {
-  border: 1px solid #ccc;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+/* Custom card */
+.systemDevelop-custom-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
+/* Header with background color and rounded icon */
+.systemDevelop-custom-header {
+  display: flex;
+  align-items: center;
+  background-color: #4e61aa;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
 
+/* Section ID styling */
+.systemDevelop-section-id {
+  background-color: #4e61aa;
+  color: #ffffff;
+  font-weight: bold;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;
+  font-size: 1.5rem;
+}
+
+/* Custom title in header */
+.systemDevelop-custom-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* List item */
+.systemDevelop-list {
+  padding: 1rem;
+  margin: 0;
+}
+
+.systemDevelop-item {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #343a40;
+  margin-bottom: 1rem;
+}
+
+.systemDevelop-item i {
+  color: #28a745;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
 
 /* 시스템 개발 프로세스 흐름 */
-.process-flow-container {
+.systemDevelop-process-flow-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.process-step {
+.systemDevelop-process-step {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.process-box {
+.systemDevelop-process-box {
   width: 200px;
   padding: 15px;
   text-align: center;
@@ -40,66 +95,36 @@
   font-weight: bold;
 }
 
-.process-arrow {
+.systemDevelop-process-arrow {
   font-size: 2rem;
   color: #4e61aa;
   margin: 10px 0;
 }
-.system-develop-container {
-  margin: 20px auto;
-}
 
-.system-title_comp_name {
-  font-size: 2rem;
-  font-weight: bold;
-}
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .systemDevelop-container {
+    padding: 1.5rem 0.5rem;
+  }
 
-.custom-card {
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  background-color: #f9f9f9;
-}
+  .systemDevelop-title-comp-name {
+    font-size: 1.5rem;
+  }
 
-.custom-header {
-  background-color: #4e61aa;
-  padding: 10px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  border-bottom: 1px solid #ddd;
-}
+  .systemDevelop-custom-title {
+    font-size: 1.2rem;
+  }
 
-.system-develop-section-id {
-  width: 40px;
-  height: 40px;
-  font-size: 1.55rem;
-  font-weight: bold;
-  background-color: #4e61aa;
-  color: white;
-  margin-right: 10px;
-  border-radius: 5px;
-}
+  .systemDevelop-item {
+    font-size: 0.9rem;
+  }
 
-.custom-title {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
+  .systemDevelop-process-box {
+    width: 150px;
+    font-size: 0.9rem;
+  }
 
-}
-
-.custom-body {
-  padding: 10px;
-}
-
-.system-develop-item {
-  font-size: 1rem;
-  padding-left: 10px;
-  color: #0b0909;
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.system-develop-item i {
-  color: #4e61aa;
-  margin-right: 10px;
+  .systemDevelop-process-arrow {
+    font-size: 1.5rem;
+  }
 }
