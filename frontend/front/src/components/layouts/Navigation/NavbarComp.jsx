@@ -113,7 +113,7 @@ const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
                     </li>
                     <li className="dropdown-item">
                       <Link
-                        to="/about/organization-history"
+                        to="/about/OrganizationHistory"
                         className="dropdown-link"
                         onClick={() => setIsAboutOpen(false)}
                       >
@@ -143,7 +143,7 @@ const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
                   >
                     <li className="dropdown-item">
                       <Link
-                        to="/business/system-development"
+                        to="/business/SystemDevelop"
                         className="dropdown-link"
                         onClick={() => setIsBusinessOpen(false)}
                       >
@@ -152,7 +152,7 @@ const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
                     </li>
                     <li className="dropdown-item">
                       <Link
-                        to="/business/fms-monitoring"
+                        to="/business/FMSMonitoring"
                         className="dropdown-link"
                         onClick={() => setIsBusinessOpen(false)}
                       >
@@ -161,7 +161,7 @@ const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
                     </li>
                     <li className="dropdown-item">
                       <Link
-                        to="/business/infrastructure-system"
+                        to="/business/InfrastructureSystem"
                         className="dropdown-link"
                         onClick={() => setIsBusinessOpen(false)}
                       >
@@ -170,7 +170,7 @@ const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
                     </li>
                     <li className="dropdown-item">
                       <Link
-                        to="/business/maintenance"
+                        to="/business/Maintenance"
                         className="dropdown-link"
                         onClick={() => setIsBusinessOpen(false)}
                       >

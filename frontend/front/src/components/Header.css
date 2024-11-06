@@ -21,6 +21,18 @@
   font-size: clamp(1.5rem, 5vw, 4rem); /* 최소 1.5rem, 최대 4rem */
   padding: 0 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center; /* 텍스트를 가로로 중앙 정렬 */
+  width: 100%;
+}
+
+/* 모바일 화면에서 .main-text를 가로 중앙 정렬만 유지 */
+@media (max-width: 768px) {
+  .banner-container .main-text {
+    top: 45%; /* 화면 상단에서 약간 떨어지도록 조정 */
+    left: 50%; /* 가로 중앙 정렬 유지 */
+    transform: translateX(-50%); /* 가로 방향으로만 중앙 정렬 */
+    font-size: 1.3rem; /* 폰트 크기 축소 */
+  }
 }
 
 
@@ -28,11 +40,14 @@
   text-align: center;
   position: relative;
   top: 50%;
+  left: 50%; /* 가로 중앙 정렬 */
   color: #0b0909;
   font-weight: bold;
-  width: 100%;
+  width: 60%;
   padding: 30px;
-
+  margin-top: 30px;
+  margin-bottom: 30px;
+  transform: translateX(-50%); /* 가로 방향으로만 중앙 정렬 */
 }
 
 .hero-text-overlay h1 {
@@ -50,7 +65,23 @@
   margin: 0 auto;
 }
 
-@media (max-width: 1268px) {
+@media (max-width: 1500px) {
+  .hero-text-overlay {
+    width: 75%;
+  }
+}
+
+@media (max-width: 1150px) {
+  .hero-text-overlay {
+    width: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-text-overlay {
+    width: 100%;
+  }
+
   .hero-text-overlay h1 {
     font-size: 2rem;
   }
@@ -58,7 +89,6 @@
   .hero-text-overlay .lead {
     font-size: 1.2rem;
   }
-
 
 }
 
@@ -188,12 +218,12 @@
     flex-direction: row;
     overflow-x: auto;
     width: 100%; /* 카드 컨테이너 너비를 80%로 줄임 */
-    margin: 20px auto;
+    margin: 10px auto;
   }
 
   .card {
     flex: 0 0 auto;
-    width: 100px; /* 카드 너비를 더 작게 설정 */
+    width: 130px; /* 카드 너비를 더 작게 설정 */
   }
 
   .card-text,
@@ -206,11 +236,11 @@
 
   .card img {
     width: 100%;
-    height: 50px; /* 이미지 높이 감소 */
+    height: 80px; /* 이미지 높이 감소 */
   }
 
   .card-title {
-    font-size: 0.6em; /* Adjust font size if needed */
+    font-size: 0.8em; /* Adjust font size if needed */
   }
 
   .card-body {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAnimate, stagger, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Menu.css';
+import  './MenuToggle.css'
 import OrganizationHistory from "../pages/OrganizationHistory";
 
 // Stagger configuration for menu items
