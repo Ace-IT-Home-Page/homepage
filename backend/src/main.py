@@ -16,7 +16,7 @@ app.add_middleware(
 )
 
 # 정적 파일 제공 경로 설정
-app.mount("/logos", StaticFiles(directory="logos"), name="logos")
+app.mount("/api/logos", StaticFiles(directory="logos"), name="logos")
 
 app.include_router(information.router, prefix="/api")
 app.include_router(history.router, prefix="/api")

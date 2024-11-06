@@ -1,6 +1,7 @@
 // src/components/MenuToggle.js
 import React from 'react';
 import { motion } from 'framer-motion';
+import './MenuToggle.css'
 
 export const MenuToggle = ({ isOpen, toggle }) => {
   const variant = isOpen ? 'opened' : 'closed';

@@ -5,13 +5,13 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  height: 100vh; /* 페이지 전체 높이 */
+  height: 80vh; /* 페이지 전체 높이 */
   box-sizing: border-box; /* 패딩을 포함하여 높이 계산 */
 }
 
 .introduction-image-container {
   height: auto;
-  padding: 50px;
+  padding: 5px;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -26,7 +26,7 @@
 
 .text-container {
   flex: 1;
-  padding-left: 200px;
+  padding-left: 30px;
 }
 
 h2 {
@@ -65,31 +65,14 @@ ul li {
   font-weight: 900;
 }
 
-
-@media (max-width: 768px) {
-  .introduction-container {
-    flex-direction: column;
-    align-items: center;
-    height: auto; /* 모바일에서 높이 자동 조절 */
-  }
-
-  .image-container,
-  .text-container {
-    padding: 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  .company-image {
-    margin-bottom: 20px;
-    max-width: 80%; /* 모바일에서 이미지 크기 조정 */
-  }
-}
-
 .vv_text{
   font-size: 1.9rem;
   font: bold 1.4rem "Roboto", sans-serif;
   font-family: 'Titillium Web', sans-serif; /* 원하는 폰트 적용 */
+}
+
+.vision-item p{
+  padding-left: 35px;
 }
 
 /* 배경 설정 */
@@ -157,6 +140,49 @@ ul li {
 
 /* 반응형 조정 */
 @media (max-width: 768px) {
+  .introduction-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto; /* 모바일에서 높이 자동 조절 */
+  }
+
+  .introduction-image-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .image-container,
+  .text-container {
+    padding: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .text-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+  }
+
+  .text-container p {
+    font-size: 1.0rem;
+    text-align: center;
+  }
+
+  .vv_text{
+    font-size: 1.2rem;
+  }
+
+  .vision-item p{
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .company-image {
+    margin-bottom: 20px;
+    max-width: 80%; /* 모바일에서 이미지 크기 조정 */
+  }
+
   .a1-container {
     padding: 50px 0;
   }
@@ -172,4 +198,6 @@ ul li {
   .white-text.large-text {
     font-size: 1rem;
   }
+
 }
+
