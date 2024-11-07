@@ -1,12 +1,12 @@
 // NavbarComp.js
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {motion, AnimatePresence} from 'framer-motion';
+import {Link, useLocation} from 'react-router-dom';
 import './NavbarComp.css';
-import { MenuToggle } from '../../MenuToggle';
-import { Menu } from '../../Menu';
+import {MenuToggle} from '../../MenuToggle';
+import {Menu} from '../../Menu';
 
-const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
+const NavbarComp = ({isVisible, isLoggedIn, onLogout}) => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [aboutMenuTimer, setAboutMenuTimer] = useState(null);
 
@@ -51,18 +51,23 @@ const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
     setBusinessMenuTimer(timer);
   };
 
+  // 메뉴 열림/닫힘을 토글하는 함수
+  const toggleMenu = (isOpen) => {
+    setIsOpen(isOpen);
+  };
+
   const menuVariants = {
     open: {
       opacity: 1,
       height: 'auto',
       display: 'block',
-      transition: { duration: 0.1 },
+      transition: {duration: 0.1},
     },
     closed: {
       opacity: 0,
       height: 0,
-      transitionEnd: { display: 'none' },
-      transition: { duration: 0.3 },
+      transitionEnd: {display: 'none'},
+      transition: {duration: 0.3},
     },
   };
 
@@ -74,7 +79,7 @@ const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
           {/* 로고 영역 */}
           <div className="navbar-logo">
             <Link to="/">
-              <img src="/aceit_logo.png" alt="Ace IT Logo" className="head-image" />
+              <img src="/aceit_logo.png" alt="Ace IT Logo" className="head-image"/>
             </Link>
           </div>
 
@@ -191,9 +196,9 @@ const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
 
           {/* 로그아웃 버튼 */}
           {isLoggedIn && (
-              <button className="logout-button" onClick={onLogout}>
-                LOGOUT
-              </button>
+            <button className="logout-button" onClick={onLogout}>
+              LOGOUT
+            </button>
           )}
 
         </div>
@@ -205,11 +210,12 @@ const NavbarComp = ({ isVisible, isLoggedIn, onLogout }) => {
           isVisible ? 'visible' : 'hidden'
         }`}
       >
-        <MenuToggle toggle={() => setIsOpen(!isOpen)} isOpen={isOpen} />
-        <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
+        <MenuToggle toggle={() => toggleMenu(!isOpen)} isOpen={isOpen}/>
+        <Menu isOpen={isOpen} toggleMenu={toggleMenu}/>
       </div>
     </div>
   );
 };
 
 export default NavbarComp;
+

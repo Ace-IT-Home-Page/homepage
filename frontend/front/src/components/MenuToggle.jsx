@@ -1,14 +1,14 @@
 // src/components/MenuToggle.js
 import React from 'react';
 import { motion } from 'framer-motion';
-import './MenuToggle.css'
+import './MenuToggle.css';
 
 export const MenuToggle = ({ isOpen, toggle }) => {
   const variant = isOpen ? 'opened' : 'closed';
 
   return (
     <button onClick={toggle} className={`menu-toggle ${isOpen ? 'menu-open' : ''}`}>
-      <svg width="23" height="18" viewBox="0 0 23 23">
+      <svg className="toggle-icon" width="100%" height="100%" viewBox="0 0 30 30">
         <motion.path
           className="top"
           fill="transparent"
@@ -17,9 +17,10 @@ export const MenuToggle = ({ isOpen, toggle }) => {
           strokeLinecap="round"
           animate={variant}
           variants={{
-            closed: { d: 'M 2 2.5 L 20 2.5' },
-            opened: { d: 'M 3 16.5 L 17 2.5' },
+            closed: { d: 'M 3 6 L 27 6' },
+            opened: { d: 'M 5 25 L 25 5' },
           }}
+          style={{ transformOrigin: 'center' }}
         />
         <motion.path
           className="middle"
@@ -27,12 +28,13 @@ export const MenuToggle = ({ isOpen, toggle }) => {
           strokeWidth="2"
           stroke="#000"
           strokeLinecap="round"
-          d="M 2 9.423 L 20 9.423"
+          d="M 3 15 L 27 15"
           animate={variant}
           variants={{
             closed: { opacity: 1 },
             opened: { opacity: 0 },
           }}
+          style={{ transformOrigin: 'center' }}
         />
         <motion.path
           className="bottom"
@@ -42,11 +44,13 @@ export const MenuToggle = ({ isOpen, toggle }) => {
           strokeLinecap="round"
           animate={variant}
           variants={{
-            closed: { d: 'M 2 16.346 L 20 16.346' },
-            opened: { d: 'M 3 2.5 L 17 16.346' },
+            closed: { d: 'M 3 24 L 27 24' },
+            opened: { d: 'M 5 5 L 25 25' },
           }}
+          style={{ transformOrigin: 'center' }}
         />
       </svg>
     </button>
   );
 };
+
