@@ -29,17 +29,17 @@ export function Menu({ isOpen, toggleMenu }) {
             {isOpen && (
                 <motion.nav
                     className="menu-container"
-                    drag="x" // Enable horizontal drag
-                    dragElastic={0.2} // Adds a bit of resistance to the drag
-                    onDragEnd={(event, info) => {
-                        if (info.offset.x > 100) { // Close menu if dragged more than 100px to the right
-                            toggleMenu(false); // Update the menu state after animation
-                        }
-                    }}
                     initial={{ x: "100%" }}
                     animate={{ x: 0 }}
-                    exit={{ x: "100%" }} // 메뉴가 닫힐 때 빠르게 사라지도록 설정
+                    exit={{ x: "100%", opacity: 0 }} // 메뉴가 닫힐 때 오른쪽으로 빠르게 사라지도록 설정
                     transition={{ type: "spring", stiffness: 300, damping: 30, duration: 0.3 }}
+                    whileHover={{ scale: 1 }} // 스와이프 이외에 다른 드래그 및 크기 변화 방지
+                    onPanEnd={(event, info) => {
+                        // 오른쪽으로 빠르게 스와이프할 경우 메뉴 닫기
+                        if (info.velocity.x > 100) {
+                            toggleMenu(false);
+                        }
+                    }}
                 >
                     <ul>
                         <li>

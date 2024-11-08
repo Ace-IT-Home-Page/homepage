@@ -65,6 +65,7 @@
   text-align: center;
   padding: 0;
   margin-bottom: 0; /* 텍스트 아래의 빈 공간 제거 */
+  border-radius: 10px;
 }
 
 .dropdown-link {
