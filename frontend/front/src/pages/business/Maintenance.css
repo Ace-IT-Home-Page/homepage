@@ -23,7 +23,6 @@
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.5rem; /* 둥근 모서리 설정 */
-    padding: 0.2rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
