@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST;
-// export const API_SERVER_HOST = 'http://localhost:8000/api'
+// export const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST;
+export const API_SERVER_HOST = 'http://localhost:8000/api'
 
 const informationAPI = axios.create({
     baseURL: `${API_SERVER_HOST}/information`,

@@ -38,8 +38,6 @@ const About = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12 col-sm-12 bottom50">
-            <p className="about-title-comp">ACE IT 회사소개</p>
-            <p className="about-orangecolor titillium">Our company</p>
           </div>
         </div>
         <div className="row">
