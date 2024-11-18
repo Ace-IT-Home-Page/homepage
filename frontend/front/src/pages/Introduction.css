@@ -138,6 +138,33 @@ ul li {
   color: white;
 }
 
+/* 노트북 화면 (768px ~ 1200px)에서 ACE IT VISION 섹션에 padding 추가 */
+@media (min-width: 768px) and (max-width: 1600px) {
+  .introduction-container {
+    padding: 40px 20px;
+    height: auto; /* 높이 자동 조절 */
+  }
+
+  .image-container,
+  .text-container {
+    padding: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .text-container h2 {
+    font-size: 3.5rem; /* 글자 크기 약간 축소 */
+  }
+
+  .text-container p {
+    font-size: 1.1rem; /* 글자 크기 조정 */
+  }
+
+  .introduction-image-container {
+    padding: 10px; /* 이미지 컨테이너 간격 조정 */
+  }
+}
+
 /* 반응형 조정 */
 @media (max-width: 768px) {
   .introduction-container {
