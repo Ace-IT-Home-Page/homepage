@@ -28,11 +28,9 @@ const Header = () => {
         const processedData = visionValues
           .filter(item => item.vv_id !== 1)
           .map((item, index) => {
-            let details = '';
             try {
               if (item.vv_details) {
                 const parsedDetails = JSON.parse(item.vv_details);
-                details = Object.values(parsedDetails).join(', ');
               }
             } catch (e) {
               console.error(`Error parsing details for item ${item.vv_id}:`, e);

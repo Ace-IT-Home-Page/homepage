@@ -51,7 +51,7 @@ const About = () => {
                 <span className="about-pro-ico bottom20">
                   <img src={`/about_icon_${index + 1}.png`} alt="icon" />
                 </span>
-                <h3 className="about-font-normal bottom25">{item.vv_name}</h3>
+                <h2 className="about-font-normal bottom25">{item.vv_name}</h2>
                 <p className="about-check">{item.vv_content}</p>
                 {item.vv_details &&
                   Object.values(item.vv_details).map((detail, idx) => (
@@ -90,7 +90,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="about-ceo-text-container">
-              <h1>CEO 인사말</h1>
+              <div className="about-ceo-title">CEO 인사말</div>
               <p className="about-ceo-subheading">글로벌 기업으로 성장하겠습니다.</p>
               <ul>
                 <li>

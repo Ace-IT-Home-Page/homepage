@@ -4,7 +4,6 @@ import Introduction from "../pages/Introduction";
 import './Home.css';
 
 const Home = () => {
-  const anchors = ['home', '2', '3'];
 
   useEffect(() => {
     // 뷰포트 높이 계산 함수

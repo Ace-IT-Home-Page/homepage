@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { getHistoryById, updateHistory } from '../../../api/AdminAPI';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './History.css';
 
 const EditHistory = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const location = useLocation();
     const [sectionCode, setSectionCode] = useState('');
     const [sectionText, setSectionText] = useState('');
     const [date, setDate] = useState('');

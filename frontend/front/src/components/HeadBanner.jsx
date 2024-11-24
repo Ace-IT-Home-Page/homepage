@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import './HeadBanner.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLocation } from 'react-router-dom';
-import InfrastructureSystem from "../pages/business/InfrastructureSystem";
 
 // 애니메이션 설정 객체
 const containerVariants = {

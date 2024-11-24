@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { stagger, motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Menu.css';
 import './MenuToggle.css';
-import OrganizationHistory from "../pages/OrganizationHistory";
-
-// Stagger configuration for menu items
-const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 
 export function Menu({ isOpen, toggleMenu }) {
   const [isBusinessOpen, setIsBusinessOpen] = useState(false);

@@ -1,81 +1,60 @@
 import './Footer.css';
-import React, { useEffect, useState } from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css'; // FontAwesome 사용
-import { getInformation } from '../api/AdminAPI'; // Import getInformation API
-import {useNavigate} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {getInformation} from '../api/AdminAPI';
 
 const Footer = () => {
-  const [informationData, setInformationData] = useState(null); // 상태 초기값을 null로 설정
+  const [informationData, setInformationData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
-  // Helper function to find content by name
   const getContentByName = (name) => {
     const info = informationData?.find(item => item.information_name === name);
     return info ? info.information_content : '미등록';
   };
 
-  const handleNavigateToAdminPage = () => {
-    navigate('/admin');
-  };
-
-  // Fetch the footer data from getInformation API
   useEffect(() => {
     getInformation()
       .then(response => {
         if (response.data.information && Array.isArray(response.data.information)) {
-          setInformationData(response.data.information); // information 배열을 설정
+          setInformationData(response.data.information);
         } else {
-          console.error('API 응답 형식이 예상과 다릅니다:', response.data);
           setError('Footer 데이터를 처리하는 중 오류가 발생했습니다.');
         }
         setLoading(false);
       })
-      .catch(error => {
+      .catch(() => {
         setError('Footer 데이터를 가져오는 데 실패했습니다.');
         setLoading(false);
       });
   }, []);
 
-  if (loading) {
-    return <div>Loading footer...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  if (!informationData) {
-    return <div>Footer 정보를 불러오지 못했습니다.</div>;
-  }
+  if (loading) return <div>Loading footer...</div>;
+  if (error) return <div>{error}</div>;
+  if (!informationData) return <div>Footer 정보를 불러오지 못했습니다.</div>;
 
   return (
-      <footer className="footer page-footer">
-        <div className="footer-top">
-          <div className="footer-container">
-            <h5 className="company-name">
-              {getContentByName("회사명")}
-            </h5>
-            <p className="company-info">
-              사업자번호: {getContentByName("사업자번호") || '미등록'} | 대표이사: {getContentByName("대표이사")}<br />
-              주소: {getContentByName("주소")}<br />
-              대표전화: {getContentByName("기본 연락처")} | FAX: {getContentByName("FAX 번호")}<br />
-              이메일: {getContentByName("이메일") || '미등록'} | 홈페이지: <a href={`http://${getContentByName("홈페이지")}`} style={{ color: '#fff' }}>{getContentByName("홈페이지")}</a><br />
-              운영 시간: {getContentByName("운영 시간")}
+    <footer className="footer">
+      <div className="footer-container">
+        {/* Left Section */}
+        <div className="footer-container-left">
+          <div className="company-name">{getContentByName("회사명")}</div>
+        </div>
+
+        {/* Right Section */}
+        <div className="footer-container-right">
+          <div className="footer-info">
+            <span>사업자번호: {getContentByName("사업자번호")}</span>
+            <span>대표이사: {getContentByName("대표이사")}</span>
+            <span>주소: {getContentByName("주소")}</span>
+            <span>대표전화: {getContentByName("기본 연락처")}</span>
+            <span>FAX: {getContentByName("FAX 번호")}</span>
+            <p className="footer-copyright">
+              Copyright © {new Date().getFullYear()} {getContentByName("회사명")} ALL RIGHTS RESERVED
             </p>
           </div>
         </div>
-
-        <div className="footer-bottom">
-          <p className="copyright">
-            Copyright © {new Date().getFullYear()} {getContentByName("회사명")} ALL RIGHTS RESERVED
-            <button onClick={handleNavigateToAdminPage} className="admin-button">
-              관리자 페이지
-            </button>
-          </p>
-        </div>
-      </footer>
+      </div>
+    </footer>
   );
 };
 

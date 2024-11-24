@@ -44,7 +44,6 @@
   /*position: relative;*/
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
   transition: transform 0.3s ease;
 }
 
@@ -73,6 +72,7 @@
   font-size: 1.25rem;
   color: #333;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .about-check {
@@ -102,7 +102,7 @@
 
   }
 .about-ceo-image {
-  margin: 20px 0 30px 0; /* 패딩 대신 마진 사용 */
+
   position: relative;
   max-width: 100%;
   height: auto; /* 이미지의 높이를 비율에 맞게 자동 조정 */
@@ -113,13 +113,16 @@
 }
 
 .about-ceo-text-container li {
-  padding: 10px 0 20px 0;
+  padding:  0;
   width: 100%; /* 이미지와 동일한 너비로 설정 */
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
   gap: 1.5rem; /* Adds spacing between items */
 
+}
+.about-ceo-title {
+  font-size: 3rem;
 }
 
 /* 모바일 전용 스타일 */
@@ -140,7 +143,7 @@
   .about-process-wrapp li {
     padding: 1rem;
     margin: 1rem;
-    max-width: 100%; /* 최대 너비 조정 */
+    max-width: 60%; /* 최대 너비 조정 */
   }
 
   .about-font-normal {
@@ -149,10 +152,12 @@
 
   .about-check {
     font-size: 0.9rem;
-    padding-left: 1.2rem;
+
   }
 
   .about-ceo-image {
+    padding: 1rem;
+    margin: 1rem;
     width: 100%;
     max-width: 100%;
     margin: 10px 0 20px 0;

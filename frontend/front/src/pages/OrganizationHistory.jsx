@@ -170,6 +170,7 @@ export default class OrganizationHistory extends Component {
                 </div>
                 <div className="col-12 col-md-6">
                   {this.renderTable("개발본부 이력", developmentHistorySecondHalf)}
+
                 </div>
               </div>
             </div>

@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
-import {GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
-import NavbarComp from '../components/layouts/Navigation/NavbarComp';
-import {motion} from 'framer-motion'; // framer-motion 임포트
+import React, { Component } from 'react';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { motion } from 'framer-motion'; // framer-motion 임포트
+import { getInformation, sendInquiry } from '../api/AdminAPI'; // Footer와 동일하게 API 호출 사용
 import './Contact.css'; // CSS 파일 임포트
-import {sendInquiry} from '../api/AdminAPI'
 
 const containerStyle = {
   width: '100%',
@@ -11,14 +10,8 @@ const containerStyle = {
   margin: '0 auto',
 };
 
-const center = {
-  lat: 37.232579803113,
-  lng: 127.02345429284,
-};
-
-// 애니메이션 설정 객체
 const containerVariants = {
-  hidden: {opacity: 0, y: 20},
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -30,30 +23,42 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  hidden: {opacity: 0, y: 20},
-  visible: {opacity: 1, y: 0},
-};
-
-const pageAnimate_1 = {
-  initial: {y: 0, opacity: 0},
-  animate: {x: 0, opacity: 1},
-  transition: {duration: 0.8}
-};
-
 export default class Contact extends Component {
-
   state = {
+    informationData: null,
+    loading: true,
+    error: null,
     name: '',
     call_num: '',
     email: '',
     message: '',
   };
 
-  // 폼 제출 이벤트 핸들러
+  componentDidMount() {
+    this.fetchInformation();
+  }
+
+  fetchInformation = async () => {
+    try {
+      const response = await getInformation();
+      if (response.data.information && Array.isArray(response.data.information)) {
+        this.setState({ informationData: response.data.information, loading: false });
+      } else {
+        throw new Error('정보를 가져오는 데 실패했습니다.');
+      }
+    } catch (error) {
+      this.setState({ error: '정보를 가져오는 데 실패했습니다.', loading: false });
+    }
+  };
+
+  getContentByName = (name) => {
+    const { informationData } = this.state;
+    const info = informationData?.find((item) => item.information_name === name);
+    return info ? info.information_content : '미등록';
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
-
     const inquiryData = {
       message: {
         inquiry_writer: this.state.name,
@@ -66,7 +71,6 @@ export default class Contact extends Component {
     try {
       await sendInquiry(inquiryData);
       alert('문의가 성공적으로 전송되었습니다.');
-      // 입력 필드 초기화
       this.setState({
         name: '',
         call_num: '',
@@ -80,64 +84,57 @@ export default class Contact extends Component {
   };
 
   handleChange = (e) => {
-    this.setState({[e.target.name]: e.target.value});
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
+    const { loading, error } = this.state;
+
+    if (loading) {
+      return <div>Loading contact information...</div>;
+    }
+
+    if (error) {
+      return <div>{error}</div>;
+    }
+
     return (
       <div>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
+        <motion.div initial="hidden" animate="visible" variants={containerVariants}>
           <div className="google-map-container">
-            <motion.div initial="hidden"
-                        animate="visible"
-                        variants={containerVariants}>
-              <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
-                <GoogleMap
-                  mapContainerStyle={containerStyle}
-                  center={center}
-                  zoom={15}
-                >
-                  <Marker position={center}/>
-                </GoogleMap>
-              </LoadScript>
-            </motion.div>
+            <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+              <GoogleMap mapContainerStyle={containerStyle} center={{
+                lat: parseFloat(this.getContentByName('지도 위도')) || 37.232579803113,
+                lng: parseFloat(this.getContentByName('지도 경도')) || 127.02345429284
+              }} zoom={15}>
+                <Marker position={{
+                  lat: parseFloat(this.getContentByName('지도 위도')) || 37.232579803113,
+                  lng: parseFloat(this.getContentByName('지도 경도')) || 127.02345429284
+                }} />
+              </GoogleMap>
+            </LoadScript>
           </div>
-          <motion.section
-            className="contact-container"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}>
-
+          <motion.section className="contact-container" initial="hidden" animate="visible" variants={containerVariants}>
             <article className="waytocome-item_title">
-              <dt>㈜ 에이스아이티</dt>
+              <dt>{this.getContentByName('회사명')}</dt>
               <dd className="waytocome-address">
-                <span>경기도 수원시 권선구 곡반정로 13번길 16-19&nbsp;</span>
-                <span>디타워 서울포레스트 3~5층</span>
+                <span>{this.getContentByName('주소')}</span>
               </dd>
             </article>
             <article className="waytocome-item_callnum">
               <dt>전화</dt>
-              <dd>070-8258-6020</dd>
+              <dd>{this.getContentByName('기본 연락처')}</dd>
             </article>
             <article className="waytocome-item_fax">
               <dt>팩스</dt>
-              <dd>070-8248-6020</dd>
+              <dd>{this.getContentByName('FAX 번호')}</dd>
             </article>
             <article className="waytocome-item-email">
               <dt>이메일</dt>
-              <dd>aceitcompany@aceit.com</dd>
+              <dd>{this.getContentByName('이메일')}</dd>
             </article>
           </motion.section>
-
-          <motion.section
-            className="email-form"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}>
+          <motion.section className="email-form" initial="hidden" animate="visible" variants={containerVariants}>
             <h3>문의하기</h3>
             <form onSubmit={this.handleSubmit}>
               <label htmlFor="name">이름</label>
