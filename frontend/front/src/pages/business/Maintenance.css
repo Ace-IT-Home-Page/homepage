@@ -83,10 +83,9 @@
 
 /* 투입장비 측정기 (4번 섹션) 전용 스타일 */
 .maintenance-horizontal-list {
-    display: flex; /* 가로 정렬 */
-    flex-wrap: wrap; /* 공간 초과 시 줄바꿈 */
+    display: grid; /* 가로 정렬 */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 한 줄에 2개씩 배치 */
     gap: 1rem; /* 리스트 항목 간 간격 */
-    padding-left: 0; /* 기본 리스트 스타일 제거 */
     list-style: none; /* 기본 리스트 스타일 제거 */
     justify-content: center; /* 가운데 정렬 */
 }
@@ -96,13 +95,22 @@
     align-items: center; /* 수직 가운데 정렬 */
     gap: 0.5rem; /* 내부 요소 간 간격 */
     text-align: left; /* 텍스트 정렬 */
-    flex: 1 1 calc(25% - 1rem); /* 유연한 크기와 간격 */
+    flex: 0 0 calc(50% - 1rem); /* 정확히 2개씩 배치되도록 설정 */
     max-width: 250px; /* 최대 너비 제한 */
     box-sizing: border-box; /* 패딩 포함 크기 계산 */
 }
 
+.maintenance-horizontal-item img {
+    width: 80px; /* 작은 화면에서 이미지 크기 */
+    height: auto; /* 비율 유지 */
+    max-height: 80px; /* 최대 높이 제한 */
+    border-radius: 0.25rem;
+    object-fit: contain; /* 이미지 잘리지 않도록 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+}
+
 .maintenance-horizontal-item i {
-    font-size: 1.5rem; /* 체크 아이콘 크기 */
+    font-size: 1.1rem; /* 체크 아이콘 크기 */
     color: #28a745; /* 체크 아이콘 색상 */
 }
 
@@ -113,15 +121,6 @@
 
 .maintenance-horizontal-item .maintenance-image-container {
     flex-shrink: 0; /* 이미지 크기 유지 */
-}
-
-.maintenance-horizontal-item img {
-    width: 80px; /* 작은 화면에서 이미지 크기 */
-    height: auto; /* 비율 유지 */
-    max-height: 80px; /* 최대 높이 제한 */
-    border-radius: 0.25rem;
-    object-fit: contain; /* 이미지 잘리지 않도록 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
 }
 
 /* 반응형 스타일 */

@@ -43,9 +43,38 @@
 }
 
 /* 반응형 디자인 */
+@media (max-width: 1500px) {
+  .footer-container {
+    gap: 80px; /* 줄바꿈 방지를 위한 간격 조정 */
+    flex-wrap: nowrap; /* 줄바꿈을 허용하지 않음 */
+  }
+
+  .footer-container-left {
+    align-items: center;
+    display: flex; /* Flexbox 강제 적용 */
+    flex-shrink: 0; /* 크기 축소 방지 */
+  }
+
+  .footer-container-right {
+    text-align: center;
+  }
+
+  .footer-info {
+    text-align: center;
+  }
+
+  .footer-copyright {
+    text-align: center;
+  }
+
+  .company-name {
+    margin-left: 0;
+  }
+}
+
+/* 반응형 디자인 */
 @media (max-width: 768px) {
   .footer-container {
-
     flex-direction: column;
     align-items: center;
     gap: 10px; /* 모바일에서는 gap 값을 덮어쓰기 */
