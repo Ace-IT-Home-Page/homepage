@@ -16,17 +16,5 @@ COPY front /app
 # 애플리케이션 빌드
 RUN npm run build
 
-# Nginx 베이스 이미지 사용
-FROM nginx:stable-alpine
-
-# Nginx 설정 파일 복사 (nginx.conf가 있다면)
-COPY nginx.conf /home/ace-it/nginx/conf.d/default.conf
-
-# 빌드된 결과물을 Nginx의 기본 경로로 복사
-COPY --from=build /app/build /usr/share/nginx/html
-
-# 포트 노출
-EXPOSE 80
-
-# Nginx
+# 빌드 결과물은 /app/build 또는 /app/dist에 생성됩니다
 
