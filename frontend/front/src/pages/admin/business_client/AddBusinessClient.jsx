@@ -22,7 +22,7 @@ const AddBusinessClient = () => {
         createBusinessClient(formData)
             .then(() => {
                 alert('클라이언트가 성공적으로 추가되었습니다.');
-                navigate('/businessClientList');
+                navigate('/listBusinessClient');
             })
             .catch((error) => console.error('클라이언트 추가 중 오류 발생:', error));
     };
@@ -43,7 +43,6 @@ const AddBusinessClient = () => {
 
     return (
         <form onSubmit={handleSubmit} className="business-client-container">
-            <h2>주요 고객사 등록</h2>
             <input
                 type="text"
                 placeholder="클라이언트 이름"
@@ -66,7 +65,7 @@ const AddBusinessClient = () => {
             )}
             <div className="form-button-container">
                 <button type="submit">등록</button>
-                <button type="button" onClick={() => navigate('/businessClientList')}>목록으로 돌아가기</button>
+                <button type="button" onClick={() => navigate('/listBusinessClient')}>목록으로 돌아가기</button>
             </div>
         </form>
     );

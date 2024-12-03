@@ -56,7 +56,7 @@ const EditBusinessClient = () => {
         updateBusinessClient(id, formData)
             .then(() => {
                 alert('클라이언트가 성공적으로 수정되었습니다.');
-                navigate('/businessClientList');
+                navigate('/listBusinessClient');
             })
             .catch((error) => console.error('클라이언트 수정 중 오류 발생:', error));
     };
@@ -67,7 +67,6 @@ const EditBusinessClient = () => {
 
     return (
         <form onSubmit={handleSubmit} className="business-client-container">
-            <h2>주요 고객사 수정</h2>
             <input
                 type="text"
                 placeholder="클라이언트 이름"
@@ -113,7 +112,7 @@ const EditBusinessClient = () => {
 
             <div className="form-button-container">
                 <button type="submit">수정</button>
-                <button type="button" onClick={() => navigate('/businessClientList')}>목록으로 돌아가기</button>
+                <button type="button" onClick={() => navigate('/listBusinessClient')}>목록으로 돌아가기</button>
             </div>
         </form>
     );

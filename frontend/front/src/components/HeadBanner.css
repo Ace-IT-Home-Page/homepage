@@ -26,6 +26,31 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 가독성을 위한 텍스트 그림자 */
 }
 
+/* business 하위 페이지 링크 스타일 */
+.business-subpages {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.business-link {
+  color: #808080;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.business-link:hover {
+  color: #ffffff;
+}
+
+.business-link.active {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
 
   .head-banner-image-container {
@@ -37,4 +62,8 @@
     width: 100%;
   }
 
+  .business-subpages {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

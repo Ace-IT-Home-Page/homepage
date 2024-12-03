@@ -50,14 +50,13 @@ const AddBusinessArea = () => {
         })
             .then(() => {
                 alert('사업 영역이 성공적으로 추가되었습니다.');
-                navigate('/businessAreaList', { state: { selectedArea: name } });
+                navigate('/listBusinessArea', { state: { selectedArea: name } });
             })
             .catch((error) => console.error('사업 영역 추가 중 오류 발생:', error));
     };
 
     return (
         <form onSubmit={handleSubmit} className="business-area-container">
-            <h2>사업 영역 추가</h2>
             <input
                 type="text"
                 placeholder="사업 영역 이름"
@@ -125,7 +124,7 @@ const AddBusinessArea = () => {
 
             <div className="form-button-container">
                 <button type="submit">등록</button>
-                <button type="button" onClick={() => navigate('/businessAreaList')}>목록으로 돌아가기</button>
+                <button type="button" onClick={() => navigate('/listBusinessArea')}>목록으로 돌아가기</button>
             </div>
         </form>
     );

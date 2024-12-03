@@ -40,7 +40,6 @@ const EditHistory = () => {
 
     return (
         <div className="history-container">
-            <h2>{sectionText} 수정</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

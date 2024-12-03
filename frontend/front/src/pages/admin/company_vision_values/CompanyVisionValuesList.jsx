@@ -35,7 +35,6 @@ const CompanyVisionValuesList = () => {
 
     return (
         <div className="vision-values-container">
-            <h2>회사 비전 및 가치 목록</h2>
             <div className="button-container">
                 <button onClick={() => navigate('/addCompanyVisionValue')}>추가 등록</button>
                 <button onClick={() => navigate('/admin')}>관리자 페이지로 돌아가기</button>

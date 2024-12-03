@@ -75,7 +75,6 @@ const EditCompanyVisionValue = () => {
 
     return (
         <div className="vision-values-container">
-            <h2>회사 비전 및 가치 수정</h2>
             <form onSubmit={handleSubmit}>
 
                 <div className="form-button-container">

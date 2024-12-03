@@ -32,7 +32,6 @@ const AddHistory = () => {
 
     return (
         <div className="history-container">
-            <h2>{sectionText} 추가</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

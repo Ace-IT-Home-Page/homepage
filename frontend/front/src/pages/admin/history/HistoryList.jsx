@@ -29,7 +29,6 @@ const HistoryList = () => {
 
     return (
         <div className="history-container">
-            <h2>회사 연혁 및 개발본부 이력 목록</h2>
             <button onClick={() => navigate('/admin')}>관리자 페이지로 돌아가기</button>
 
             <div className="section-buttons">

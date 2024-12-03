@@ -23,7 +23,7 @@ const AdminPage = () => {
     };
 
     const handleNavigateToBusinessClient = () => {
-        navigate('/businessClientList');
+        navigate('/listBusinessClient');
     };
 
     const handleNavigateToCompanyVisionValues = () => {
@@ -31,14 +31,13 @@ const AdminPage = () => {
     };
 
     const handleNavigateToBusinessArea = () => {
-        navigate('/businessAreaList');
+        navigate('/listBusinessArea');
     };
 
     return (
         <div className="admin-page-container">
-            <h3>관리자 페이지</h3>
             <button onClick={handleNavigateToInformationList}>
-                회사 소개
+                회사 소개 및 정보
             </button>
             <button onClick={handleNavigateToCompanyVisionValues}>
                 회사 비전 및 가치

@@ -76,7 +76,7 @@ const EditBusinessArea = () => {
         })
             .then(() => {
                 alert('사업 영역이 성공적으로 수정되었습니다.');
-                navigate('/businessAreaList', { state: { selectedArea: name } });
+                navigate('/listBusinessArea', { state: { selectedArea: name } });
             })
             .catch((error) => console.error('사업 영역 수정 중 오류 발생:', error));
     };
@@ -87,7 +87,6 @@ const EditBusinessArea = () => {
 
     return (
         <form onSubmit={handleSubmit} className="business-area-container">
-            <h2>사업 영역 수정</h2>
             <input
                 type="text"
                 placeholder="사업 영역 이름"
@@ -155,7 +154,7 @@ const EditBusinessArea = () => {
 
             <div className="form-button-container">
                 <button type="submit">수정</button>
-                <button type="button" onClick={() => navigate('/businessAreaList')}>목록으로 돌아가기</button>
+                <button type="button" onClick={() => navigate('/listBusinessArea')}>목록으로 돌아가기</button>
             </div>
         </form>
     );

@@ -20,7 +20,6 @@ const AddInformation = () => {
 
     return (
         <div className="information-container">
-            <h2>회사 소개 추가</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

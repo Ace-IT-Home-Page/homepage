@@ -45,7 +45,6 @@ const BusinessAreaList = () => {
 
     return (
         <div className="business-area-container">
-            <h2>사업 영역</h2>
             <div className="button-container">
                 <button onClick={() => navigate('/addBusinessArea')}>사업 영역 추가</button>
                 <button onClick={() => navigate('/admin')}>관리자 페이지로 돌아가기</button>

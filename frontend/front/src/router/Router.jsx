@@ -84,7 +84,7 @@ const Router = () => {
                     <Route path="/editHistory/:id" element={isLoggedIn ? <EditHistory /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
 
                     {/* business client router */}
-                    <Route path="/businessClientList" element={isLoggedIn ? <BusinessClientList /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
+                    <Route path="/listBusinessClient" element={isLoggedIn ? <BusinessClientList /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="/addBusinessClient" element={isLoggedIn ? <AddBusinessClient /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="/editBusinessClient/:id" element={isLoggedIn ? <EditBusinessClient /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
 
@@ -94,7 +94,7 @@ const Router = () => {
                     <Route path="/editCompanyVisionValue/:id" element={isLoggedIn ? <EditCompanyVisionValue /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
 
                     {/* business area router */}
-                    <Route path="/businessAreaList" element={isLoggedIn ? <BusinessAreaList /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
+                    <Route path="/listBusinessArea" element={isLoggedIn ? <BusinessAreaList /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="/addBusinessArea" element={isLoggedIn ? <AddBusinessArea /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="/editBusinessArea/:id" element={isLoggedIn ? <EditBusinessArea /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
                 </Routes>

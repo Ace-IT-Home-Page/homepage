@@ -23,7 +23,6 @@ const BusinessClientList = () => {
 
     return (
         <div className="business-client-container">
-            <h2>주요 고객사 목록</h2>
             <div className="button-container">
                 <button onClick={() => navigate('/addBusinessClient')}>클라이언트 추가</button>
                 <button onClick={() => navigate('/admin')}>관리자 페이지로 돌아가기</button>
