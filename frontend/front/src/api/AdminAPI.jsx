@@ -1,11 +1,21 @@
 import axios from 'axios';
 
-export const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST;
-// export const API_SERVER_HOST = 'http://localhost:8000/api'
+export const API_SERVER_HOST = (() => {
+    if (process.env.REACT_APP_API_SERVER_HOST) {
+        return process.env.REACT_APP_API_SERVER_HOST;
+    }
+    if (window.location.hostname === 'localhost') {
+        return 'http://192.168.219.250';
+    }
+    return `${window.location.origin}/api`;
+})();
 
 const informationAPI = axios.create({
     baseURL: `${API_SERVER_HOST}/information`,
 });
+
+// export const API_SERVER_HOST = 'http://localhost:8000/api'
+
 
 export const getInformation = () => informationAPI.get('');
 export const getInformationById = (id) => informationAPI.get(`/${id}`);
