@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './layouts/Navigation/NavbarComp.css';
 import './Header.css'; // Header 전용 스타일 시트 추가
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Font Awesome 아이콘 임포트
-import { getCompanyVisionValues } from '../api/AdminAPI'; // Import getCompanyVisionValues API
+import { getBusinessAreas } from '../api/AdminAPI'; // Import getCompanyVisionValues API
 
 const Header = () => {
   const [cardData, setCardData] = useState([]);
@@ -13,8 +13,9 @@ const Header = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getCompanyVisionValues();
-        const visionValues = response.data.company_vision_values;
+        const response = await getBusinessAreas();
+        const visionValues = response.data.business_areas;
+        console.log(visionValues);
 
         const imageList = [
           '/AdobeStock_2.jpeg',
@@ -26,19 +27,19 @@ const Header = () => {
         ];
 
         const processedData = visionValues
-          .filter(item => item.vv_id !== 1)
+          .filter(item => item.area_id)
           .map((item, index) => {
             try {
-              if (item.vv_details) {
-                const parsedDetails = JSON.parse(item.vv_details);
+              if (item.area_details) {
+                const parsedDetails = JSON.parse(item.area_details);
               }
             } catch (e) {
-              console.error(`Error parsing details for item ${item.vv_id}:`, e);
+              console.error(`Error parsing details for item ${item.area_id}:`, e);
             }
 
             return {
-              id: item.vv_id,
-              title: item.vv_name,
+              id: item.area_id,
+              title: item.area_name,
               image: imageList[index % imageList.length],
               lastUpdated: 'Recently'
             };
@@ -104,7 +105,7 @@ const Header = () => {
               <img src={card.image} className="card-img-top small-card-img" alt={`Card Image ${card.id}`}/>
               <div className="card-body">
                 <h5 className="card-title">{card.title}</h5>
-                <Link to="#" className="btn btn-primary btn-sm" style={{
+                <Link to="#" className="btn btn-sm" style={{
                   position: "relative",
                   backgroundColor: '#4e61aa',
                   color: '#ffffff',

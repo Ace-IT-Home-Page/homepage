@@ -30,8 +30,11 @@
 .business-subpages {
   margin-top: 10px;
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  /* 원래 좌우 배치를 위해 space-between, 또는 flex-start 등으로 조정하세요 */
+  justify-content: space-between;
+  align-items: center;
+  /* 가운데 정렬을 위한 절대 위치 기준점 */
+  gap: 20px; /* 링크 간 간격 조절 */
 }
 
 .business-link {
@@ -41,14 +44,20 @@
   transition: color 0.3s;
 }
 
+/* Hover 시 색상만 변경 */
 .business-link:hover {
+  text-decoration: none;
   color: #ffffff;
 }
 
+/* 액티브(또는 호버 시) 가운데 정렬 & 폰트 커짐 */
 .business-link.active {
   color: #ffffff;
   font-weight: bold;
-  text-decoration: underline;
+  font-size: 2.0rem;
+  text-align: center;
+  /* 가운데 위치를 위한 절대배치 */
+  position: relative;
 }
 
 @media (max-width: 768px) {
@@ -58,12 +67,25 @@
   }
 
   .head-banner-text-about {
-    font-size: 1.8rem; /* 텍스트 크기 조정 */
+    font-size: 1rem; /* 텍스트 크기 조정 */
     width: 100%;
+  }
+
+  /* 모바일에서 비활성(.active 아님) 링크는 안 보이게 */
+  .business-link:not(.active) {
+    display: none;
+  }
+
+  /* 모바일에서 active 링크는 크기 조정 */
+  .business-link.active {
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-weight: bold;
   }
 
   .business-subpages {
     flex-direction: column;
-    gap: 10px;
+    font-size: 1.8rem;
+    gap: 2px;
   }
 }

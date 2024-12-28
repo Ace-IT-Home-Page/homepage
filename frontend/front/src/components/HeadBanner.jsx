@@ -25,13 +25,6 @@ const pageAnimate_1 = {
 
 // 경로와 배너 텍스트 매핑 객체
 const bannerTextMapping = {
-  '/about': '회사소개',
-  '/about/OrganizationHistory': '조직도 & 연혁',
-  '/business': '사업영역',
-  '/business/SystemDevelop': '시스템 개발',
-  '/business/FMSMonitoring': 'FMS 모니터링',
-  '/business/InfrastructureSystem': '인프라 시스템',
-  '/business/Maintenance': '유지보수',
   '/contact': '문의 & 오시는 길',
   '/login': '관리자 페이지',
   '/admin': '관리자 페이지',
@@ -85,7 +78,7 @@ const HeadBanner = () => {
   const getBannerText = () => {
     const basePath = extractBasePath(location.pathname);
     console.log('현재 경로:', location.pathname, '기본 경로:', basePath);
-    return bannerTextMapping[basePath] || '기본 배너 텍스트';
+    return bannerTextMapping[basePath] || '';
   };
 
   const renderSubpages = () => {
