@@ -39,17 +39,68 @@
 }
 
 /* 모바일 화면에서 메뉴 토글 버튼 크기 조정 */
-@media (max-width: 768px) {
+@media (max-width: 361px) {
     .menu-toggle {
+        position: fixed;
+        width: 35px;
+        height: 35px;
+    }
+
+    .menu-toggle .toggle-icon {
+        transform: scale(1); /* 적당한 크기 설정 */
+    }
+
+    .menu-toggle path {
+        stroke-width: 4; /* 선 두께를 적당히 굵게 설정 */
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* 가로 스크롤 숨기기 */
+    }
+}
+
+@media (min-width: 370px) and (max-width: 391px) {
+    .menu-toggle {
+        position: fixed;
+        top: 11px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .menu-toggle .toggle-icon {
+        transform: scale(1); /* 적당한 크기 설정 */
+    }
+
+    .menu-toggle path {
+        stroke-width: 4; /* 선 두께를 조정 */
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* 가로 스크롤 숨기기 */
+    }
+}
+
+/* 큰 화면 스마트폰 (예: 갤럭시 울트라 등) */
+@media (min-width: 412px) {
+    .menu-toggle {
+        position: fixed;
+        top: 8px;
         width: 45px;
         height: 45px;
     }
 
     .menu-toggle .toggle-icon {
-        transform: scale(2); /* 모바일에서 아이콘을 더 크게 설정 */
+        transform: scale(1); /* 적당한 크기 설정 */
     }
 
     .menu-toggle path {
-        stroke-width: 7; /* 선 두께를 모바일에서 더 두껍게 설정 */
+        stroke-width: 4; /* 선 두께를 더 얇게 설정 */
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* 가로 스크롤 숨기기 */
     }
 }
