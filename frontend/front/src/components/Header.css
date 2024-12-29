@@ -11,12 +11,10 @@
   object-fit: cover; /* 이미지 비율 유지 */
 }
 
-.banner-container .main-text {
+.main-text {
   position: absolute;
+  top:12%;
   font-weight: bold;
-  top: 50%; /* 세로 중앙 정렬 */
-  left: 50%; /* 가로 중앙 정렬 */
-  transform: translate(-50%, -50%); /* 요소의 중심으로 이동 */
   color: white; /* 텍스트 색상 */
   font-size: clamp(1.5rem, 5vw, 4rem); /* 최소 1.5rem, 최대 4rem */
   padding: 0 1rem;
@@ -27,10 +25,8 @@
 
 /* 모바일 화면에서 .main-text를 가로 중앙 정렬만 유지 */
 @media (max-width: 768px) {
-  .banner-container .main-text {
-    top: 45%; /* 화면 상단에서 약간 떨어지도록 조정 */
-    left: 50%; /* 가로 중앙 정렬 유지 */
-    transform: translateX(-50%); /* 가로 방향으로만 중앙 정렬 */
+  .main-text {
+    top: 12%; /* 화면 상단에서 약간 떨어지도록 조정 */
     font-size: 1.3rem; /* 폰트 크기 축소 */
   }
 }
@@ -78,6 +74,11 @@
 }
 
 @media (max-width: 768px) {
+  .card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
   .hero-text-overlay {
     width: 100%;
   }
