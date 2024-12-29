@@ -19,7 +19,7 @@
     overflow: hidden; /* 내부 요소가 넘치지 않도록 설정 */
 }
 
-.menu-toggle .toggle-icon {
+ .toggle-icon {
     width: 30px;
     height: 30px;
     transform: scale(1); /* 기본 크기 */
@@ -83,9 +83,10 @@
 }
 
 /* 큰 화면 스마트폰 (예: 갤럭시 울트라 등) */
-@media (min-width: 412px) {
+@media (min-width: 412px) and (max-width: 915px){
     .menu-toggle {
         position: fixed;
+        right: 8px;
         top: 8px;
         width: 45px;
         height: 45px;
