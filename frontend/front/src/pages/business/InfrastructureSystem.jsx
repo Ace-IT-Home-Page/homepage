@@ -21,7 +21,6 @@ const InfrastructureSystem = () => {
   return (
     <div className="container">
       <div className="infrastructureSystem-container py-5">
-        <h3 className="infrastructureSystem-title-comp-name text-center mb-5">{area_name}</h3>
         <div className="row justify-content-center">
           {Object.keys(area_details).map((key, index) => (
             <div key={index} className="col-md-9 mb-5">

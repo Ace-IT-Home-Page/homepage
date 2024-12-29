@@ -104,12 +104,12 @@ export default class Contact extends Component {
           <div className="google-map-container">
             <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
               <GoogleMap mapContainerStyle={containerStyle} center={{
-                lat: parseFloat(this.getContentByName('지도 위도')) || 37.232579803113,
-                lng: parseFloat(this.getContentByName('지도 경도')) || 127.02345429284
+                lat: parseFloat(this.getContentByName('지도 위도')) || 37.2332754174924,
+                lng: parseFloat(this.getContentByName('지도 경도')) || 127.023471864064
               }} zoom={15}>
                 <Marker position={{
-                  lat: parseFloat(this.getContentByName('지도 위도')) || 37.232579803113,
-                  lng: parseFloat(this.getContentByName('지도 경도')) || 127.02345429284
+                  lat: parseFloat(this.getContentByName('지도 위도')) || 37.2332754174924,
+                  lng: parseFloat(this.getContentByName('지도 경도')) || 127.023471864064
                 }} />
               </GoogleMap>
             </LoadScript>

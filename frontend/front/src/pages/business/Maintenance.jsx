@@ -30,7 +30,6 @@ const Maintenance = () => {
 
     return (
         <div className="container py-5">
-            <h3 className="maintenance-title-comp-name text-center mb-5">{area_name}</h3>
             <div className="row justify-content-center">
                 {reorderedKeys.map((key, index) => (
                     <div key={index} className="col-md-9 mb-5">
