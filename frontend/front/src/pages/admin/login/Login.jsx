@@ -16,9 +16,9 @@ function Login({ onLogin }) {
                 password,
             }));
             localStorage.setItem("token", response.data.access_token);
-            alert("로그인 성공!");
             onLogin(); // 로그인 상태 업데이트
             navigate("/admin");
+            window.location.reload();
         } catch (err) {
             alert("로그인 실패: 아이디나 비밀번호가 틀렸습니다.");
         }

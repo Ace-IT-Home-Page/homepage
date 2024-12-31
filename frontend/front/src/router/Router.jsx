@@ -48,6 +48,7 @@ const Router = () => {
         localStorage.removeItem("token"); // 토큰 삭제
         setIsLoggedIn(false); // 로그인 상태 false로 설정
         navigate("/"); // 로그아웃 후 홈으로 이동
+        window.location.reload();
     };
 
     // 현재 경로가 '/404'인지 확인
