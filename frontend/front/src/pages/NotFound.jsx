@@ -6,7 +6,7 @@ const NotFound = () => {
             <div className="content">
                 <div className="error-message">
                     <p className="title">
-                        <img src="/notfound2.png" alt="오마이갓"/>
+                        <img src="/notfound2.png" alt="notfound"/>
                     </p>
                 </div>
                 {/* 불필요한 </p> 제거 및 div 닫기 */}
