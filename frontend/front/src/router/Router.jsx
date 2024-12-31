@@ -1,6 +1,6 @@
 // Router.jsx
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import About from '../pages/About';
 import Home from '../pages/Home';
@@ -31,6 +31,7 @@ import InfrastructureSystem from "../pages/business/InfrastructureSystem";
 import Maintenance from "../pages/business/Maintenance";
 import HeadBanner from "../components/HeadBanner";
 import Login from "../pages/admin/login/Login";
+import NotFound from "../pages/NotFound";
 
 const Router = () => {
     const location = useLocation();
@@ -49,10 +50,19 @@ const Router = () => {
         navigate("/"); // 로그아웃 후 홈으로 이동
     };
 
+    // 현재 경로가 '/404'인지 확인
+    const isNotFound = location.pathname === '/404';
+
     return (
         <div className="app-container">
-            <NavbarComp isVisible isLoggedIn={isLoggedIn} onLogout={handleLogout} />
-            {location.pathname !== '/' && <HeadBanner />}
+            {/* NotFound 페이지가 아닐 때만 Navbar를 렌더링 */}
+            {!isNotFound && (
+                <NavbarComp isVisible isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+            )}
+
+            {/* NotFound 페이지가 아닐 때만 HeadBanner를 렌더링 */}
+            {!isNotFound && location.pathname !== '/' && <HeadBanner />}
+
             <div className="main-content">
                 <Routes>
                     {/* 일반 페이지 라우트 */}
@@ -97,9 +107,15 @@ const Router = () => {
                     <Route path="/listBusinessArea" element={isLoggedIn ? <BusinessAreaList /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="/addBusinessArea" element={isLoggedIn ? <AddBusinessArea /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="/editBusinessArea/:id" element={isLoggedIn ? <EditBusinessArea /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
+
+                    {/* NotFound 라우트 */}
+                    <Route path="/404" element={<NotFound />} />
+                    <Route path="*" element={<Navigate to="/404" replace />} />
                 </Routes>
             </div>
-            <Footer />
+
+            {/* NotFound 페이지가 아닐 때만 Footer를 렌더링 */}
+            {!isNotFound && <Footer />}
         </div>
     );
 };
