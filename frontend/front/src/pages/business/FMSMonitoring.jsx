@@ -20,7 +20,11 @@ const FMSMonitoring = () => {
   return (
     <div className="container">
       <div className="monitoring-container py-5">
-        <p className="monitoring-content text-center mb-5">{area_content}</p>
+        {/* 줄바꿈 처리를 위해 dangerouslySetInnerHTML 사용 */}
+        <p
+          className="monitoring-content text-center mb-5"
+          dangerouslySetInnerHTML={{ __html: area_content.replace(/\n/g, '<br/>') }}
+        ></p>
         <div className="row justify-content-center">
           {Object.keys(area_details).map((key, index) => (
             <div key={index} className="col-md-9 mb-5">

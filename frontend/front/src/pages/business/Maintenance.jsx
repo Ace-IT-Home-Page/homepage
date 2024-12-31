@@ -16,7 +16,7 @@ const Maintenance = () => {
         return <p>데이터를 불러오는 중입니다...</p>;
     }
 
-    const { area_name, area_details } = businessAreas;
+    const { area_name, area_details, area_content } = businessAreas; // area_content 추가
 
     const keys = Object.keys(area_details);
     const equipmentKey = keys.find(
@@ -30,6 +30,11 @@ const Maintenance = () => {
 
     return (
       <div className="container py-5">
+          {/* 줄바꿈 처리를 위해 dangerouslySetInnerHTML 사용 */}
+          <p
+            className="monitoring-content text-center mb-5"
+            dangerouslySetInnerHTML={{ __html: area_content.replace(/\n/g, '<br/>') }}
+          ></p>
           <div className="row">
               {reorderedKeys.map((key, index) => (
                 <div key={index} className="col-md-6 mb-4">
@@ -71,7 +76,9 @@ const Maintenance = () => {
                                         // 1번~3번 섹션: 이미지 제외, 텍스트만 표시
                                         <>
                                             <i className="fas fa-check-circle mr-2 text-primary"></i>
-                                            {item}
+                                            <span
+                                              dangerouslySetInnerHTML={{ __html: item.replace(/\n/g, '<br/>') }}
+                                            ></span>
                                         </>
                                       )}
                                   </li>

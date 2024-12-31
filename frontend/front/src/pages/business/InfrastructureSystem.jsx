@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {getBusinessAreaById} from '../../api/AdminAPI';
+import React, { useEffect, useState } from 'react';
+import { getBusinessAreaById } from '../../api/AdminAPI';
 import './InfrastructureSystem.css'; // 수정된 CSS 파일 추가
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,11 +16,18 @@ const InfrastructureSystem = () => {
     return <p>데이터를 불러오는 중입니다...</p>;
   }
 
-  const {area_name, area_details} = businessAreas;
+  const { area_name, area_details, area_content } = businessAreas; // area_content 추가
 
   return (
     <div className="container">
       <div className="infrastructureSystem-container py-5">
+        {/* 줄바꿈 처리를 위해 dangerouslySetInnerHTML 사용 */}
+        {area_content && (
+          <p
+            className="monitoring-content text-center mb-5"
+            dangerouslySetInnerHTML={{ __html: area_content.replace(/\n/g, '<br/>') }}
+          ></p>
+        )}
         <div className="row justify-content-center">
           {Object.keys(area_details).map((key, index) => (
             <div key={index} className="col-md-9 mb-5">
@@ -37,7 +44,8 @@ const InfrastructureSystem = () => {
                   <ul className="infrastructureSystem-list pl-3">
                     {area_details[key].map((item, itemIndex) => (
                       <li key={itemIndex} className="infrastructureSystem-item mb-2">
-                        <i className="fas fa-check-circle mr-2 text-primary"></i> {item}
+                        <i className="fas fa-check-circle mr-2 text-primary"></i>
+                        <span dangerouslySetInnerHTML={{ __html: item.replace(/\n/g, '<br/>') }}></span>
                       </li>
                     ))}
                   </ul>
@@ -47,8 +55,11 @@ const InfrastructureSystem = () => {
           ))}
         </div>
         <div className="infrastructureSystem-introduction-image-container text-center">
-          <img src="/InfrastructureSystem.jpg" alt="회사 이미지"
-               className="infrastructureSystem-introduction-company-image img-fluid"/>
+          <img
+            src="/InfrastructureSystem.jpg"
+            alt="회사 이미지"
+            className="infrastructureSystem-introduction-company-image img-fluid"
+          />
         </div>
       </div>
     </div>
