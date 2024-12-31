@@ -126,6 +126,9 @@
 
 /* 모바일 화면에서 고정된 위치 유지 */
 @media (max-width: 768px) {
+  .logout-button {
+    display: none;
+  }
 
   .head-navi {
     width: 100vw; /* 화면 너비에 맞춤 */

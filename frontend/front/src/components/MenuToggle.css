@@ -83,7 +83,7 @@
 }
 
 /* 큰 화면 스마트폰 (예: 갤럭시 울트라 등) */
-@media (min-width: 412px) and (max-width: 915px){
+@media (min-width: 412px) and (max-width: 1315px){
     .menu-toggle {
         position: fixed;
         right: 8px;

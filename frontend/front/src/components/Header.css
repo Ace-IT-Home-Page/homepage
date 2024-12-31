@@ -23,14 +23,6 @@
   width: 100%;
 }
 
-/* 모바일 화면에서 .main-text를 가로 중앙 정렬만 유지 */
-@media (max-width: 768px) {
-  .main-text {
-    top: 12%; /* 화면 상단에서 약간 떨어지도록 조정 */
-    font-size: 1.3rem; /* 폰트 크기 축소 */
-  }
-}
-
 
 .hero-text-overlay {
   text-align: center;
@@ -72,7 +64,13 @@
     width: 85%;
   }
 }
-
+/* 모바일 화면에서 .main-text를 가로 중앙 정렬만 유지 */
+@media (max-width: 768px) {
+  .main-text {
+    top: 12%; /* 화면 상단에서 약간 떨어지도록 조정 */
+    font-size: 1.3rem; /* 폰트 크기 축소 */
+  }
+}
 @media (max-width: 768px) {
   .card:hover {
     transform: none !important;
