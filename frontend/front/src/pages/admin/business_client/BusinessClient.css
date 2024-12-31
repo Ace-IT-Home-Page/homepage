@@ -30,8 +30,8 @@
 .business-client-list {
     list-style: none;
     padding: 0;
-    width: 100%;
-    max-width: 1200px;
+    width: 90%;
+    max-width: 90%;
 }
 
 .business-client-list li {
@@ -96,10 +96,10 @@
 
 .business-client-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    width: 100%;
-    max-width: 1200px;
+    width: 90%;
+    max-width: 90%;
     margin-top: 20px;
 }
 
@@ -110,7 +110,7 @@
     text-align: center;
     padding: 20px;
     border: 1px solid #ddd;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border-radius: 8px;
 }
 

@@ -12,8 +12,8 @@
 }
 
 .admin-page-container button {
-    width: 300px; /* 버튼 너비 설정 */
-    padding: 20px;
+    width: 250px; /* 버튼 너비 설정 */
+    padding: 10px;
     font-size: 16px;
     text-align: center;
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getHistory, deleteHistory } from '../../../api/AdminAPI';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './History.css';
+import AdminPage from "../AdminPage";
 
 const HistoryList = () => {
     const [historyList, setHistoryList] = useState([]);
@@ -28,47 +29,53 @@ const HistoryList = () => {
     };
 
     return (
-        <div className="history-container">
-            <button onClick={() => navigate('/admin')}>관리자 페이지로 돌아가기</button>
+      <div className="history-container">
+          <button onClick={() => navigate('/admin')}>관리자 페이지로 돌아가기</button>
 
-            <div className="section-buttons">
-                <button onClick={() => setSelectedSection(1)} className={selectedSection === 1 ? 'active' : ''}>회사 연혁</button>
-                <button onClick={() => setSelectedSection(2)} className={selectedSection === 2 ? 'active' : ''}>개발 본부 이력</button>
-            </div>
-
-            <div>
-                <h3>{selectedSection === 1 ? '회사 연혁' : '개발 본부 이력'}</h3>
-                <button onClick={() => navigate(`/addHistory?sectionCode=${selectedSection}`)}>
-                    {selectedSection === 1 ? '회사 연혁 추가' : '개발 본부 이력 추가'}
-                </button>
-                <table className="history-table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>날짜</th>
-                        <th>내용</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {historyList
+          <div className="section-buttons">
+              <button onClick={() => setSelectedSection(1)} className={selectedSection === 1 ? 'active' : ''}>회사 연혁
+              </button>
+              <button onClick={() => setSelectedSection(2)} className={selectedSection === 2 ? 'active' : ''}>개발 본부 이력
+              </button>
+          </div>
+          <div className="content-container">
+              <AdminPage className="admin-page"/>
+              <div>
+                  <h3>{selectedSection === 1 ? '회사 연혁' : '개발 본부 이력'}</h3>
+                  <button onClick={() => navigate(`/addHistory?sectionCode=${selectedSection}`)}>
+                      {selectedSection === 1 ? '회사 연혁 추가' : '개발 본부 이력 추가'}
+                  </button>
+                  <table className="history-table">
+                      <thead>
+                      <tr>
+                          <th>Id</th>
+                          <th>날짜</th>
+                          <th>내용</th>
+                          <th>Actions</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {historyList
                         .filter(history => history.history_section_code === selectedSection)
                         .map((history) => (
-                            <tr key={history.history_id}>
-                                <td>{history.history_id}</td>
-                                <td>{history.history_date}</td>
-                                <td>{history.history_content}</td>
-                                <td>
-                                    <button onClick={() => navigate(`/editHistory/${history.history_id}?sectionCode=${selectedSection}`)}>수정</button>
-                                    <button onClick={() => handleDelete(history.history_id)}>삭제</button>
-                                </td>
-                            </tr>
+                          <tr key={history.history_id}>
+                              <td>{history.history_id}</td>
+                              <td>{history.history_date}</td>
+                              <td>{history.history_content}</td>
+                              <td>
+                                  <button
+                                    onClick={() => navigate(`/editHistory/${history.history_id}?sectionCode=${selectedSection}`)}>수정
+                                  </button>
+                                  <button onClick={() => handleDelete(history.history_id)}>삭제</button>
+                              </td>
+                          </tr>
                         ))}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    );
-};
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+          </div>
+          );
+          };
 
-export default HistoryList;
+          export default HistoryList;

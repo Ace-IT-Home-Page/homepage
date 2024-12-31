@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {getBusinessAreaById} from '../../api/AdminAPI';
-import {motion} from 'framer-motion';
+// src/pages/business/SystemDevelop.js
+import React, { useEffect, useState } from 'react';
+import { getBusinessAreaById } from '../../api/AdminAPI';
+import { motion } from 'framer-motion';
 import './SystemDevelop.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,7 +18,15 @@ const SystemDevelop = () => {
     return <p>데이터를 불러오는 중입니다...</p>;
   }
 
-  const {area_details} = businessAreas;
+  const { area_details } = businessAreas;
+
+  // 프로세스 단계 배열
+  const processSteps = [
+    '분석 및 설계',
+    '개발 및 제작',
+    '평가',
+    '실행 및 운영',
+  ];
 
   return (
     <div className="container">
@@ -36,7 +45,8 @@ const SystemDevelop = () => {
                 <div className="systemDevelop-custom-card shadow-sm h-100">
                   <div className="d-flex align-items-center systemDevelop-custom-header mb-3">
                     <div
-                      className="systemDevelop-section-id rounded-circle d-flex align-items-center justify-content-center mr-3">
+                      className="systemDevelop-section-id rounded-circle d-flex align-items-center justify-content-center mr-3"
+                    >
                       {`0${index + 1}`}
                     </div>
                     <h4 className="systemDevelop-custom-title mb-0">{key}</h4>
@@ -54,23 +64,24 @@ const SystemDevelop = () => {
               </div>
             ))}
           </div>
-          <div className="systemDevelop-process-flow-container text-center mt-4">
-            <div className="systemDevelop-process-step mb-1">
+          <div className="systemDevelop-process-flow-container">
+            <div className="systemDevelop-process-step">
               <div className="systemDevelop-process-box">분석 및 설계</div>
             </div>
-            <div className="systemDevelop-process-arrow mb-2">▼</div>
-            <div className="systemDevelop-process-step mb-1">
+            <div className="systemDevelop-process-arrow">➨</div>
+            <div className="systemDevelop-process-step">
               <div className="systemDevelop-process-box">개발 및 제작</div>
             </div>
-            <div className="systemDevelop-process-arrow mb-2">▼</div>
-            <div className="systemDevelop-process-step mb-1">
+            <div className="systemDevelop-process-arrow">➨</div>
+            <div className="systemDevelop-process-step">
               <div className="systemDevelop-process-box">평가</div>
             </div>
-            <div className="systemDevelop-process-arrow mb-2">▼</div>
+            <div className="systemDevelop-process-arrow">➨</div>
             <div className="systemDevelop-process-step">
               <div className="systemDevelop-process-box">실행 및 운영</div>
             </div>
           </div>
+
         </motion.div>
       </div>
     </div>

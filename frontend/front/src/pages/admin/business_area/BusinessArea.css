@@ -20,7 +20,7 @@
     margin: 20px 20px;
 }
 
-.business-area-container button {
+.business-area-container > button {
     padding: 10px 20px;
     font-size: 16px;
     margin-bottom: 10px;
@@ -30,11 +30,14 @@
 .business-area-list {
     list-style: none;
     padding: 0;
+
     width: 100%;
-    max-width: 1200px;
+    max-width: 90%;
 }
 
 .business-area-list li {
+    width: 90%;
+    max-width: 90%;
     padding: 20px;
     margin-bottom: 10px;
     border: 1px solid #ddd;

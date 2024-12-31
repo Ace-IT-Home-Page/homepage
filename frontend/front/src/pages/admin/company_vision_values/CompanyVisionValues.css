@@ -27,11 +27,11 @@
 
 /* 테이블 스타일 */
 .vision-values-table {
-    width: 100%;
-    max-width: 1200px;
+    width: 2200px;
+    max-width: 80%; /* 테이블 최대 너비 설정 */
     table-layout: fixed;
     border-collapse: collapse;
-    margin: 20px 20px;
+
 }
 
 .vision-values-table th, .vision-values-table td {

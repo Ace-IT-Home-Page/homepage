@@ -12,7 +12,7 @@
     margin-bottom: 20px;
 }
 
-.history-container button {
+.history-container > button {
     margin: 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -20,8 +20,8 @@
 
 /* 테이블 스타일 */
 .history-table {
-    width: 100%;
-    max-width: 1200px;
+    width: 90%;
+    max-width: 90%;
     table-layout: fixed; /* 테이블 너비 고정 */
     border-collapse: collapse;
     margin: 20px 20px;
@@ -122,4 +122,3 @@
     background-color: #007bff; /* 활성화된 버튼의 배경색 */
     color: white;
 }
-
