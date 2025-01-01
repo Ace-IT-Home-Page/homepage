@@ -95,6 +95,7 @@ const EditCompanyVisionValue = () => {
                     placeholder="비전 설명"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
+                    style={{ width: '100%', height: '200px', resize: 'vertical' }}
                 />
 
                 <div className="details-container">
@@ -107,12 +108,13 @@ const EditCompanyVisionValue = () => {
                                     placeholder="Key"
                                     value={detail.key}
                                     onChange={(e) => handleDetailChange(index, 'key', e.target.value)}
+                                    style={{ width: '40px', height: '40px'}}
                                 />
-                                <input
-                                    type="text"
+                                <textarea
                                     placeholder="Value"
                                     value={detail.value}
                                     onChange={(e) => handleDetailChange(index, 'value', e.target.value)}
+                                    style={{ width: '300px', height: '200px', resize: 'vertical' }}
                                 />
                                 {details.length > 1 && (
                                     <button type="button" onClick={() => handleRemoveDetail(index)}>

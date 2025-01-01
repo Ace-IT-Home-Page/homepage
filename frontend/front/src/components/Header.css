@@ -31,7 +31,7 @@
   left: 50%; /* 가로 중앙 정렬 */
   color: #0b0909;
   font-weight: bold;
-  width: 60%;
+  width: 100%;
   padding: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -55,13 +55,11 @@
 
 @media (max-width: 1500px) {
   .hero-text-overlay {
-    width: 75%;
   }
 }
 
 @media (max-width: 1150px) {
   .hero-text-overlay {
-    width: 85%;
   }
 }
 /* 모바일 화면에서 .main-text를 가로 중앙 정렬만 유지 */

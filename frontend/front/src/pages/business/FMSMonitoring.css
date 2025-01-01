@@ -1,17 +1,7 @@
 /* Container and title */
-.monitoring-container {
-  padding: 3rem 1rem;
-}
-
-.monitoring-title-comp-name {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
 .monitoring-content {
-
+  max-width: 74%; /* 최대 너비 설정 */
+  margin: auto; /* 중앙 정렬 */
 }
 
 /* Custom card */
@@ -106,6 +96,8 @@
   }
 
   .monitoring-content {
+    max-width: 100%; /* 모바일에서 최대 너비를 전체 너비로 설정 */
+    padding: 0 1rem; /* 좌우 패딩 유지 */
     font-size: 0.9rem;
   }
 

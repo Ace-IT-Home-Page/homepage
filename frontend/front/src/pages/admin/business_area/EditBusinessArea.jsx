@@ -98,6 +98,7 @@ const EditBusinessArea = () => {
                 placeholder="사업 영역 내용"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
+                style={{ width: '800px', height: '400px', resize: 'vertical' }}
             />
 
             <div className="details-container">
@@ -110,6 +111,7 @@ const EditBusinessArea = () => {
                                 placeholder="Key"
                                 value={item.key}
                                 onChange={(e) => handleDetailChange(setAreaType, index, 'key', e.target.value)}
+
                             />
                             <input
                                 type="text"
@@ -137,11 +139,12 @@ const EditBusinessArea = () => {
                                 value={item.key}
                                 onChange={(e) => handleDetailChange(setDetails, index, 'key', e.target.value)}
                             />
-                            <input
+                            <textarea
                                 type="text"
                                 placeholder="Value"
                                 value={item.value}
                                 onChange={(e) => handleDetailChange(setDetails, index, 'value', e.target.value)}
+                                style={{ width: '300px', height: '300px', resize: 'vertical' }}
                             />
                             {details.length > 1 && (
                                 <button type="button" onClick={() => handleRemoveDetail(setDetails, index)}>삭제</button>

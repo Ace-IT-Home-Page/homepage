@@ -236,24 +236,6 @@
 }
 
 .details-row-horizontal {
-    display: flex;
-    align-items: center;
     gap: 10px;
 }
 
-.details-row-horizontal input {
-    flex: 1;
-}
-
-.details-row-horizontal button {
-    flex: 0 0 auto;
-    padding: 5px 10px;
-    font-size: 14px;
-    margin-left: 10px;
-}
-
-.add-detail-button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    font-size: 14px;
-}

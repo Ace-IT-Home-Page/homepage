@@ -57,6 +57,7 @@ const EditHistory = () => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     required
+                    style={{ width: '200%', height: '200px', resize: 'vertical' }}
                 />
                 <div className="form-button-container">
                     <button type="submit">수정</button>

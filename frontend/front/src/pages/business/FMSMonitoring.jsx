@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {getBusinessAreaById} from '../../api/AdminAPI';
+import React, { useEffect, useState } from 'react';
+import { getBusinessAreaById } from '../../api/AdminAPI';
 import './FMSMonitoring.css'; // CSS 파일 추가
 
 const FMSMonitoring = () => {
@@ -15,15 +15,22 @@ const FMSMonitoring = () => {
     return <p>데이터를 불러오는 중입니다...</p>;
   }
 
-  const {area_details, area_content} = businessAreas;
+  const { area_details, area_content } = businessAreas;
+
+  // 연속된 스페이스와 줄바꿈을 처리하는 함수
+  const formatContent = (content) => {
+    return content
+      .replace(/  +/g, (match) => '&nbsp;'.repeat(match.length)) // 연속된 스페이스를 &nbsp;로 변환
+      .replace(/\n/g, '<br/>'); // 줄바꿈을 <br/>으로 변환
+  };
 
   return (
     <div className="container">
       <div className="monitoring-container py-5">
-        {/* 줄바꿈 처리를 위해 dangerouslySetInnerHTML 사용 */}
+        {/* 줄바꿈과 연속된 스페이스 처리를 위해 dangerouslySetInnerHTML 사용 */}
         <p
-          className="monitoring-content text-center mb-5"
-          dangerouslySetInnerHTML={{ __html: area_content.replace(/\n/g, '<br/>') }}
+          className="monitoring-content mb-5"
+          dangerouslySetInnerHTML={{ __html: formatContent(area_content) }}
         ></p>
         <div className="row justify-content-center">
           {Object.keys(area_details).map((key, index) => (
