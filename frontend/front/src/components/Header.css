@@ -1,4 +1,3 @@
-./* src/components/Header.css */
 
 .banner-container {
   position: relative;
@@ -13,7 +12,7 @@
 
 .main-text {
   position: absolute;
-  top:12%;
+  top:42%;
   font-weight: bold;
   color: white; /* 텍스트 색상 */
   font-size: clamp(1.5rem, 5vw, 4rem); /* 최소 1.5rem, 최대 4rem */
@@ -22,7 +21,6 @@
   text-align: center; /* 텍스트를 가로로 중앙 정렬 */
   width: 100%;
 }
-
 
 .hero-text-overlay {
   text-align: center;
@@ -53,37 +51,9 @@
   margin: 0 auto;
 }
 
-/* 모바일 화면에서 .main-text를 가로 중앙 정렬만 유지 */
-@media (max-width: 768px) {
-  .main-text {
-    top: 12%; /* 화면 상단에서 약간 떨어지도록 조정 */
-    font-size: 1.3rem; /* 폰트 크기 축소 */
-  }
-}
-@media (max-width: 968px) {
-  .card:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
-
-  .hero-text-overlay {
-    width: 100%;
-  }
-
-  .hero-text-overlay h1 {
-    font-size: 2rem;
-  }
-
-  .hero-text-overlay .lead {
-    font-size: 1.2rem;
-  }
-
-}
-
-
-/* 카드 컨테이너 설정 */
 .card-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center; /* 중앙 정렬 */
   gap: 20px; /* 카드 간 간격 */
   margin-top: 40px;
@@ -185,25 +155,12 @@
   color: #fff; /* 아이콘 색상 */
   animation: bounce 2s infinite; /* 애니메이션 효과 */
 }
-/* 아이콘에 애니메이션 추가 */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translate(-50%, 0);
-  }
-  40% {
-    transform: translate(-50%, -10px);
-  }
-  60% {
-    transform: translate(-50%, -5px);
-  }
-}
-
 
 
 
 
 /* 반응형 카드 배치 */
-@media (max-width: 968px) {
+@media (max-width: 1268px) {
   .card-container {
     display: flex;
     flex-direction: row;
@@ -241,5 +198,13 @@
   .btn {
     font-size: 0.7em; /* 버튼 폰트 크기 감소 */
     padding: 3px 6px; /* 버튼 패딩 감소 */
+  }
+  .hero-text-overlay h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .hero-text-overlay .lead {
+    font-size: 1rem;
+    margin-bottom: 20px;
   }
 }

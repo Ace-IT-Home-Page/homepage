@@ -13,25 +13,20 @@ const Header = () => {
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(6); // Default for small screens
-  const [itemsPerRow, setItemsPerRow] = useState(2);  // Default items per row
 
-  // Effect to handle window resize and set cardsPerPage and itemsPerRow accordingly
+  // Effect to handle window resize and set cardsPerPage accordingly
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
 
       if (width <= 576) { // Extra Small Devices
         setCardsPerPage(4);
-        setItemsPerRow(2);
       } else if (width <= 768) { // Small Devices
         setCardsPerPage(6);
-        setItemsPerRow(2);
       } else if (width <= 992) { // Medium Devices
         setCardsPerPage(10);
-        setItemsPerRow(2); // Adjust as needed, e.g., 2 or 3
       } else { // Large Devices
         setCardsPerPage(12);
-        setItemsPerRow(3); // Adjust as needed, e.g., 3 or 4
       }
     };
 
@@ -140,17 +135,6 @@ const Header = () => {
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const currentCards = cardData.slice(indexOfFirstCard, indexOfLastCard);
 
-  // Helper function to split currentCards into chunks based on itemsPerRow
-  const getRows = (cards, itemsPerRow) => {
-    const rows = [];
-    for (let i = 0; i < cards.length; i += itemsPerRow) {
-      rows.push(cards.slice(i, i + itemsPerRow));
-    }
-    return rows;
-  };
-
-  const rows = getRows(currentCards, itemsPerRow);
-
   // Handler for page change
   const handlePageChange = (pageNumber) => {
     // Ensure the page number is within valid range
@@ -179,33 +163,29 @@ const Header = () => {
 
         {/* 카드 배치 */}
         <div className="card-container">
-          {rows.map((row, rowIndex) => (
-            <div className="card-row" key={rowIndex}>
-              {row.map((card) => (
-                <div key={card.id} className="card small-card">
-                  <img
-                    src={card.image}
-                    className="card-img-top small-card-img"
-                    alt={card.title}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{card.title}</h5>
-                    <Link
-                      to={card.link}
-                      className="btn btn-sm"
-                      style={{
-                        backgroundColor: '#4e61aa',
-                        color: '#ffffff',
-                      }}
-                    >
-                      more
-                    </Link>
-                  </div>
-                  <div className="card-footer">
-                    <small className="text-muted">Last updated {card.lastUpdated}</small>
-                  </div>
-                </div>
-              ))}
+          {currentCards.map((card) => (
+            <div key={card.id} className="card small-card">
+              <img
+                src={card.image}
+                className="card-img-top small-card-img"
+                alt={card.title}
+              />
+              <div className="card-body">
+                <h5 className="card-title">{card.title}</h5>
+                <Link
+                  to={card.link}
+                  className="btn btn-sm"
+                  style={{
+                    backgroundColor: '#4e61aa',
+                    color: '#ffffff',
+                  }}
+                >
+                  more
+                </Link>
+              </div>
+              <div className="card-footer">
+                <small className="text-muted">Last updated {card.lastUpdated}</small>
+              </div>
             </div>
           ))}
         </div>
