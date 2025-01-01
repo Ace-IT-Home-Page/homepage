@@ -53,15 +53,6 @@
   margin: 0 auto;
 }
 
-@media (max-width: 1500px) {
-  .hero-text-overlay {
-  }
-}
-
-@media (max-width: 1150px) {
-  .hero-text-overlay {
-  }
-}
 /* 모바일 화면에서 .main-text를 가로 중앙 정렬만 유지 */
 @media (max-width: 768px) {
   .main-text {
@@ -69,7 +60,7 @@
     font-size: 1.3rem; /* 폰트 크기 축소 */
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .card:hover {
     transform: none !important;
     box-shadow: none !important;
@@ -212,7 +203,7 @@
 
 
 /* 반응형 카드 배치 */
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .card-container {
     display: flex;
     flex-direction: row;

@@ -12,25 +12,36 @@ const Header = () => {
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage, setCardsPerPage] = useState(6); // 초기값은 데스크탑 기준
+  const [cardsPerPage, setCardsPerPage] = useState(6); // Default for small screens
+  const [itemsPerRow, setItemsPerRow] = useState(2);  // Default items per row
 
-  // Effect to handle window resize and set cardsPerPage accordingly
+  // Effect to handle window resize and set cardsPerPage and itemsPerRow accordingly
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) { // 모바일 기준 너비 (예: 768px 이하)
+      const width = window.innerWidth;
+
+      if (width <= 576) { // Extra Small Devices
         setCardsPerPage(4);
-      } else {
+        setItemsPerRow(2);
+      } else if (width <= 768) { // Small Devices
         setCardsPerPage(6);
+        setItemsPerRow(2);
+      } else if (width <= 992) { // Medium Devices
+        setCardsPerPage(10);
+        setItemsPerRow(2); // Adjust as needed, e.g., 2 or 3
+      } else { // Large Devices
+        setCardsPerPage(12);
+        setItemsPerRow(3); // Adjust as needed, e.g., 3 or 4
       }
     };
 
-    // 초기 설정
+    // Initial setup
     handleResize();
 
-    // 이벤트 리스너 추가
+    // Add event listener
     window.addEventListener('resize', handleResize);
 
-    // 클린업
+    // Cleanup
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -129,7 +140,7 @@ const Header = () => {
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const currentCards = cardData.slice(indexOfFirstCard, indexOfLastCard);
 
-  // Helper function to split currentCards into chunks (2 per row for desktop, adjust as needed)
+  // Helper function to split currentCards into chunks based on itemsPerRow
   const getRows = (cards, itemsPerRow) => {
     const rows = [];
     for (let i = 0; i < cards.length; i += itemsPerRow) {
@@ -138,16 +149,14 @@ const Header = () => {
     return rows;
   };
 
-  // Determine items per row based on screen size
-  const itemsPerRow = window.innerWidth <= 768 ? 2 : 2; // 예: 모바일과 데스크탑 모두 한 행에 2개씩
   const rows = getRows(currentCards, itemsPerRow);
 
   // Handler for page change
   const handlePageChange = (pageNumber) => {
-    // 페이지 번호가 유효한지 확인
+    // Ensure the page number is within valid range
     if (pageNumber < 1 || pageNumber > totalPages) return;
     setCurrentPage(pageNumber);
-    // window.scrollTo({ top: 0, behavior: 'smooth' }); // 스크롤 제거
+    // window.scrollTo({ top: 0, behavior: 'smooth' }); // Removed smooth scroll as per user's comment
   };
 
   return (
@@ -209,7 +218,7 @@ const Header = () => {
               disabled={currentPage === 1}
               className="btn btn-secondary"
               style={{ marginRight: '10px' }}
-              type="button" // 버튼 타입 명시
+              type="button"
             >
               Previous
             </button>
@@ -219,7 +228,7 @@ const Header = () => {
                 onClick={() => handlePageChange(index + 1)}
                 className={`btn ${currentPage === index + 1 ? 'btn-primary' : 'btn-outline-primary'}`}
                 style={{ margin: '0 5px' }}
-                type="button" // 버튼 타입 명시
+                type="button"
               >
                 {index + 1}
               </button>
@@ -229,7 +238,7 @@ const Header = () => {
               disabled={currentPage === totalPages}
               className="btn btn-secondary"
               style={{ marginLeft: '10px' }}
-              type="button" // 버튼 타입 명시
+              type="button"
             >
               Next
             </button>
