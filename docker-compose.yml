@@ -9,15 +9,17 @@ services:
       MYSQL_DATABASE: aceitdb
     volumes:
       - mysql_data:/var/lib/mysql
-      - /home/ace-it/conf.d:/etc/mysql/conf.d
+      - /homepage/aceit/conf.d:/etc/mysql/conf.d
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - app-network
+    ports:
+      - "3306:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-u", "root", "-proot"]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 5        
 
   backend:
     build:
@@ -38,16 +40,19 @@ services:
   frontend:
     build:
       context: ./frontend
+      args:
+        - REACT_APP_API_URL=/api
     container_name: ace_it_frontend
     env_file:
       - ./.env
     volumes:
-      - frontend-build:/app/build  # 빌드 결과물을 공유하기 위한 볼륨
+      - frontend-build:/app/build  
     networks:
       - app-network
     depends_on:
       - backend
-    command: ["npm", "run", "build"]  # 빌드 후 종료
+    command: >
+        sh -c "npm run build && tail -f /dev/null"
 
   nginx:
     image: nginx:latest
@@ -58,8 +63,8 @@ services:
       - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - /home/ace-it/data/certbot/conf:/etc/letsencrypt
-      - /home/ace-it/data/certbot/www:/var/www/certbot
+      - /homepage/aceit/data/certbot/conf:/etc/letsencrypt
+      - /homepage/aceit/data/certbot/www:/var/www/certbot
       - frontend-build:/usr/share/nginx/html  # Mount the dist folder
     depends_on:
       - frontend
@@ -71,8 +76,8 @@ services:
     image: certbot/certbot
     container_name: certbot
     volumes:
-      - /home/ace-it/data/certbot/conf:/etc/letsencrypt
-      - /home/ace-it/data/certbot/www:/var/www/certbot
+      - /homepage/aceit/data/certbot/conf:/etc/letsencrypt
+      - /homepage/aceit/data/certbot/www:/var/www/certbot
     command: certonly --webroot --webroot-path=/var/www/certbot --non-interactive --agree-tos -m cloudsweets@naver.com -d ace24.kr -d www.ace24.kr
     depends_on:
       - nginx
