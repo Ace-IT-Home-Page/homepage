@@ -207,4 +207,11 @@
     font-size: 1rem;
     margin-bottom: 20px;
   }
+  /* >>> 모바일에서 카드 호버/클릭 시 움직이지 않도록 설정 <<< */
+  .card:hover,
+  .card:focus,
+  .card:active {
+    transform: none !important;
+    box-shadow: none !important;
+  }
 }
