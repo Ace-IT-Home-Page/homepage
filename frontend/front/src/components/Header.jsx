@@ -180,7 +180,7 @@ const Header = () => {
                     spaceBetween={20} /* 슬라이드 간 간격 */
                     slidesPerView={5} /* 한 번에 보여줄 슬라이드 수 */
                     autoplay={{
-                        delay: 3000, /* 자동 재생 시간 (ms) */
+                        delay: 1500, /* 자동 재생 시간 (ms) */
                         disableOnInteraction: false, /* 사용자 상호작용 후 자동 재생 유지 */
                         pauseOnMouseEnter: true, /* 마우스 호버 시 자동 재생 일시정지 */
                     }}
