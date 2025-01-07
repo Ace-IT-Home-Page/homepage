@@ -1,35 +1,12 @@
 version: '3.8'
 
 services:
-  db:
-    image: mysql:8
-    container_name: aceit_db
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: aceitdb
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - /homepage/aceit/conf.d:/etc/mysql/conf.d
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - app-network
-    ports:
-      - "3306:3306"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-u", "root", "-proot"]
-      interval: 10s
-      timeout: 5s
-      retries: 5        
-
   backend:
     build:
       context: ./backend
     container_name: ace_it_backend
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      - DATABASE_URL=mysql+pymysql://root:root@db:3306/aceitdb?charset=utf8mb4
+    env_file:
+      - ./.env
     volumes:
       - ./backend:/app
     networks:
@@ -46,7 +23,7 @@ services:
     env_file:
       - ./.env
     volumes:
-      - frontend-build:/app/build  
+      - frontend-build:/app/build
     networks:
       - app-network
     depends_on:
@@ -63,9 +40,9 @@ services:
       - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - /homepage/aceit/data/certbot/conf:/etc/letsencrypt
-      - /homepage/aceit/data/certbot/www:/var/www/certbot
-      - frontend-build:/usr/share/nginx/html  # Mount the dist folder
+      - /home/homepage/data/certbot/conf:/etc/letsencrypt
+      - /home/homepage/data/certbot/www:/var/www/certbot
+      - frontend-build:/usr/share/nginx/html
     depends_on:
       - frontend
       - backend
@@ -76,9 +53,11 @@ services:
     image: certbot/certbot
     container_name: certbot
     volumes:
-      - /homepage/aceit/data/certbot/conf:/etc/letsencrypt
-      - /homepage/aceit/data/certbot/www:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --non-interactive --agree-tos -m cloudsweets@naver.com -d ace24.kr -d www.ace24.kr
+      - /home/homepage/data/certbot/conf:/etc/letsencrypt
+      - /home/homepage/data/certbot/www:/var/www/certbot
+    command: >
+      certonly --webroot --webroot-path=/var/www/certbot --non-interactive --agree-tos
+      -m cloudsweets@naver.com -d ace24.kr -d www.ace24.kr
     depends_on:
       - nginx
     networks:
@@ -89,6 +68,5 @@ networks:
     driver: bridge
 
 volumes:
-  mysql_data:
   frontend-build:  # Define the named volume
 
