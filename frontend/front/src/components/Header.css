@@ -16,7 +16,7 @@
   top: 42%;
   font-weight: bold;
   color: white; /* 텍스트 색상 */
-  font-size: clamp(1.5rem, 5vw, 4rem); /* 최소 1.5rem, 최대 4rem */
+  font-size: clamp(1.5rem, 5vw, 3.5rem); /* 최소 1.5rem, 최대 4rem */
   padding: 0 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   text-align: center; /* 텍스트를 가로로 중앙 정렬 */
@@ -244,6 +244,5 @@
 /* 이미지와 텍스트가 정렬된 줄의 가운데를 유지 */
 .swiper-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center; /* 전체 슬라이드의 중앙 정렬 */
 }
