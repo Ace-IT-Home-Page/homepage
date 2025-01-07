@@ -12,7 +12,8 @@ import { Autoplay, Navigation, Pagination as SwiperPagination } from 'swiper/mod
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS 임포트
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AnimatedText from './AnimatedText'; // AnimatedText 컴포넌트 임포트
 
 // 사용자 정의 Pagination 컴포넌트 이름 변경
 const CustomPagination = ({ currentPage, totalPages, onPageChange }) => (
@@ -127,8 +128,6 @@ const Header = () => {
         fetchAreas();
     }, []);
 
-
-
     if (loadingClients || loadingAreas)
         return (
             <header id="header">
@@ -158,13 +157,21 @@ const Header = () => {
     return (
         <header id="header">
             <div className="banner-container">
-                <img src="/AdobeStock_2.jpeg" alt="배너" className="banner-image"/>
-                <p className="main-text">
-                    FMS 시설물 모니터링, <br/>
-                    전산실 구축 및 전문 솔루션 제공
-                </p>
+                <img src="/AdobeStock_2.jpeg" alt="배너" className="banner-image" />
+                <div className="animated-text-container">
+                    {/* 첫 번째 AnimatedText 컴포넌트: 상단 텍스트 */}
+                    <AnimatedText
+                        text={`FMS 시설물 모니터링`}
+                        className="main-text top-text"
+
+                    />
+                    {/* 두 번째 AnimatedText 컴포넌트: 하단 텍스트 */}
+                    <AnimatedText
+                        text={`전산실 구축 및 전문 솔루션 제공`}
+                        className="main-text bottom-text"
+                    />
+                </div>
                 <div className="hero-text-overlay">
-                    <h1 className="display-4">Our Clients & Partners</h1>
                 </div>
             </div>
             <section className="business-clients-section">

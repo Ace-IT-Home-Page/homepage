@@ -21,7 +21,6 @@ const AddBusinessClient = () => {
 
         createBusinessClient(formData)
             .then(() => {
-                alert('클라이언트가 성공적으로 추가되었습니다.');
                 navigate('/listBusinessClient');
             })
             .catch((error) => console.error('클라이언트 추가 중 오류 발생:', error));

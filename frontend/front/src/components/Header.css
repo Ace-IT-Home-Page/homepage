@@ -1,4 +1,5 @@
 /* 기존 CSS */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
 
 .banner-container {
   position: relative;
@@ -12,16 +13,19 @@
 }
 
 .main-text {
+  font-family: 'Noto Sans', sans-serif;
   position: absolute;
   top: 42%;
   font-weight: bold;
-  color: white; /* 텍스트 색상 */
-  font-size: clamp(1.5rem, 5vw, 4rem); /* 최소 1.5rem, 최대 4rem */
+  color: rgba(78, 102, 128, 0.73); /* 텍스트 색상 */
+  font-size: clamp(1.5rem, 5vw, 3.5rem); /* 최소 1.5rem, 최대 3rem */
   padding: 0 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   text-align: center; /* 텍스트를 가로로 중앙 정렬 */
   width: 100%;
+  white-space: pre-line; /* \n을 줄바꿈으로 처리 */
 }
+
 
 .hero-text-overlay {
   text-align: center;
@@ -34,7 +38,10 @@
   padding: 30px;
   transform: translateX(-50%); /* 가로 방향으로만 중앙 정렬 */
 }
-
+h4.small-card {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 700; /* Bold */
+}
 .hero-text-overlay h1 {
   font-size: 3rem;
   font-weight: bold;
@@ -153,7 +160,7 @@
 }
 
 /* 반응형 카드 배치 */
-@media (max-width: 1268px) {
+@media (max-width: 668px) {
   .card-container {
     display: flex;
     flex-direction: row;
@@ -207,6 +214,7 @@
     transform: none !important;
     box-shadow: none !important;
   }
+
 }
 /* Swiper 컨테이너 스타일 */
 .swiper {
@@ -245,4 +253,21 @@
 .swiper-wrapper {
   display: flex;
   align-items: center; /* 전체 슬라이드의 중앙 정렬 */
+}
+.main-text.top-text {
+  position: absolute;
+  top: 50%; /* top-text의 위치 */
+  left: 50%;
+  transform: translatex(-50%);
+  z-index: 1; /* 겹치는 순서를 설정 */
+}
+
+.main-text.bottom-text {
+  position: absolute;
+  top: 50%; /* top-text 아래에 배치 */
+  left: 50%;
+  transform: translatex(-50%);
+  line-height: 4.9em; /* 폰트 크기에 비례하여 줄 간격 조정 */
+
+  z-index: 1; /* 겹치는 순서를 설정 */
 }
