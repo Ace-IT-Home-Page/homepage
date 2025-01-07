@@ -15,6 +15,5 @@ COPY src /app
 ENV PYTHONPATH=/app/src
 
 # FastAPI 서버 실행
-CMD ["sh", "-c", "python wait_for_db.py && uvicorn src.main:app --host 0.0.0.0 --port 8080"]
-
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8080"]
 
