@@ -32,7 +32,7 @@ import Maintenance from "../pages/business/Maintenance";
 import HeadBanner from "../components/HeadBanner";
 import Login from "../pages/admin/login/Login";
 import NotFound from "../pages/NotFound";
-
+import Download from "../pages/Download";
 const Router = () => {
     const location = useLocation();
     const navigate = useNavigate();
@@ -77,6 +77,7 @@ const Router = () => {
                     <Route path="/business/Maintenance" element={<Maintenance />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/introduction" element={<Introduction />} />
+                    <Route path="/download" element={<Download />} />
 
                     {/* 로그인 페이지 라우트 */}
                     <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />

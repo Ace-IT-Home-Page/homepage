@@ -24,6 +24,7 @@ def get_business_client(
     return BusinessClientListSchema(
         business_clients=[
             BusinessClientSchema.model_validate(business_client) for business_client in business_clients
+     
         ]
     )
 

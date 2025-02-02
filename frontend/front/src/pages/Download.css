@@ -1,0 +1,49 @@
+.download-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.download-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.catalog-list {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.catalog-item {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 280px;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.catalog-title {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.download-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.download-links a {
+  background: #007BFF;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.download-links a:hover {
+  background: #0056b3;
+}
