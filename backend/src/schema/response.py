@@ -102,5 +102,4 @@ class DownloadSchema(BaseModel):
     file_name: str
     file_path: str
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)

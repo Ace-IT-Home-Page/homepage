@@ -12,7 +12,7 @@ const Download = () => {
     // 1) 전산실 시설관리 시스템 (code=1)
     getDownloadByCode(1)
       .then((res) => {
-        // 백엔드가 { file_name: 'catalog1_ko.pdf', ... } 식으로 응답한다고 가정
+        // 백엔드가 { file_name: 'catalog1_ko.pdf', ... } 형태로 응답한다고 가정
         setFileName1(res.data.file_name);
       })
       .catch((err) => {
@@ -29,33 +29,41 @@ const Download = () => {
       });
   }, []);
 
+  // 클릭 시, 동적으로 <a>를 생성해서 다운로드
+  const handleDownload = (fileName) => {
+    if (!fileName) return; // 파일명이 아직 안 왔거나 오류 시
+    const tempLink = document.createElement('a');
+    tempLink.href = `/download/${fileName}`;
+    tempLink.download = fileName;
+    document.body.appendChild(tempLink);
+    tempLink.click();
+    document.body.removeChild(tempLink);
+  };
+
   return (
     <div className="download-container">
       <h2>제품 카탈로그</h2>
 
       <div className="catalog-list">
-        {/* 코드 1번 */}
-        <div className="catalog-item">
+        {/* 코드 1번: 전산실 시설관리 시스템 */}
+        <div
+          className="catalog-item"
+          onClick={() => handleDownload(fileName1)}
+          style={{ cursor: 'pointer' }} // 클릭 가능 마우스 표시
+        >
           <h3 className="catalog-title">전산실 시설관리 시스템</h3>
-          <div className="download-links">
-            <a href={`/download/${fileName1}`} download>
-              제품 카탈로그 다운받기
-            </a>
-          </div>
+          {/* 필요한 경우, UI 안내 문구 */}
+          <p>이 영역을 클릭하면 해당 파일을 다운로드합니다.</p>
         </div>
 
-        {/* 코드 2번 */}
-        <div className="catalog-item">
+        {/* 코드 2번: Humidity & Temperature Sensor */}
+        <div
+          className="catalog-item"
+          onClick={() => handleDownload(fileName2)}
+          style={{ cursor: 'pointer' }}
+        >
           <h3 className="catalog-title">Humidity & Temperature Sensor</h3>
-          <div className="download-links">
-            {/*
-              만약 DB에 “영문 버전”이 별도 코드(예: 3)로 있으면,
-              똑같이 getDownloadByCode(3)로 받아서 두 번째 링크로 추가 가능.
-            */}
-            <a href={`/download/${fileName2}`} download>
-              제품 카탈로그 다운받기
-            </a>
-          </div>
+          <p>이 영역을 클릭하면 해당 파일을 다운로드합니다.</p>
         </div>
       </div>
     </div>
