@@ -95,3 +95,12 @@ class UpdateBusinessAreaSchema(BaseModel):
     area_details: Optional[Dict] = None
 
     model_config = ConfigDict(from_attributes=True)
+
+class DownloadSchema(BaseModel):
+    download_id: int
+    download_code: int
+    file_name: str
+    file_path: str
+
+    class Config:
+        orm_mode = True

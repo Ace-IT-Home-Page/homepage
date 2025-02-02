@@ -117,3 +117,16 @@ class BusinessArea(Base):
             area_details=request.area_details
         )
 
+class Download(Base):
+    __tablename__ = "download"
+
+    download_id = Column(Integer, primary_key=True, autoincrement=True)
+    download_code = Column(Integer, nullable=False)
+    file_name = Column(String(255), nullable=False)
+    file_path = Column(String(1000), nullable=False)
+
+    def __repr__(self):
+        return (f"Download(id={self.download_id}, "
+                f"code={self.download_code}, "
+                f"name={self.file_name}, "
+                f"path={self.file_path})")

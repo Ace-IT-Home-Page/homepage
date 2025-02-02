@@ -5,7 +5,7 @@ from sqlalchemy import select, delete
 from sqlalchemy.orm import Session
 
 from database.connection import get_db
-from database.orm import Information, History, BusinessClient, CompanyVisionValues, BusinessArea
+from database.orm import Information, History, BusinessClient, CompanyVisionValues, BusinessArea, Download
 
 
 class InformationRepository:
@@ -148,3 +148,10 @@ class BusinessAreaRepository:
     def delete_business_area(self, id: int) -> None:
         self.session.execute(delete(BusinessArea).where(BusinessArea.area_id == id))
         self.session.commit()
+
+class DownloadRepository:
+    def __init__(self, db: Session = get_db()):
+        self.db = db
+
+    def get_by_code(self, download_code: int) -> Download | None:
+        return self.db.query(Download).filter_by(download_code=download_code).first()

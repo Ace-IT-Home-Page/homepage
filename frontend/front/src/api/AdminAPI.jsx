@@ -14,9 +14,6 @@ const informationAPI = axios.create({
     baseURL: `${API_SERVER_HOST}/information`,
 });
 
-// export const API_SERVER_HOST = 'http://localhost:8000/api'
-
-
 export const getInformation = () => informationAPI.get('');
 export const getInformationById = (id) => informationAPI.get(`/${id}`);
 export const createInformation = (data) => informationAPI.post('', data);
@@ -85,3 +82,10 @@ const loginAPI = axios.create({
 });
 
 export const token = (data) => loginAPI.post('/token', data);
+
+const downloadAPI = axios.create({
+    baseURL: `${API_SERVER_HOST}/download`,
+});
+
+// 단건 조회: 예) GET /api/download/{downloadCode}
+export const getDownloadByCode = (downloadCode) => downloadAPI.get(`/${downloadCode}`);
