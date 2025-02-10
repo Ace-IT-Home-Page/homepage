@@ -93,96 +93,96 @@ const NavbarComp = ({isVisible, isLoggedIn, onLogout}) => {
 
             {/* ABOUT 메뉴 */}
             <li
-              className="navbar-item"
-              onMouseEnter={handleAboutMouseEnter}
-              onMouseLeave={handleAboutMouseLeave}
+                className="navbar-item"
+                onMouseEnter={handleAboutMouseEnter}
+                onMouseLeave={handleAboutMouseLeave}
             >
               <button className="navbar-link">ABOUT</button>
               <AnimatePresence>
                 {isAboutOpen && (
-                  <motion.ul
-                    className="dropdown-menu-1"
-                    initial="closed"
-                    animate="open"
-                    exit="closed"
-                    variants={menuVariants}
-                  >
-                    <li className="dropdown-item">
-                      <Link
-                        to="/about"
-                        className="dropdown-link"
-                        onClick={() => setIsAboutOpen(false)}
-                      >
-                        회사소개
-                      </Link>
-                    </li>
-                    <li className="dropdown-item">
-                      <Link
-                        to="/about/OrganizationHistory"
-                        className="dropdown-link"
-                        onClick={() => setIsAboutOpen(false)}
-                      >
-                        조직도 & 연혁
-                      </Link>
-                    </li>
-                  </motion.ul>
+                    <motion.ul
+                        className="dropdown-menu-1"
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        variants={menuVariants}
+                    >
+                      <li className="dropdown-item">
+                        <Link
+                            to="/about"
+                            className="dropdown-link"
+                            onClick={() => setIsAboutOpen(false)}
+                        >
+                          회사소개
+                        </Link>
+                      </li>
+                      <li className="dropdown-item">
+                        <Link
+                            to="/about/OrganizationHistory"
+                            className="dropdown-link"
+                            onClick={() => setIsAboutOpen(false)}
+                        >
+                          조직도 & 연혁
+                        </Link>
+                      </li>
+                    </motion.ul>
                 )}
               </AnimatePresence>
             </li>
 
             {/* BUSINESS 메뉴 */}
             <li
-              className="navbar-item"
-              onMouseEnter={handleBusinessMouseEnter}
-              onMouseLeave={handleBusinessMouseLeave}
+                className="navbar-item"
+                onMouseEnter={handleBusinessMouseEnter}
+                onMouseLeave={handleBusinessMouseLeave}
             >
               <button className="navbar-link">BUSINESS</button>
               <AnimatePresence>
                 {isBusinessOpen && (
-                  <motion.ul
-                    className="dropdown-menu-1"
-                    initial="closed"
-                    animate="open"
-                    exit="closed"
-                    variants={menuVariants}
-                  >
-                    <li className="dropdown-item">
-                      <Link
-                        to="/business/SystemDevelop"
-                        className="dropdown-link"
-                        onClick={() => setIsBusinessOpen(false)}
-                      >
-                        시스템 개발
-                      </Link>
-                    </li>
-                    <li className="dropdown-item">
-                      <Link
-                        to="/business/FMSMonitoring"
-                        className="dropdown-link"
-                        onClick={() => setIsBusinessOpen(false)}
-                      >
-                        FMS 모니터링
-                      </Link>
-                    </li>
-                    <li className="dropdown-item">
-                      <Link
-                        to="/business/InfrastructureSystem"
-                        className="dropdown-link"
-                        onClick={() => setIsBusinessOpen(false)}
-                      >
-                        인프라 시스템
-                      </Link>
-                    </li>
-                    <li className="dropdown-item">
-                      <Link
-                        to="/business/Maintenance"
-                        className="dropdown-link"
-                        onClick={() => setIsBusinessOpen(false)}
-                      >
-                        유지보수
-                      </Link>
-                    </li>
-                  </motion.ul>
+                    <motion.ul
+                        className="dropdown-menu-1"
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        variants={menuVariants}
+                    >
+                      <li className="dropdown-item">
+                        <Link
+                            to="/business/SystemDevelop"
+                            className="dropdown-link"
+                            onClick={() => setIsBusinessOpen(false)}
+                        >
+                          시스템 개발
+                        </Link>
+                      </li>
+                      <li className="dropdown-item">
+                        <Link
+                            to="/business/FMSMonitoring"
+                            className="dropdown-link"
+                            onClick={() => setIsBusinessOpen(false)}
+                        >
+                          FMS 모니터링
+                        </Link>
+                      </li>
+                      <li className="dropdown-item">
+                        <Link
+                            to="/business/InfrastructureSystem"
+                            className="dropdown-link"
+                            onClick={() => setIsBusinessOpen(false)}
+                        >
+                          인프라 시스템
+                        </Link>
+                      </li>
+                      <li className="dropdown-item">
+                        <Link
+                            to="/business/Maintenance"
+                            className="dropdown-link"
+                            onClick={() => setIsBusinessOpen(false)}
+                        >
+                          유지보수
+                        </Link>
+                      </li>
+                    </motion.ul>
                 )}
               </AnimatePresence>
             </li>
@@ -192,13 +192,18 @@ const NavbarComp = ({isVisible, isLoggedIn, onLogout}) => {
                 CONTACT US
               </Link>
             </li>
+            <li className="navbar-item">
+              <Link to="/download" className="navbar-link">
+                DOWNLOAD
+              </Link>
+            </li>
           </ul>
 
           {/* 로그아웃 버튼 */}
           {isLoggedIn && (
-            <button className="logout-button" onClick={onLogout}>
-              LOGOUT
-            </button>
+              <button className="logout-button" onClick={onLogout}>
+                LOGOUT
+              </button>
           )}
 
         </div>

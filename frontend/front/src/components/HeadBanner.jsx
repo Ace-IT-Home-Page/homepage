@@ -43,6 +43,7 @@ const bannerTextMapping = {
   '/listBusinessArea': '사업 영역(BUSINESS)',
   '/addBusinessArea': '등록',
   '/editBusinessArea': '수정',
+  '/download': '자료실',
 };
 
 // 하위 페이지 링크 정의

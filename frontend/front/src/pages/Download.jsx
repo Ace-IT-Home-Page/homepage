@@ -1,104 +1,183 @@
-import React, { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import './Download.css'
-import { getDownloadByCode } from '../api/AdminAPI'
-
-/**
- * 세 개 탭 (code=1, 2, 3).
- * 전산실 시설관리 시스템 (code=1),
- * Humidity & Temperature Sensor (code=2),
- * 기반환경 데이터 수집장치 (code=3).
- */
-const tabsData = [
-  { code: 1, label: '전산실 시설관리 시스템' },
-  { code: 2, label: 'Humidity & Temperature Sensor' },
-  { code: 3, label: '기반환경 데이터 수집장치' },
-]
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import './Download.css';
+import { getAllDownloads, downloadFileById } from '../api/AdminAPI';
 
 export default function Download() {
-  // 현재 선택된 탭
-  const [selectedTab, setSelectedTab] = useState(tabsData[0])
+  // 고정된 탭 코드 (1, 2, 3)
+  const tabCodes = [1, 2, 3];
 
-  /**
-   * 다운로드 버튼 클릭 시 동작:
-   * - getDownloadByCode(selectedTab.code) 요청 → 파일명 받기
-   * - 동적으로 <a> 태그 만들어 클릭 → 브라우저 다운로드 진행
-   */
-  const handleDownload = (code) => {
-    getDownloadByCode(code)
-      .then((res) => {
-        const fileName = res.data.file_name
-        if (!fileName) {
-          alert('파일이 존재하지 않습니다.')
-          return
-        }
+  // 각 탭별 다운로드 데이터를 위한 상태 초기화
+  const [downloadsByCode, setDownloadsByCode] = useState({
+    1: [],
+    2: [],
+    3: []
+  });
 
-        const tempLink = document.createElement('a')
-        tempLink.href = `/download/${fileName}`
-        tempLink.download = fileName
-        document.body.appendChild(tempLink)
-        tempLink.click()
-        document.body.removeChild(tempLink)
-      })
-      .catch((err) => {
-        console.error('다운로드 실패:', err)
-        alert('다운로드 요청 중 오류가 발생했습니다.')
-      })
+  // 기본 선택 탭은 첫 번째 탭
+  const [selectedCode, setSelectedCode] = useState(tabCodes[0]);
+
+  // 로딩 상태 관리 (초기 로딩 중)
+  const [isLoading, setIsLoading] = useState(true);
+
+  // 에러 발생 시 모달 노출을 위한 상태
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    getAllDownloads()
+        .then((res) => {
+          const allDownloads = res.data || [];
+          const grouped = {
+            1: [],
+            2: [],
+            3: []
+          };
+
+          // download_code가 1, 2, 또는 3인 항목만 그룹화
+          allDownloads.forEach((item) => {
+            const code = item.download_code;
+            if (tabCodes.includes(code)) {
+              grouped[code].push(item);
+            }
+          });
+
+          setDownloadsByCode(grouped);
+          setIsLoading(false); // 데이터 로드 완료
+        })
+        .catch((err) => {
+          console.error('Failed to fetch download data:', err);
+          setIsLoading(false); // 에러가 발생해도 로딩 상태 해제
+          setShowModal(true);  // 에러 발생 시 모달 표시
+        });
+  }, []);
+
+  // 모달이 표시되면 5초 후 자동으로 사라지도록 설정
+  useEffect(() => {
+    if (showModal) {
+      const timer = setTimeout(() => setShowModal(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showModal]);
+
+  // 각 탭의 라벨 결정 (해당 탭의 첫 번째 항목의 download_name 사용)
+  const getLabelForCode = (code) => {
+    const items = downloadsByCode[code] || [];
+    return items.length > 0 ? items[0].download_name || `Tab ${code}` : `Tab ${code}`;
+  };
+
+  // 다운로드 버튼 클릭 시 호출할 함수
+  const handleDownload = (downloadId) => {
+    downloadFileById(downloadId)
+        .then(response => {
+          // Content-Disposition 헤더에서 파일명 추출
+          const contentDisposition = response.headers['content-disposition'];
+          let filename = 'downloaded_file';
+
+          if (contentDisposition) {
+            const matches = contentDisposition.match(/filename="(.+?)"/);
+            if (matches?.length > 1) {
+              filename = matches[1];
+            }
+          }
+
+          // Blob 데이터를 이용해 임시 URL 생성 후 다운로드 트리거
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', filename);
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+        })
+        .catch(error => {
+          console.error('다운로드 요청 실패:', error);
+          setShowModal(true);  // 다운로드 에러 발생 시 모달 표시
+        });
+  };
+
+  // 로딩 중에는 탭과 고정 데이터를 보여주지 않고 로딩 화면만 출력
+  if (isLoading) {
+    return (
+        <div className="loading-container">
+          <p>Loading...</p>
+          {/* 필요하다면 스피너 컴포넌트 등을 추가 */}
+        </div>
+    );
   }
 
   return (
-    <div className="download-container">
-      <h2>제품 카탈로그</h2>
+      <>
+        {/* 에러 발생 시 모달 표시 */}
+        {showModal && (
+            <div className="modal-container">
+              준비중입니다
+            </div>
+        )}
 
-      {/* 탭 목록 */}
-      <ul className="tab-list">
-        {tabsData.map((tab) => (
-          <motion.li
-            key={tab.code}
-            onClick={() => setSelectedTab(tab)}
-            className="tab-item"
-            animate={{
-              backgroundColor:
-                tab.code === selectedTab.code ? '#f0f0f0' : '#fff',
-            }}
-          >
-            {tab.label}
+        {/* 타이틀은 컨테이너와 별도로 배치 */}
+        <div className="download-title">카탈로그 & 제품 사양서 & 인증서</div>
 
-            {/* 선택된 탭 아래쪽에 움직이는 언더라인 */}
-            {tab.code === selectedTab.code && (
-              <motion.div
-                className="tab-underline"
-                layoutId="tab-underline"
-                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-              />
-            )}
-          </motion.li>
-        ))}
-      </ul>
+        <div className="download-container">
+          {/* 탭 목록 */}
+          <ul className="tab-list">
+            {tabCodes.map((code) => (
+                <motion.li
+                    key={code}
+                    onClick={() => setSelectedCode(code)}
+                    className="tab-item"
+                    animate={{
+                      backgroundColor: code === selectedCode ? '#f0f0f0' : '#fff'
+                    }}
+                >
+                  {getLabelForCode(code)}
+                  {code === selectedCode && (
+                      <motion.div
+                          className="tab-underline"
+                          layoutId="tab-underline"
+                          transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      />
+                  )}
+                </motion.li>
+            ))}
+          </ul>
 
-      {/* 중앙 컨텐츠: AnimatePresence로 탭 전환 애니메이션 */}
-      <div className="tab-content">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedTab.code}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="content-box"
-          >
-            <h3>{selectedTab.label}</h3>
-            <p>이 탭을 선택 후, "다운로드하기" 버튼을 누르면 DB에서 파일명을 받아 다운로드합니다.</p>
-
-            <button
-              className="download-button"
-              onClick={() => handleDownload(selectedTab.code)}
-            >
-              다운로드하기
-            </button>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </div>
-  )
+          {/* 탭 컨텐츠 영역 */}
+          <div className="tab-content" style={{ width: '100%' }}>
+            <AnimatePresence mode="wait">
+              {selectedCode && (
+                  <motion.div
+                      key={selectedCode}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                  >
+                    {/* 카드들을 감싸는 flex 컨테이너 */}
+                    <div className="cards-container">
+                      {(downloadsByCode[selectedCode] || []).map((download) => (
+                          <div key={download.download_id} className="download-card">
+                            {/* 이미지 작게 표시 */}
+                            <img
+                                src="/ex_img1.png"
+                                alt={download.download_name}
+                                className="document-image"
+                            />
+                            <div className="document-title">{download.download_name}</div>
+                            {/* 다운로드 버튼 */}
+                            <button
+                                className="download-button"
+                                onClick={() => handleDownload(download.download_id)}
+                            >
+                              다운로드 받기
+                            </button>
+                          </div>
+                      ))}
+                    </div>
+                  </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+      </>
+  );
 }
