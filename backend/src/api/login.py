@@ -4,7 +4,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
-
+from typing import List, Optional
 load_dotenv()  # .env 파일을 사용하여 계정 관련 환경 변수를 로드
 
 router = APIRouter(prefix="/login")
@@ -24,7 +24,7 @@ def authenticate_admin(username: str, password: str):
     return username == ADMIN_USERNAME and password == ADMIN_PASSWORD
 
 
-def create_access_token(data: dict, expires_delta: timedelta | None = None):
+def create_access_token(data: dict, expires_delta:  Optional[timedelta] = None):
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.utcnow() + expires_delta

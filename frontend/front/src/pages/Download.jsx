@@ -110,7 +110,7 @@ export default function Download() {
         {/* 에러 발생 시 모달 표시 */}
         {showModal && (
             <div className="modal-container">
-              준비중입니다
+              업데이트 예정입니다
             </div>
         )}
 

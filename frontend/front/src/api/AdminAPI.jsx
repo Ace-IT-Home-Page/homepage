@@ -80,6 +80,12 @@ const downloadAPI = axios.create({
     baseURL: `${API_SERVER_HOST}/download`,
 });
 
-// 단건 조회: 예) GET /api/download/{downloadCode}
-export const getAllDownloads = (downloadCode) => downloadAPI.get('');
-export const downloadFileById = (downloadId) => downloadAPI.get(`/file/${downloadId}`);
+export function getAllDownloads() {
+    return axios.get(`${API_SERVER_HOST}/download`);
+}
+
+export function downloadFileById(downloadId) {
+    return axios.get(`${API_SERVER_HOST}/download/file/${downloadId}`, {
+        responseType: 'blob', // (중요) Blob으로 받아야 파일 다운로드 가능
+    });
+}
