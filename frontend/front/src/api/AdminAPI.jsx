@@ -81,4 +81,5 @@ const downloadAPI = axios.create({
 });
 
 // 단건 조회: 예) GET /api/download/{downloadCode}
-export const getDownloadByCode = (downloadCode) => downloadAPI.get(`/${downloadCode}`);
+export const getAllDownloads = (downloadCode) => downloadAPI.get('');
+export const downloadFileById = (downloadId) => downloadAPI.get(`/file/${downloadId}`);
