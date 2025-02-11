@@ -1,0 +1,186 @@
+/* 공통 */
+body, html {
+  padding: 0;
+  margin: 0;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* 1) 패럴랙스 배너 */
+.history-banner {
+  position: relative;
+  background: url('../../public/AdobeStock_communications.jpeg') center/cover no-repeat;
+  height: 400px;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.banner-title {
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* 2) 좌우 교차 타임라인 */
+.timeline {
+  margin: 50px auto;
+  position: relative;
+  width: 960px;
+  padding: 0;
+  list-style: none;
+}
+
+/* 중앙 수직선 */
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background-color: #eee;
+  top: 0;
+  bottom: 0;
+}
+
+/* 개별 아이템 */
+.timeline li {
+  position: relative;
+  width: 45%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 좌측 */
+.timeline li.left {
+  left: 0;
+  margin-right: auto;
+  padding-left: 40px;
+}
+
+/* 우측 */
+.timeline li.right {
+  left: 0;
+  margin-left: auto;
+  padding-left: 40px;
+}
+
+/* 좌측: 중앙선으로 연결되도록 오른쪽에 위치 */
+.timeline li.left:before {
+  left: 101%;
+}
+
+/* 우측: 중앙선으로 연결되도록 왼쪽에 위치 */
+.timeline li.right:before {
+  right: 101%;
+}
+
+/* 타이틀 */
+.timeline li h4 {
+  font-size: 20px;
+  color: #9f4026;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* 설명 */
+.timeline li p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #000000;
+}
+
+/* 이미지 박스 */
+.timeline li span {
+  display: block;
+  width: 320px;
+  height: 180px;
+  background: #dfdfdf;
+  margin-top: 15px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  position: relative;
+}
+
+/* 기본 이미지 텍스트 */
+.timeline li span:before {
+  content: 'Image Preview';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #888;
+}
+
+/* 연도 라벨: 각 연도의 시작점에 중앙에 배치 (테두리 둥글게) */
+.timeline .year-label {
+  width: 30%;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: #4e61aa;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 20px;
+  box-shadow: 0 1px 5px rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+}
+
+.timeline li img.timeline-image {
+  display: block;
+  width: 320px;
+  height: 180px;
+  object-fit: cover; /* 이미지가 영역에 맞게 자르거나 조정 */
+  margin-top: 15px;
+  border-radius: 6px;
+}
+/* 우측 아이템: 연결 막대가 왼쪽 끝에 있으므로 원도 왼쪽에 배치 */
+.timeline li.right:not(.year-label):after {
+  right: 100%;
+  margin-right: -6px;
+}
+/* 반응형 */
+@media (max-width: 768px) {
+  .timeline {
+    width: 90%;
+  }
+
+  .timeline li {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .timeline:before {
+    left: 20px;
+  }
+
+  .timeline li.left,
+  .timeline li.right {
+    left: 0;
+    padding-left: 40px;
+  }
+
+  .timeline li.left:before,
+  .timeline li.right:before {
+    left: 0;
+    transform: translateY(-50%) rotate(90deg);
+  }
+}

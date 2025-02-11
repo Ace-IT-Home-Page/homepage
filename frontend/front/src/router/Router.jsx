@@ -33,6 +33,7 @@ import HeadBanner from "../components/HeadBanner";
 import Login from "../pages/admin/login/Login";
 import NotFound from "../pages/NotFound";
 import Download from "../pages/Download";
+import CompanyHistory from "../pages/CompanyHistory";
 const Router = () => {
     const location = useLocation();
     const navigate = useNavigate();
@@ -70,6 +71,7 @@ const Router = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/about/OrganizationHistory" element={<OrganizationHistory />} />
+                    <Route path="/about/Companyhistory" element={<CompanyHistory />} />
                     <Route path="/business" element={<Business />} />
                     <Route path="/business/SystemDevelop" element={<SystemDevelop />} />
                     <Route path="/business/FMSMonitoring" element={<FMSMonitoring />} />
