@@ -81,8 +81,9 @@ const downloadAPI = axios.create({
 });
 
 export function getAllDownloads() {
-    return axios.get(`${API_SERVER_HOST}/download`);
+    return axios.get(`/download`);
 }
+
 
 // 파일 다운로드: 실제 파일은 nginx가 /download/ 폴더에서 직접 서빙합니다.
 export function downloadFileById(downloadId) {
