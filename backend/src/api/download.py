@@ -22,7 +22,7 @@ router = APIRouter(prefix="/download")
 BASE_DIR = os.path.normpath(os.path.join(__file__, "/home/homepage/download"))
 
 
-@router.get("")
+@router.get("/")
 def get_downloads(db: Session = Depends(get_db)):
     """전체 다운로드 목록 조회"""
     logger.info("Called get_downloads endpoint.")
