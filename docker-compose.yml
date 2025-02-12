@@ -9,6 +9,7 @@ services:
       - ./.env
     volumes:
       - ./backend:/app
+      - /home/homepage/download:/home/homepage/download   # 추가된 볼륨 매핑
     networks:
       - app-network
     ports:
@@ -68,5 +69,4 @@ networks:
     driver: bridge
 
 volumes:
-  frontend-build:  # Define the named volume
-
+  frontend-build:
