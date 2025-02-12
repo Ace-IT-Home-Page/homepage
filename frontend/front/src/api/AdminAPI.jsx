@@ -80,14 +80,14 @@ const downloadAPI = axios.create({
     baseURL: `${API_SERVER_HOST}/download`,
 });
 
+// 다운로드 목록 API 호출 (메타데이터를 백엔드 API로부터 가져오는 경우)
 export function getAllDownloads() {
-    return axios.get(`/download`);
+    return downloadAPI.get('');
 }
 
-
-// 파일 다운로드: 실제 파일은 nginx가 /download/ 폴더에서 직접 서빙합니다.
+// 파일 다운로드: downloadAPI 인스턴스를 사용하여 호출 (최종 URL: `${API_SERVER_HOST}/download/file/{downloadId}`)
 export function downloadFileById(downloadId) {
-    return axios.get(`/download/file/${downloadId}`, {
+    return downloadAPI.get(`/file/${downloadId}`, {
         responseType: 'blob', // Blob 타입으로 받아야 파일 다운로드 가능
     });
 }
