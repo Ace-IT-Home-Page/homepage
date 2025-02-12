@@ -84,8 +84,9 @@ export function getAllDownloads() {
     return axios.get(`${API_SERVER_HOST}/download`);
 }
 
+// 파일 다운로드: 실제 파일은 nginx가 /download/ 폴더에서 직접 서빙합니다.
 export function downloadFileById(downloadId) {
-    return axios.get(`${API_SERVER_HOST}/download/file/${downloadId}`, {
-        responseType: 'blob', // (중요) Blob으로 받아야 파일 다운로드 가능
+    return axios.get(`/download/file/${downloadId}`, {
+        responseType: 'blob', // Blob 타입으로 받아야 파일 다운로드 가능
     });
 }
