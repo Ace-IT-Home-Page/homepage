@@ -26,7 +26,7 @@ app.include_router(company_vision_values.router, prefix="/api")
 app.include_router(business_area.router, prefix="/api")
 app.include_router(inquiry.router, prefix="/api")
 app.include_router(login.router, prefix="/api")
-app.include_router(download.router, prefix="/api")
+app.include_router(download.router)
 
 def checking():
     return {"connect" : "success"}
