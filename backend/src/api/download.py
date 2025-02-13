@@ -50,6 +50,7 @@ def get_download_info(download_code: int, db: Session = Depends(get_db)):
         "download_name": data.download_name,
         "file_name": data.file_name,
         "file_path": data.file_path,
+        "exam_image": data.exam_image,
         }
 
 

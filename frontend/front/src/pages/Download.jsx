@@ -160,9 +160,9 @@ export default function Download() {
                     <div className="cards-container">
                       {(downloadsByCode[selectedCode] || []).map((download) => (
                           <div key={download.download_id} className="download-card">
-                            {/* 이미지 작게 표시 */}
+                            {/* exam_image를 src에 사용 */}
                             <img
-                                src="/ex_img1.png"
+                                src={download.exam_image}
                                 alt={download.download_name}
                                 className="document-image"
                             />

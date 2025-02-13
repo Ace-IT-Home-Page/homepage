@@ -125,10 +125,12 @@ class Download(Base):
     download_name = Column(String, nullable=True)
     file_name = Column(String(255), nullable=False)
     file_path = Column(String(1000), nullable=False)
+    exam_image = Column(String, nullable=True)
 
     def __repr__(self):
         return (f"Download(id={self.download_id}, "
                 f"code={self.download_code}, "
                 f"dowload_name={self.download_name}, "
                 f"file_name={self.file_name}, "
-                f"path={self.file_path})")
+                f"path={self.file_path}, "
+                f"exam_image={self.exam_image}, ")
