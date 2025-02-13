@@ -61,9 +61,13 @@ export default function Download() {
 
   // 각 탭의 라벨 결정 (해당 탭의 첫 번째 항목의 download_name 사용)
   const getLabelForCode = (code) => {
-    const items = downloadsByCode[code] || [];
-    return items.length > 0 ? items[0].download_name || `Tab ${code}` : `Tab ${code}`;
+  const labels = {
+    1: '카다로그',
+    2: '제품 소개서',
+    3: '회사 소개서'
   };
+  return labels[code] || `Tab ${code}`;
+};
 
   // 다운로드 버튼 클릭 시 호출할 함수
   const handleDownload = (downloadId) => {
