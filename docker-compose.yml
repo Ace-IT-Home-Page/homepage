@@ -5,6 +5,7 @@ services:
     build:
       context: ./backend
     container_name: ace_it_backend
+    restart: always  # 항상 재시작
     env_file:
       - ./.env
     volumes:
@@ -21,6 +22,7 @@ services:
       args:
         - REACT_APP_API_URL=/api
     container_name: ace_it_frontend
+    restart: always  # 항상 재시작
     env_file:
       - ./.env
     volumes:
@@ -35,7 +37,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx
-    restart: always
+    restart: always  # 항상 재시작
     ports:
       - "80:80"
       - "443:443"
