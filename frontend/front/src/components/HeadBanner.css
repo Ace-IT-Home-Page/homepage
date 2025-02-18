@@ -56,32 +56,28 @@
   position: relative;
 }
 
-@media (max-width: 768px) {
-
-  .head-banner-image-container {
-    height: 350px;
-  }
+@media (max-width: 480px) {
 
   .head-banner-text-about {
-    font-size: 1rem; /* 텍스트 크기 조정 */
-    width: 100%;
-  }
-
-  /* 모바일에서 비활성(.active 아님) 링크는 안 보이게 */
-  .business-link:not(.active) {
-    display: none;
-  }
-
-  /* 모바일에서 active 링크는 크기 조정 */
-  .business-link.active {
-    font-size: 1.6rem;
-    color: #ffffff;
+    color: #ffffff; /* 텍스트 색상 */
+    font-size: 1.4rem; /* 텍스트 크기 조정 */
     font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 가독성을 위한 텍스트 그림자 */
   }
 
-  .business-subpages {
-    flex-direction: column;
-    font-size: 1.8rem;
-    gap: 2px;
+  #sub_bg {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    color: #fff;
+
+    /* 배경 이미지 및 그라디언트 설정 */
+    background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(124, 124, 124, 0.5)),
+            url('../../public/AdobeStock_communications.jpeg');
+    background-repeat: no-repeat;
+    background-position-y: -100px;
   }
+
 }
