@@ -15,10 +15,6 @@
 
 /* 텍스트를 이미지 중앙에 위치시키는 스타일 */
 .head-banner-text-about {
-  position: absolute;
-  top: 65%; /* 수직 중앙 정렬 */
-  left: 50%; /* 수평 중앙 정렬 */
-  transform: translate(-50%, -50%); /* 요소의 중심을 기준으로 위치 조정 */
   color: #ffffff; /* 텍스트 색상 */
   font-size: 2rem; /* 텍스트 크기 조정 */
   font-weight: bold;
@@ -47,7 +43,7 @@
 /* Hover 시 색상만 변경 */
 .business-link:hover {
   text-decoration: none;
-  color: #ffffff;
+  color: #0965ce;
 }
 
 /* 액티브(또는 호버 시) 가운데 정렬 & 폰트 커짐 */

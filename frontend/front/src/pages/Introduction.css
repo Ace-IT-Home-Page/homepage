@@ -52,7 +52,6 @@ ul {
 ul li {
   font-size: 1.0rem;
   color: #333;
-  margin-bottom: 10px;
   text-align: left; /* 리스트 아이템을 왼쪽 정렬 */
 }
 

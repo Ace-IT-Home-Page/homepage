@@ -1,8 +1,10 @@
-// About.jsx
 import React, { useEffect, useState } from 'react';
 import { getCompanyVisionValues } from '../api/AdminAPI';
+import '../css/sh_common.css';
+import '../css/sh_sub.css';
+import '../css/sh_main.css';
 import './About.css';
-import { motion } from 'framer-motion'; // Import motion from framer-motion
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const [visionData, setVisionData] = useState([]);
@@ -34,81 +36,47 @@ const About = () => {
   }
 
   return (
-    <div className="about-full-width-background">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12 col-sm-12 bottom50">
+      <div className="about-full-width-background">
+        <div id="sh_container_wrapper">
+          <div id="sh_content">
+            <div id="greeting" className="pagecommon">
+              <div className="tit_area">
+                글로벌 기업으로 성장하겠습니다.
+                <br />
+                <p>
+                  <b>ACE IT</b>가 여러분과 함께 만들어 갑니다.
+                </p>
+              </div>
+              <div className="img"></div>
+              <div className="cont">
+                <p className="st">
+                  먼저 고객 여러분의 변함없는 관심과 사랑에 깊이 감사드립니다.
+                </p>
+                <div className="pl">
+                  글로벌 기업으로 성장하겠습니다. 여러분을 향한 (주)에이스아이티의 솔루션과 서비스는
+                </div>
+                <div className="pl">
+                  고객에 대해 즐거운 책임을 갖고, 진정한 경쟁력을 약속합니다.
+                </div>
+                <div className="pl">
+                  이러한 약속을 통해 (주)에이스아이티는 경쟁력 있는 솔루션 공급과 차별화된 서비스를 제공함으로써
+                </div>
+                <div className="pl">
+                  세계 속에서도 인정받는 "글로벌 IT 서비스 회사"가 될 것입니다.
+                </div>
+                <br />
+                <br />
+                <div className="pl">
+                  "성공은 목적지가 아니라 여정입니다. " -제프 베소스-
+                </div>
+                <p className="sign">
+                  에이스아이티 대표이사 <span>홍승현</span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="row">
-          <ul className="about-process-wrapp">
-            {visionData.slice(1, 7).map((item, index) => (
-              <li
-                key={item.vv_id}
-                className="wow fadeIn"
-                data-wow-delay={`${300 + index * 100}ms`}
-              >
-                <span className="about-pro-ico bottom20">
-                  <img src={`/about_icon_${index + 1}.png`} alt="icon" />
-                </span>
-                <h2 className="about-font-normal bottom25">{item.vv_name}</h2>
-                <p className="about-check">{item.vv_content}</p>
-                {item.vv_details &&
-                  Object.values(item.vv_details).map((detail, idx) => (
-                    <p key={idx} className="about-check">
-                      {detail}
-                    </p>
-                  ))}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
-
-      {/* 추가된 코드 시작 */}
-      <div className="container">
-        <div className="row align-items-center">
-          {/* 왼쪽 이미지 */}
-          <motion.div
-            className="col-md-6"
-            initial={{ x: -100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <img
-              src="/AdobeStock_global.jpeg"
-              alt="비전 및 가치"
-              className="about-ceo-image"
-            />
-          </motion.div>
-
-          {/* 오른쪽 텍스트 */}
-          <motion.div
-            className="col-md-6"
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="about-ceo-text-container">
-              <div className="about-ceo-title">CEO 인사말</div>
-              <p className="about-ceo-subheading">글로벌 기업으로 성장하겠습니다.</p>
-              <ul>
-                <li>
-                  여러분을 향한 (주)에이스아이티의 솔루션과 서비스는 고객에 대해 즐거운 책임을 갖고,
-                  진정한 경쟁력을 약속합니다. 이러한 약속을 통해 (주)에이스아이티는 경쟁력 있는
-                  솔루션 공급과 차별화된 서비스를 제공함으로써 세계 속에서도 인정받는 ‘글로벌 IT 서비스
-                  회사’가 될 것입니다.
-                  <br/>
-                  <br/>“성공은 목적지가 아니라 여정입니다.” –제프 베조스-
-                </li>
-                <li>대표이사 홍승현</li>
-              </ul>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-      {/* 추가된 코드 끝 */}
-    </div>
   );
 };
 

@@ -56,29 +56,30 @@ def get_download_info(download_code: int, db: Session = Depends(get_db)):
 
 @router.get("/file/{download_id}")
 def download_file(download_id: int, db: Session = Depends(get_db)):
+    """
+    1) DB에서 download_id로 파일 정보를 조회
+    2) 실제 파일이 서버에 존재하는지 확인
+    3) 존재한다면 NGINX가 서빙하는 정적 경로(/static/...)를 JSON으로 응답
+    """
     logger.info(f"Called download_file with download_id={download_id}")
     
-    # 1) DB에서 메타데이터 조회
     data = db.query(Download).filter(Download.download_id == download_id).first()
-    if data is None:
-        logger.warning(f"File metadata not found in DB for download_id={download_id}")
-        raise HTTPException(status_code=404, detail="File metadata not found")
+    if not data:
+        logger.warning(f"No file info found for download_id={download_id}")
+        raise HTTPException(status_code=404, detail="File not found in DB")
     
-    # 2) 실제 서버상의 파일 경로 확인
-    file_path = os.path.join(BASE_DIR, data.file_name)
-    logger.info(f"Constructed file_path={file_path} from BASE_DIR={BASE_DIR}")
+    file_name = data.file_name  # 예: "250213_FMS_수집장치_카다로그_v0.1.pdf"
     
+    # 실제 서버 디렉토리에 파일이 존재하는지 체크
+    file_path = BASE_DIR
+    print(file_path)
     if not os.path.isfile(file_path):
-        logger.warning(f"File does not exist on server: {file_path}")
-        raise HTTPException(status_code=404, detail="File not found on server")
+        logger.warning(f"File not found on disk: {file_path}")
+        raise HTTPException(status_code=404, detail="File not found on disk")
     
-    # 3) 파일 응답
-    logger.info(f"Returning file {file_path} to the client.")
-    return FileResponse(
-        path=file_path,
-        filename=data.file_name,  # 다운로드될 때 보여줄 파일명
-        media_type="application/pdf",  # 예: PDF 파일
-        headers={
-            "Access-Control-Expose-Headers": "Content-Disposition"
-            }
-        )
+    # NGINX로 접근할 수 있는 정적 URL (예: /static/ + 파일명)
+    # NGINX 설정이 alias /home/homepage/download/ -> /static/ 이라 가정
+    nginx_url = f"/download/{file_name}"
+    
+    # 1) JSON 형태로 URL만 돌려주는 방법
+    return {"url": nginx_url}
