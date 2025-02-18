@@ -74,7 +74,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--primary);
+  background: #4e61aa;
   position: absolute;
   top: 28px; /* 상단 여백 */
 }
@@ -104,7 +104,7 @@
 .year {
   font-size: 32px;
   margin-bottom: 15px;
-  color: var(--dark);
+  color: #000000;
   font-weight: 700;
 }
 
@@ -116,7 +116,7 @@
 
 .month strong {
   font-weight: 600;
-  color: var(--dark);
+  color: #4e61aa;
   font-family: var(--point-font);
 }
 

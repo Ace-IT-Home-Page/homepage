@@ -4,7 +4,6 @@ import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-
 import Footer from '../components/Footer';
 import About from '../pages/About';
 import Home from '../pages/Home';
-import Business from '../pages/Business';
 import Contact from '../pages/Contact';
 import NavbarComp from '../components/layouts/Navigation/NavbarComp';
 import Introduction from '../pages/Introduction';
@@ -72,7 +71,6 @@ const Router = () => {
                     <Route path="/about" element={<About />} />
                     <Route path="/about/OrganizationHistory" element={<OrganizationHistory />} />
                     <Route path="/about/Companyhistory" element={<CompanyHistory />} />
-                    <Route path="/business" element={<Business />} />
                     <Route path="/business/SystemDevelop" element={<SystemDevelop />} />
                     <Route path="/business/FMSMonitoring" element={<FMSMonitoring />} />
                     <Route path="/business/InfrastructureSystem" element={<InfrastructureSystem />} />

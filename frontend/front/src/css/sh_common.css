@@ -25,7 +25,7 @@ body{font-size:0.81em}
 *, :after, :before{box-sizing:border-box}
 *{-webkit-text-size-adjust:none}
 .sound_only{display:inline-block !important;position:absolute;top:0;left:0;margin:0 !important;padding:0 !important;font-size:0;line-height:0;border:0 !important;overflow:hidden !important}
-:root{--primary:#0064dd;--dark:#001e42;--k-font:"pretendard";--point-font:'Gmarket Sans';--main-size:1400px}
+:root{--primary:#0064dd;--dark: #61a9ff;--k-font:"pretendard";--point-font:'Gmarket Sans';--main-size:1400px}
 /* ========================== 초기화 [e] */
 
 /* ========================== HEADER */

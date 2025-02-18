@@ -34,7 +34,7 @@
 }
 
 .business-link {
-  color: #808080;
+  color: #9e9e9e;
   text-decoration: none;
   font-size: 1.2rem;
   transition: color 0.3s;
@@ -43,7 +43,7 @@
 /* Hover 시 색상만 변경 */
 .business-link:hover {
   text-decoration: none;
-  color: #0965ce;
+  color: #4e61aa;
 }
 
 /* 액티브(또는 호버 시) 가운데 정렬 & 폰트 커짐 */
