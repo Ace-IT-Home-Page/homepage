@@ -73,17 +73,30 @@ export default function Download() {
 // 다운로드 버튼 클릭 시
   const handleDownload = (downloadId) => {
     downloadFileById(downloadId)
-        .then((response) => {
-          // 백엔드에서 { url: "/static/파일명" } 형태로 응답
-          const { url } = response.data;
-          if (url) {
-            window.open(url, "_blank");
-            alert('다운로드 URL이 없습니다.');
+        .then(response => {
+          // Content-Disposition 헤더에서 파일명 추출
+          const contentDisposition = response.headers['content-disposition'];
+          let filename = 'downloaded_file';
+
+          if (contentDisposition) {
+            const matches = contentDisposition.match(/filename="(.+?)"/);
+            if (matches?.length > 1) {
+              filename = matches[1];
+            }
           }
+
+          // Blob 데이터를 이용해 임시 URL 생성 후 다운로드 트리거
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', filename);
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
         })
-        .catch((err) => {
-          console.error('Download failed:', err);
-          alert('다운로드 중 오류가 발생했습니다.');
+        .catch(error => {
+          console.error('다운로드 요청 실패:', error);
+          setShowModal(true);  // 다운로드 에러 발생 시 모달 표시
         });
   };
 
